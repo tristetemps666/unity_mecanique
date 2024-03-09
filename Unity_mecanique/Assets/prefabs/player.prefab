@@ -95,7 +95,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2554863840426243246}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: cfc4c3008eb5172418d94ad0c460a8f2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -196,7 +196,65 @@ MonoBehaviour:
   jumpForce: 10
   mouvementSpeed: 20
   mouseSensitvity: {x: 10, y: 10}
-  airControl: 0.5
+  limitPitch: 80
+  airControlFactor: 0.5
+  aligmentCurveFactor:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0058080256
+      value: 1.0004492
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.7250223
+      value: 1.0000553
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9996138
+      value: 11.478206
+      inSlope: 69.31755
+      outSlope: 69.31755
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.021417527
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  accelerationCurveFactor:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 15
+      inSlope: -0.93333334
+      outSlope: -0.93333334
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 15
+      value: 1
+      inSlope: -0.93333334
+      outSlope: -0.93333334
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   capsuleCollider: {fileID: 637106453087861335}
   groundMask:
     serializedVersion: 2
@@ -213,6 +271,7 @@ GameObject:
   - component: {fileID: 7379554000888961760}
   - component: {fileID: 7216059543977249284}
   - component: {fileID: 7573445665242662125}
+  - component: {fileID: 5983155613051852252}
   m_Layer: 6
   m_Name: Camera
   m_TagString: Untagged
@@ -267,7 +326,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 73.4
   orthographic: 0
@@ -339,6 +398,43 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &5983155613051852252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7163895023106894765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db06339ca67e944dad6571a9c54a9be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FovFactorAlongSpeed:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  highSpeedFov: 100
 --- !u!1 &7503079260337211511
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,13 @@ public class CharacterMovement : MonoBehaviour
     public float limitPitch = 80f;
 
     [Range(0, 1)]
-    public float airControl = 0.5f;
+    public float airControlFactor = 0.5f;
+
+    [SerializeField]
+    private AnimationCurve aligmentCurveFactor;
+
+    [SerializeField]
+    private AnimationCurve accelerationCurveFactor;
 
     [SerializeField]
     private CapsuleCollider capsuleCollider;
@@ -71,8 +77,33 @@ public class CharacterMovement : MonoBehaviour
     private void ApplyMovement(Vector2 Inputs)
     {
         Vector3 InputsVec3 = transform.forward * Inputs.y + transform.right * Inputs.x;
-        // Vector3 newPosition = transform.position + InputsVec3 * Time.deltaTime * mouvementSpeed;
-        // rb.Move(newPosition, transform.rotation);
+
+        // 0 => my inputs are aligned with my speed
+        // 1 => my inputs are opposed with my speed
+        // the value will be used in order to have a more reactive gameplay
+        float alignment = (1 - Vector3.Dot(rb.velocity.normalized, InputsVec3.normalized)) / 2;
+
+        float alignementBoost = aligmentCurveFactor.Evaluate(alignment);
+        float accelerationBoost = accelerationCurveFactor.Evaluate(rb.velocity.magnitude);
+
+        Debug.Log(
+            "alignementBoost : "
+                + alignementBoost
+                + " // accel boost : "
+                + accelerationBoost
+                + " // velocity : "
+                + rb.velocity.magnitude
+        );
+
+        Vector3 movementForce = IsGrounded()
+            ? InputsVec3 * mouvementSpeed * Time.deltaTime * alignementBoost * accelerationBoost
+            : InputsVec3
+                * mouvementSpeed
+                * Time.deltaTime
+                * alignementBoost
+                * accelerationBoost
+                * airControlFactor;
+
         rb.AddForce(InputsVec3 * mouvementSpeed * Time.deltaTime, ForceMode.VelocityChange);
     }
 
@@ -88,7 +119,7 @@ public class CharacterMovement : MonoBehaviour
         Transform camTransform = playerCam.transform;
         camTransform.RotateAround(camTransform.position, camTransform.right, -rotationInputs.y);
         rotation_amount -= rotationInputs.y;
-        Debug.Log(camTransform.rotation.eulerAngles.x);
+        // Debug.Log(camTransform.rotation.eulerAngles.x);
     }
 
     // event from the input action
@@ -102,8 +133,8 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnMovement(InputValue inputValue)
     {
-        Debug.Log("ça bouuuge");
-        Debug.Log(inputValue.Get<Vector2>());
+        // Debug.Log("ça bouuuge");
+        // Debug.Log(inputValue.Get<Vector2>());
 
         // ApplyMovement(inputValue.Get<Vector2>());
         movementInput = inputValue.Get<Vector2>();
@@ -111,8 +142,13 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnLook(InputValue inputValue)
     {
-        Debug.Log("loook : " + rotation_amount);
-        Debug.Log(inputValue.Get<Vector2>() * Time.deltaTime);
+        // Debug.Log("loook : " + rotation_amount);
+        // Debug.Log(inputValue.Get<Vector2>() * Time.deltaTime);
         ApplyRotation(mouseSensitvity * inputValue.Get<Vector2>() * Time.deltaTime);
+    }
+
+    public float getPlayerVelocity()
+    {
+        return rb.velocity.magnitude;
     }
 }
