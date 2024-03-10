@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6985129149222666166}
   - component: {fileID: 1095572682721606401}
   - component: {fileID: 207210819439390657}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 4996613551364527754}
   - component: {fileID: 3212693188356125406}
   - component: {fileID: 1236895310182091026}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 5552831934800699713}
   - component: {fileID: 1412132482775791544}
   - component: {fileID: 5972769962505412118}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: aile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 1405849861859125315}
   - component: {fileID: 6480098233129840609}
   - component: {fileID: 610943217592125410}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: aile (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 2198507949416940496}
   - component: {fileID: 6348869949879729798}
   - component: {fileID: 7811617999960190832}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: aile (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 2979095148142362883}
   - component: {fileID: 4673071952629142587}
   - component: {fileID: 321836720790820537}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small ennemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -577,9 +577,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bigEnnemi: {fileID: 0}
-  smoothLook: 0.6
-  speed: 25
-  predictionFactor: 5
+  timeToActivate: 2
+  isSeeking: 0
+  smoothLook: 0
+  speed: 50
+  predictionFactor: 10
 --- !u!54 &321836720790820537
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -588,7 +590,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8014672620982737638}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -599,7 +601,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
@@ -619,7 +621,7 @@ GameObject:
   - component: {fileID: 5254147308487514604}
   - component: {fileID: 7438017043098830222}
   - component: {fileID: 4331690060333979966}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: aile (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

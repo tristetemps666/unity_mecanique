@@ -91,14 +91,14 @@ public class CharacterMovement : MonoBehaviour
         float alignementBoost = aligmentCurveFactor.Evaluate(alignment);
         float accelerationBoost = accelerationCurveFactor.Evaluate(rb.velocity.magnitude);
 
-        Debug.Log(
-            "alignementBoost : "
-                + alignementBoost
-                + " // accel boost : "
-                + accelerationBoost
-                + " // velocity : "
-                + rb.velocity.magnitude
-        );
+        // Debug.Log(
+        //     "alignementBoost : "
+        //         + alignementBoost
+        //         + " // accel boost : "
+        //         + accelerationBoost
+        //         + " // velocity : "
+        //         + rb.velocity.magnitude
+        // );
 
         Vector3 movementForce = IsGrounded()
             ? InputsVec3 * mouvementSpeed * Time.deltaTime * alignementBoost * accelerationBoost
