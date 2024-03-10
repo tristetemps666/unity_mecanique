@@ -16,9 +16,16 @@ public class BigEnnemi : MonoBehaviour
     [SerializeField]
     private Transform spawnPointSmallEnnemies;
 
+    [SerializeField]
+    private Material dammageMaterial;
+
+    [SerializeField]
+    private Material defaultMaterial;
+
     void Start()
     {
         InvokeRepeating("SpawnSalveSmalls", 3f, 5f);
+        defaultMaterial = GetComponent<Renderer>().material;
     }
 
     // Update is called once per frame
@@ -38,7 +45,6 @@ public class BigEnnemi : MonoBehaviour
 
     private void SpawnSmallEnnemy()
     {
-        Debug.Log("spawn");
         GameObject newSmall = Instantiate(smallEnnemiPrefab);
         newSmall.transform.position = spawnPointSmallEnnemies.transform.position;
     }
@@ -55,5 +61,16 @@ public class BigEnnemi : MonoBehaviour
     private void SpawnSalveSmalls()
     {
         StartCoroutine(SpawnSalveSmallsCoroutine());
+    }
+
+    private void ResetMaterial()
+    {
+        GetComponent<Renderer>().material = defaultMaterial;
+    }
+
+    public void TakeDammage()
+    {
+        GetComponent<Renderer>().material = dammageMaterial;
+        Invoke("ResetMaterial", 0.1f);
     }
 }

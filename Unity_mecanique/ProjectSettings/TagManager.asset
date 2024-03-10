@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - player
+  - BigEnnemi
+  - SmallEnnemi
   layers:
   - Default
   - TransparentFX

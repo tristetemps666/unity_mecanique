@@ -60,9 +60,7 @@ public class SmallEnnemy : MonoBehaviour
 
     public void setSpeed(Vector3 speed)
     {
-        Debug.Log("on set la speed");
         rb.velocity = speed;
-        Debug.Log("elle est set !");
     }
 
     void OnDrawGizmos()
@@ -89,15 +87,12 @@ public class SmallEnnemy : MonoBehaviour
     void ActivateSeeking()
     {
         rb.velocity = Vector3.zero;
-        Debug.Log("il commence à chasser");
         rb.useGravity = false;
         isSeeking = true;
     }
 
     public void setBigEnnemi(BigEnnemi Be)
     {
-        Debug.Log("on set le big ennemi");
-
         bigEnnemi = Be;
     }
 

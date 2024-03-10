@@ -39,10 +39,14 @@ public class CharacterMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // capsuleCollider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
         playerCam = GetComponentInChildren<Camera>();
     }
+
+    // void OnShoot()
+    // {
+    //     Debug.Log("shoot");
+    // }
 
     private void OnDrawGizmos()
     {
@@ -124,7 +128,6 @@ public class CharacterMovement : MonoBehaviour
         Transform camTransform = playerCam.transform;
         camTransform.RotateAround(camTransform.position, camTransform.right, -rotationInputs.y);
         rotation_amount -= rotationInputs.y;
-        // Debug.Log(camTransform.rotation.eulerAngles.x);
     }
 
     // event from the input action
@@ -132,23 +135,16 @@ public class CharacterMovement : MonoBehaviour
     {
         if (!IsGrounded())
             return;
-        // Debug.Log("jump");
         ApplyJumpForce();
     }
 
     private void OnMovement(InputValue inputValue)
     {
-        // Debug.Log("ça bouuuge");
-        // Debug.Log(inputValue.Get<Vector2>());
-
-        // ApplyMovement(inputValue.Get<Vector2>());
         movementInput = inputValue.Get<Vector2>();
     }
 
     private void OnLook(InputValue inputValue)
     {
-        // Debug.Log("loook : " + rotation_amount);
-        // Debug.Log(inputValue.Get<Vector2>() * Time.deltaTime);
         ApplyRotation(mouseSensitvity * inputValue.Get<Vector2>() * Time.deltaTime);
     }
 
