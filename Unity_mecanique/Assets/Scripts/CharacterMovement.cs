@@ -10,6 +10,8 @@ public class CharacterMovement : MonoBehaviour
     public Vector2 mouseSensitvity = Vector2.one;
     public float limitPitch = 80f;
 
+    public float radiusGroundCheck = 0.7f;
+
     [Range(0, 1)]
     public float airControlFactor = 0.5f;
 
@@ -44,7 +46,10 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(transform.position + Vector3.down * capsuleCollider.height / 2, 0.3f);
+        Gizmos.DrawSphere(
+            transform.position + Vector3.down * capsuleCollider.height / 2,
+            radiusGroundCheck
+        );
     }
 
     // Update is called once per frame
@@ -55,7 +60,7 @@ public class CharacterMovement : MonoBehaviour
         return Physics
                 .OverlapSphere(
                     transform.position + Vector3.down * capsuleCollider.height / 2,
-                    0.3f,
+                    radiusGroundCheck,
                     groundMask
                 )
                 .Length > 0;
@@ -150,5 +155,10 @@ public class CharacterMovement : MonoBehaviour
     public float getPlayerVelocity()
     {
         return rb.velocity.magnitude;
+    }
+
+    public Vector3 getPlayerVectorVelocity()
+    {
+        return rb.velocity;
     }
 }
