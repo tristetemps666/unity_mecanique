@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.17783959, g: 0.21627307, b: 0.2681223, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1080,13 +1080,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.116119534, y: -0.25694203, z: 0.031114131, w: 0.9589208}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 13.809, y: -30, z: 0}
 --- !u!114 &410087042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11324,116 +11324,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4384807481827420620, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: mouvementSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: radiusGroundCheck
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: aligmentCurveFactor.m_Curve.Array.data[1].time
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: aligmentCurveFactor.m_Curve.Array.data[2].inSlope
-      value: 27.67836
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: accelerationCurveFactor.m_Curve.Array.data[1].time
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: aligmentCurveFactor.m_Curve.Array.data[2].inWeight
-      value: 0.05741787
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: aligmentCurveFactor.m_Curve.Array.data[2].outSlope
-      value: 27.67836
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: accelerationCurveFactor.m_Curve.Array.data[0].value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: accelerationCurveFactor.m_Curve.Array.data[0].inSlope
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: accelerationCurveFactor.m_Curve.Array.data[1].inSlope
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: accelerationCurveFactor.m_Curve.Array.data[0].outSlope
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: accelerationCurveFactor.m_Curve.Array.data[1].outSlope
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 5983155613051852252, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: FovFactorAlongSpeed.m_Curve.Array.data[0].time
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5983155613051852252, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: FovFactorAlongSpeed.m_Curve.Array.data[1].time
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5983155613051852252, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: FovFactorAlongSpeed.m_Curve.Array.data[0].inSlope
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 5983155613051852252, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: FovFactorAlongSpeed.m_Curve.Array.data[1].inSlope
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 5983155613051852252, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: FovFactorAlongSpeed.m_Curve.Array.data[0].outSlope
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 5983155613051852252, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: FovFactorAlongSpeed.m_Curve.Array.data[1].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 5983155613051852252, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: FovFactorAlongSpeed.m_Curve.Array.data[1].outSlope
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 5983155613051852252, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: FovFactorAlongSpeed.m_Curve.Array.data[0].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 7379554000888961760, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: far clip plane
-      value: 3000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
