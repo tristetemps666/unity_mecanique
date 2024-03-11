@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 4384807481827420620}
   - component: {fileID: 8339796715804741322}
   - component: {fileID: 4924763868028450291}
-  - component: {fileID: 5668794835307709447}
   - component: {fileID: 6931894028713963320}
+  - component: {fileID: 5668794835307709447}
   m_Layer: 6
   m_Name: player
   m_TagString: player
@@ -266,6 +266,22 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &6931894028713963320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2554863840426243246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4049d34116e4c124a99e1cdce26b6136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashPower: 20
+  dashReloadTime: 1
+  timeAtMaxDashSpeed: 1
+  TimeRecoverDefaultMaxSpeed: 0.5
 --- !u!114 &5668794835307709447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,19 +301,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 439
   shootRate: 0.05
---- !u!114 &6931894028713963320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2554863840426243246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4049d34116e4c124a99e1cdce26b6136, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashPower: 20
 --- !u!1 &7163895023106894765
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,11 +9,15 @@ public class CharacterDash : MonoBehaviour
     private CharacterMovement CM;
 
     public float dashPower = 70f;
+
+    public float dashReloadTime = 2f;
     public float timeAtMaxDashSpeed = 1f;
 
     public float TimeRecoverDefaultMaxSpeed = 0.5f;
 
     private float defaultMaxSpeed = 0f;
+
+    private float reloadingTimeRemaining = 0f;
 
     void Start()
     {
@@ -26,6 +30,9 @@ public class CharacterDash : MonoBehaviour
 
     private void OnDash()
     {
+        if (IsReloading())
+            return;
+
         Debug.Log("IL DASH OMG");
         Vector3 InputsVec3 = CM.getInputVec3();
 
@@ -44,6 +51,7 @@ public class CharacterDash : MonoBehaviour
         CM.rb.AddForce(dashForce, ForceMode.VelocityChange);
 
         ChangeMaxSpeedAlongDash();
+        StartCoroutine(ApplyDashReloadTime());
     }
 
     private void ChangeMaxSpeedAlongDash()
@@ -68,5 +76,18 @@ public class CharacterDash : MonoBehaviour
             yield return null;
         }
         CM.maxSpeed = defaultMaxSpeed;
+    }
+
+    private bool IsReloading() => reloadingTimeRemaining > 0f;
+
+    private IEnumerator ApplyDashReloadTime()
+    {
+        reloadingTimeRemaining = dashReloadTime;
+        while (reloadingTimeRemaining > 0)
+        {
+            reloadingTimeRemaining -= Time.deltaTime;
+            yield return null;
+        }
+        reloadingTimeRemaining = 0f;
     }
 }
