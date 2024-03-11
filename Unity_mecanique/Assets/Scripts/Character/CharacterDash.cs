@@ -8,11 +8,17 @@ public class CharacterDash : MonoBehaviour
     // Start is called before the first frame update
     private CharacterMovement CM;
 
-    public float dashPower = 20f;
+    public float dashPower = 70f;
+    public float timeAtMaxDashSpeed = 1f;
+
+    public float TimeRecoverDefaultMaxSpeed = 0.5f;
+
+    private float defaultMaxSpeed = 0f;
 
     void Start()
     {
         CM = GetComponent<CharacterMovement>();
+        defaultMaxSpeed = CM.maxSpeed;
     }
 
     // Update is called once per frame
@@ -36,5 +42,31 @@ public class CharacterDash : MonoBehaviour
 
         CM.rb.velocity = Vector3.zero;
         CM.rb.AddForce(dashForce, ForceMode.VelocityChange);
+
+        ChangeMaxSpeedAlongDash();
+    }
+
+    private void ChangeMaxSpeedAlongDash()
+    {
+        CM.maxSpeed = dashPower;
+        Invoke("MaxSpeedBackToDefault", timeAtMaxDashSpeed);
+    }
+
+    private void MaxSpeedBackToDefault()
+    {
+        StartCoroutine(ReduceMaxSpeed());
+    }
+
+    private IEnumerator ReduceMaxSpeed()
+    {
+        float time = TimeRecoverDefaultMaxSpeed;
+        float factor = CM.maxSpeed - defaultMaxSpeed;
+        while (time >= 0)
+        {
+            CM.maxSpeed -= Time.deltaTime * factor;
+            time -= Time.deltaTime;
+            yield return null;
+        }
+        CM.maxSpeed = defaultMaxSpeed;
     }
 }

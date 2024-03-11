@@ -197,19 +197,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6229118388493944761}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &138260531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 138260522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4049d34116e4c124a99e1cdce26b6136, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashPower: 20
 --- !u!1 &231115958
 GameObject:
   m_ObjectHideFlags: 0
@@ -6878,94 +6865,25 @@ PrefabInstance:
       propertyPath: maxSpeed
       value: 50
       objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+    - target: {fileID: 6931894028713963320, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
         type: 3}
       propertyPath: dashPower
-      value: 50
+      value: 80
       objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+    - target: {fileID: 6931894028713963320, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
         type: 3}
-      propertyPath: gravityScale
-      value: 3
+      propertyPath: timeAtMaxDashSpeed
+      value: 0.3
       objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+    - target: {fileID: 6931894028713963320, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
         type: 3}
-      propertyPath: aligmentCurveFactor.m_Curve.Array.data[2].value
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: aligmentCurveFactor.m_Curve.Array.data[2].inSlope
-      value: 21.78455
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: accelerationCurveFactor.m_Curve.Array.data[1].time
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: aligmentCurveFactor.m_Curve.Array.data[2].inWeight
-      value: 0.07174589
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: aligmentCurveFactor.m_Curve.Array.data[2].outSlope
-      value: 21.78455
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: accelerationCurveFactor.m_Curve.Array.data[0].value
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: accelerationCurveFactor.m_Curve.Array.data[0].inSlope
-      value: -0.39716557
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: accelerationCurveFactor.m_Curve.Array.data[1].inSlope
-      value: -0.025237871
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: accelerationCurveFactor.m_Curve.Array.data[0].outSlope
-      value: -0.39716557
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: accelerationCurveFactor.m_Curve.Array.data[1].inWeight
-      value: 0.28453606
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: accelerationCurveFactor.m_Curve.Array.data[1].outSlope
-      value: -0.025237871
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: accelerationCurveFactor.m_Curve.Array.data[0].outWeight
-      value: 0.065979384
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: accelerationCurveFactor.m_Curve.Array.data[0].tangentMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: accelerationCurveFactor.m_Curve.Array.data[1].tangentMode
-      value: 0
+      propertyPath: TimeRecoverDefaultMaxSpeed
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2554863840426243246, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 138260531}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cf3d3fd8af149c47b19a18dd300bec1, type: 3}
 --- !u!1001 &8698579497115538605
 PrefabInstance:
