@@ -7,6 +7,7 @@ using UnityEngine.Windows;
 
 public class CharacterMovement : MonoBehaviour
 {
+    public float gravityScale = 1f;
     public bool debugAcceleration = false;
     public float jumpForce = 10f;
     public float mouvementSpeed = 5f;
@@ -14,6 +15,8 @@ public class CharacterMovement : MonoBehaviour
     public float limitPitch = 80f;
 
     public float dashPower = 20f;
+
+    public float maxSpeed = 70f;
 
     public float radiusGroundCheck = 0.7f;
 
@@ -50,6 +53,7 @@ public class CharacterMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerCam = GetComponentInChildren<Camera>();
+        Physics.gravity = Vector3.down * 9.81f * gravityScale;
     }
 
     // void OnShoot()
@@ -69,6 +73,7 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         IsGroundedVal = IsGrounded();
+        ClampSpeed();
     }
 
     bool IsGrounded()
@@ -87,6 +92,13 @@ public class CharacterMovement : MonoBehaviour
                     groundMask
                 )
                 .Length > 0;
+    }
+
+    void ClampSpeed()
+    {
+        float magnitude = rb.velocity.magnitude;
+        if (magnitude > maxSpeed)
+            rb.velocity = rb.velocity / magnitude * maxSpeed;
     }
 
     private void FixedUpdate()
@@ -192,7 +204,7 @@ public class CharacterMovement : MonoBehaviour
         Vector3 InputsVec3 = getInputVec3();
 
         Vector3 dashForce =
-            InputsVec3 == Vector3.zero ? InputsVec3 * dashPower : dashPower * transform.forward;
+            InputsVec3 != Vector3.zero ? InputsVec3 * dashPower : dashPower * transform.forward;
 
         Debug.Log("Force avant alignement : " + dashForce);
 
@@ -201,6 +213,8 @@ public class CharacterMovement : MonoBehaviour
             dashForce = alignVectorToGround(dashForce);
         }
         Debug.Log("Force après alignement : " + dashForce);
+
+        rb.velocity = Vector3.zero;
         rb.AddForce(dashForce, ForceMode.VelocityChange);
     }
 

@@ -6862,8 +6862,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
         type: 3}
+      propertyPath: maxSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+        type: 3}
       propertyPath: dashPower
-      value: 90
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+        type: 3}
+      propertyPath: gravityScale
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
         type: 3}
