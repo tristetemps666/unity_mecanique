@@ -36,6 +36,8 @@ public class CharacterMovement : MonoBehaviour
     private Camera playerCam;
     private float rotation_amount = 0f;
 
+    private Vector3 NormalGround = Vector3.zero;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +63,13 @@ public class CharacterMovement : MonoBehaviour
 
     bool IsGrounded()
     {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.5f, groundMask))
+        {
+            NormalGround = hit.normal;
+        }
+
         return Physics
                 .OverlapSphere(
                     transform.position + Vector3.down * capsuleCollider.height / 2,
@@ -95,14 +104,14 @@ public class CharacterMovement : MonoBehaviour
         float alignementBoost = aligmentCurveFactor.Evaluate(alignment);
         float accelerationBoost = accelerationCurveFactor.Evaluate(rb.velocity.magnitude);
 
-        // Debug.Log(
-        //     "alignementBoost : "
-        //         + alignementBoost
-        //         + " // accel boost : "
-        //         + accelerationBoost
-        //         + " // velocity : "
-        //         + rb.velocity.magnitude
-        // );
+        Debug.Log(
+            "alignementBoost : "
+                + alignementBoost
+                + " // accel boost : "
+                + accelerationBoost
+                + " // velocity : "
+                + rb.velocity.magnitude
+        );
 
         Vector3 movementForce = IsGrounded()
             ? InputsVec3 * mouvementSpeed * Time.deltaTime * alignementBoost * accelerationBoost
@@ -113,7 +122,12 @@ public class CharacterMovement : MonoBehaviour
                 * accelerationBoost
                 * airControlFactor;
 
-        rb.AddForce(InputsVec3 * mouvementSpeed * Time.deltaTime, ForceMode.VelocityChange);
+        // Movement along surface ?
+        if (IsGrounded())
+            movementForce = movementForce - Vector3.Dot(movementForce, NormalGround) * NormalGround;
+
+        // rb.AddForce(InputsVec3 * mouvementSpeed * Time.deltaTime, ForceMode.VelocityChange);
+        rb.AddForce(movementForce, ForceMode.VelocityChange);
     }
 
     private void ApplyRotation(Vector2 rotationInputs)
