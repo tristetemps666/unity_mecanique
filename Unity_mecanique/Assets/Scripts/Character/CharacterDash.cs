@@ -8,6 +8,9 @@ public class CharacterDash : MonoBehaviour
     // Start is called before the first frame update
     private CharacterMovement CM;
 
+    [SerializeField]
+    private ParticleSystem dashParticules;
+
     public float dashPower = 70f;
 
     public float dashReloadTime = 2f;
@@ -32,6 +35,8 @@ public class CharacterDash : MonoBehaviour
     {
         if (IsReloading())
             return;
+
+        dashParticules.Play();
 
         Debug.Log("IL DASH OMG");
         Vector3 InputsVec3 = CM.getInputVec3();
