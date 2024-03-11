@@ -1,14 +1,19 @@
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
 public class CharacterMovement : MonoBehaviour
 {
+    public bool debugAcceleration = false;
     public float jumpForce = 10f;
     public float mouvementSpeed = 5f;
     public Vector2 mouseSensitvity = Vector2.one;
     public float limitPitch = 80f;
+
+    public float dashPower = 20f;
 
     public float radiusGroundCheck = 0.7f;
 
@@ -38,6 +43,8 @@ public class CharacterMovement : MonoBehaviour
 
     private Vector3 NormalGround = Vector3.zero;
 
+    private bool IsGroundedVal = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +66,10 @@ public class CharacterMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() { }
+    void Update()
+    {
+        IsGroundedVal = IsGrounded();
+    }
 
     bool IsGrounded()
     {
@@ -94,7 +104,8 @@ public class CharacterMovement : MonoBehaviour
 
     private void ApplyMovement(Vector2 Inputs)
     {
-        Vector3 InputsVec3 = transform.forward * Inputs.y + transform.right * Inputs.x;
+        // Vector3 InputsVec3 = transform.forward * Inputs.y + transform.right * Inputs.x;
+        Vector3 InputsVec3 = getInputVec3();
 
         // 0 => my inputs are aligned with my speed
         // 1 => my inputs are opposed with my speed
@@ -104,16 +115,12 @@ public class CharacterMovement : MonoBehaviour
         float alignementBoost = aligmentCurveFactor.Evaluate(alignment);
         float accelerationBoost = accelerationCurveFactor.Evaluate(rb.velocity.magnitude);
 
-        Debug.Log(
-            "alignementBoost : "
-                + alignementBoost
-                + " // accel boost : "
-                + accelerationBoost
-                + " // velocity : "
-                + rb.velocity.magnitude
-        );
+        if (debugAcceleration)
+        {
+            DisplayDebugAcceleration(alignementBoost, accelerationBoost);
+        }
 
-        Vector3 movementForce = IsGrounded()
+        Vector3 movementForce = IsGroundedVal
             ? InputsVec3 * mouvementSpeed * Time.deltaTime * alignementBoost * accelerationBoost
             : InputsVec3
                 * mouvementSpeed
@@ -123,11 +130,33 @@ public class CharacterMovement : MonoBehaviour
                 * airControlFactor;
 
         // Movement along surface ?
-        if (IsGrounded())
+        if (IsGroundedVal)
             movementForce = movementForce - Vector3.Dot(movementForce, NormalGround) * NormalGround;
 
         // rb.AddForce(InputsVec3 * mouvementSpeed * Time.deltaTime, ForceMode.VelocityChange);
         rb.AddForce(movementForce, ForceMode.VelocityChange);
+    }
+
+    private Vector3 alignVectorToGround(Vector3 vector)
+    {
+        return vector - Vector3.Dot(vector, NormalGround) * NormalGround;
+    }
+
+    private Vector3 getInputVec3()
+    {
+        return transform.forward * movementInput.y + transform.right * movementInput.x;
+    }
+
+    private void DisplayDebugAcceleration(float alignementBoost, float accelerationBoost)
+    {
+        Debug.Log(
+            "alignementBoost : "
+                + alignementBoost
+                + " // accel boost : "
+                + accelerationBoost
+                + " // velocity : "
+                + rb.velocity.magnitude
+        );
     }
 
     private void ApplyRotation(Vector2 rotationInputs)
@@ -147,7 +176,7 @@ public class CharacterMovement : MonoBehaviour
     // event from the input action
     private void OnJump()
     {
-        if (!IsGrounded())
+        if (!IsGroundedVal)
             return;
         ApplyJumpForce();
     }
@@ -155,6 +184,24 @@ public class CharacterMovement : MonoBehaviour
     private void OnMovement(InputValue inputValue)
     {
         movementInput = inputValue.Get<Vector2>();
+    }
+
+    private void OnDash()
+    {
+        Debug.Log("IL DASH OMG");
+        Vector3 InputsVec3 = getInputVec3();
+
+        Vector3 dashForce =
+            InputsVec3 == Vector3.zero ? InputsVec3 * dashPower : dashPower * transform.forward;
+
+        Debug.Log("Force avant alignement : " + dashForce);
+
+        if (IsGroundedVal)
+        {
+            dashForce = alignVectorToGround(dashForce);
+        }
+        Debug.Log("Force après alignement : " + dashForce);
+        rb.AddForce(dashForce, ForceMode.VelocityChange);
     }
 
     private void OnLook(InputValue inputValue)

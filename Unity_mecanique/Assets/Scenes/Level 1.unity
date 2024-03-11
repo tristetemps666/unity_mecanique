@@ -6862,6 +6862,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
         type: 3}
+      propertyPath: dashPower
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+        type: 3}
       propertyPath: aligmentCurveFactor.m_Curve.Array.data[2].value
       value: 10
       objectReference: {fileID: 0}
@@ -6966,7 +6971,7 @@ PrefabInstance:
     - target: {fileID: 3392287359889524482, guid: 8ac56f0ad5655f248b2bc9bcab01984f,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3392287359889524482, guid: 8ac56f0ad5655f248b2bc9bcab01984f,
         type: 3}

@@ -22,10 +22,13 @@ public class BigEnnemi : MonoBehaviour
     [SerializeField]
     private Material defaultMaterial;
 
+    private Material material;
+
     void Start()
     {
         InvokeRepeating("SpawnSalveSmalls", 3f, 5f);
         defaultMaterial = GetComponent<Renderer>().material;
+        material = GetComponent<Renderer>().material;
     }
 
     // Update is called once per frame
@@ -65,12 +68,12 @@ public class BigEnnemi : MonoBehaviour
 
     private void ResetMaterial()
     {
-        GetComponent<Renderer>().material = defaultMaterial;
+        material = defaultMaterial;
     }
 
     public void TakeDammage()
     {
-        GetComponent<Renderer>().material = dammageMaterial;
+        material = dammageMaterial;
         Invoke("ResetMaterial", 0.1f);
     }
 }
