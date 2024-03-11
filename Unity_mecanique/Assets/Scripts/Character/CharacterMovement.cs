@@ -14,8 +14,6 @@ public class CharacterMovement : MonoBehaviour
     public Vector2 mouseSensitvity = Vector2.one;
     public float limitPitch = 80f;
 
-    public float dashPower = 20f;
-
     public float maxSpeed = 70f;
 
     public float radiusGroundCheck = 0.7f;
@@ -32,7 +30,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField]
     private CapsuleCollider capsuleCollider;
 
-    private Rigidbody rb;
+    public Rigidbody rb;
 
     private PlayerInput playerInput;
 
@@ -46,7 +44,7 @@ public class CharacterMovement : MonoBehaviour
 
     private Vector3 NormalGround = Vector3.zero;
 
-    private bool IsGroundedVal = false;
+    public bool IsGroundedVal { get; private set; } = false;
 
     // Start is called before the first frame update
     void Start()
@@ -149,12 +147,12 @@ public class CharacterMovement : MonoBehaviour
         rb.AddForce(movementForce, ForceMode.VelocityChange);
     }
 
-    private Vector3 alignVectorToGround(Vector3 vector)
+    public Vector3 alignVectorToGround(Vector3 vector)
     {
         return vector - Vector3.Dot(vector, NormalGround) * NormalGround;
     }
 
-    private Vector3 getInputVec3()
+    public Vector3 getInputVec3()
     {
         return transform.forward * movementInput.y + transform.right * movementInput.x;
     }
@@ -196,26 +194,6 @@ public class CharacterMovement : MonoBehaviour
     private void OnMovement(InputValue inputValue)
     {
         movementInput = inputValue.Get<Vector2>();
-    }
-
-    private void OnDash()
-    {
-        Debug.Log("IL DASH OMG");
-        Vector3 InputsVec3 = getInputVec3();
-
-        Vector3 dashForce =
-            InputsVec3 != Vector3.zero ? InputsVec3 * dashPower : dashPower * transform.forward;
-
-        Debug.Log("Force avant alignement : " + dashForce);
-
-        if (IsGroundedVal)
-        {
-            dashForce = alignVectorToGround(dashForce);
-        }
-        Debug.Log("Force après alignement : " + dashForce);
-
-        rb.velocity = Vector3.zero;
-        rb.AddForce(dashForce, ForceMode.VelocityChange);
     }
 
     private void OnLook(InputValue inputValue)
