@@ -9,7 +9,7 @@ public class CharacterDash : MonoBehaviour
     private CharacterMovement CM;
 
     [SerializeField]
-    private ParticleSystem dashParticules;
+    private GameObject dashParticules;
 
     public float dashPower = 70f;
 
@@ -36,7 +36,13 @@ public class CharacterDash : MonoBehaviour
         if (IsReloading())
             return;
 
-        dashParticules.Play();
+        // will play on Awake
+        GameObject newDashParticules = Instantiate(dashParticules, transform);
+        if (newDashParticules != null)
+        {
+            newDashParticules.transform.localPosition = Vector3.zero;
+            newDashParticules.SetActive(true);
+        }
 
         Debug.Log("IL DASH OMG");
         Vector3 InputsVec3 = CM.getInputVec3();

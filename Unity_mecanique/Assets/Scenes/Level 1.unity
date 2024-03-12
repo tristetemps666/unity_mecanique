@@ -965,6 +965,12 @@ LightingSettings:
   m_PVRTiledBaking: 0
   m_NumRaysToShootPerTexel: -1
   m_RespectSceneVisibilityWhenBakingGI: 0
+--- !u!1 &1415344525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8532277102950379081, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6229118388493944761}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1438948309
 GameObject:
   m_ObjectHideFlags: 0
@@ -6860,15 +6866,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7716985771656599791, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+    - target: {fileID: 6931894028713963320, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
         type: 3}
-      propertyPath: playOnAwake
+      propertyPath: dashParticules
+      value: 
+      objectReference: {fileID: 1415344525}
+    - target: {fileID: 8532277102950379081, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7716985771656599791, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

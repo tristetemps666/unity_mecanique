@@ -279,7 +279,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4049d34116e4c124a99e1cdce26b6136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashParticules: {fileID: 7716985771656599791}
+  dashParticules: {fileID: 1936312930681171787, guid: 33861da2cd7f14f4281b40cbc98e3d36,
+    type: 3}
   dashPower: 80
   dashReloadTime: 1
   timeAtMaxDashSpeed: 0.3
@@ -585,9 +586,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 553849450463009261, guid: 33861da2cd7f14f4281b40cbc98e3d36,
         type: 3}
+      propertyPath: stopAction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 553849450463009261, guid: 33861da2cd7f14f4281b40cbc98e3d36,
+        type: 3}
       propertyPath: ShapeModule.m_MeshRenderer
       value: 
       objectReference: {fileID: 6068635818361496199}
+    - target: {fileID: 553849450463009261, guid: 33861da2cd7f14f4281b40cbc98e3d36,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1936312930681171787, guid: 33861da2cd7f14f4281b40cbc98e3d36,
         type: 3}
       propertyPath: m_Name
@@ -656,12 +667,6 @@ PrefabInstance:
 --- !u!4 &1407032431406520581 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9165210083196524551, guid: 33861da2cd7f14f4281b40cbc98e3d36,
-    type: 3}
-  m_PrefabInstance: {fileID: 7833895588796121346}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &7716985771656599791 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 553849450463009261, guid: 33861da2cd7f14f4281b40cbc98e3d36,
     type: 3}
   m_PrefabInstance: {fileID: 7833895588796121346}
   m_PrefabAsset: {fileID: 0}
