@@ -22,9 +22,13 @@ public class CharacterDash : MonoBehaviour
 
     private float reloadingTimeRemaining = 0f;
 
+    private TrailRenderer trailRenderer;
+
     void Start()
     {
         CM = GetComponent<CharacterMovement>();
+        trailRenderer = GetComponent<TrailRenderer>();
+        trailRenderer.enabled = false;
         defaultMaxSpeed = CM.maxSpeed;
     }
 
@@ -43,6 +47,7 @@ public class CharacterDash : MonoBehaviour
             newDashParticules.transform.localPosition = Vector3.zero;
             newDashParticules.SetActive(true);
         }
+        trailRenderer.enabled = true;
 
         Debug.Log("IL DASH OMG");
         Vector3 InputsVec3 = CM.getInputVec3();
@@ -100,5 +105,6 @@ public class CharacterDash : MonoBehaviour
             yield return null;
         }
         reloadingTimeRemaining = 0f;
+        trailRenderer.enabled = false;
     }
 }
