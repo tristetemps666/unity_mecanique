@@ -49,19 +49,15 @@ public class CharacterDash : MonoBehaviour
         }
         trailRenderer.enabled = true;
 
-        Debug.Log("IL DASH OMG");
         Vector3 InputsVec3 = CM.getInputVec3();
 
         Vector3 dashForce =
             InputsVec3 != Vector3.zero ? InputsVec3 * dashPower : dashPower * transform.forward;
 
-        Debug.Log("Force avant alignement : " + dashForce);
-
         if (CM.IsGroundedVal)
         {
             dashForce = CM.alignVectorToGround(dashForce);
         }
-        Debug.Log("Force après alignement : " + dashForce);
 
         CM.rb.velocity = Vector3.zero;
         CM.rb.AddForce(dashForce, ForceMode.VelocityChange);

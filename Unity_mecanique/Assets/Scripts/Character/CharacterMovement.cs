@@ -32,7 +32,15 @@ public class CharacterMovement : MonoBehaviour
 
     public Rigidbody rb;
 
+    [SerializeField]
+    private Vector3 fpsCamPosition;
+
+    [SerializeField]
+    private Vector3 tpsCamPosition;
+
     private PlayerInput playerInput;
+
+    private bool isInFps = true;
 
     private Vector2 movementInput = Vector2.zero;
 
@@ -209,5 +217,22 @@ public class CharacterMovement : MonoBehaviour
     public Vector3 getPlayerVectorVelocity()
     {
         return rb.velocity;
+    }
+
+    public void switchView()
+    {
+        if (isInFps)
+        {
+            playerCam.transform.localPosition = tpsCamPosition;
+            // we need to switch the arm hierarchy
+            gameObject.transform.Find("right arm").transform.parent = transform;
+        }
+        else
+        {
+            playerCam.transform.localPosition = fpsCamPosition;
+            // the arm is child of the camera
+            gameObject.transform.Find("right arm").transform.parent = playerCam.transform;
+        }
+        isInFps = !isInFps;
     }
 }

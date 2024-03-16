@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class Gun : MonoBehaviour, GunInterface
 {
     [SerializeField]
     private GameObject bulletPrefab;
@@ -17,7 +17,7 @@ public class Gun : MonoBehaviour
     [SerializeField]
     private float shootRate = 0.2f;
 
-    private bool isShootHold = false;
+    public bool isShootHold { get; private set; } = false;
 
     private bool canShoot = true;
 
@@ -67,7 +67,6 @@ public class Gun : MonoBehaviour
         }
         else
         {
-            Debug.Log("pas touché de cible");
             target = newBullet.transform.position + cam.transform.forward * 2000f;
             newBullet.transform.localScale *= 3;
         }
@@ -83,7 +82,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    void OnShoot()
+    public void Shoot()
     {
         isShootHold = !isShootHold;
         if (!isShootHold)
@@ -100,4 +99,14 @@ public class Gun : MonoBehaviour
             delayShoot = shootRate;
         }
     }
+
+    public void StopShoot()
+    {
+        // StopCoroutine(CreateBulletRepeate());
+    }
+
+    // void OnShoot()
+    // {
+    //     Shoot();
+    // }
 }
