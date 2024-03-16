@@ -19,7 +19,7 @@ public class Gun : MonoBehaviour, GunInterface
 
     public bool isShootHold { get; private set; } = false;
 
-    private bool canShoot = true;
+    public bool canShoot = true;
 
     private float delayShoot = 0f;
 
@@ -47,8 +47,6 @@ public class Gun : MonoBehaviour, GunInterface
         newBullet.transform.position = bulletSpawnTransform.transform.position;
 
         Camera cam = GetComponentInChildren<Camera>();
-
-        Debug.DrawRay(cam.transform.position, cam.transform.forward * 5f, Color.red, 5f);
 
         RaycastHit hit;
         Vector3 target;

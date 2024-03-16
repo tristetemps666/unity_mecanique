@@ -14,28 +14,62 @@ public class GunManager : MonoBehaviour
     [SerializeField]
     bool ForceSniperMode = false;
 
+    [SerializeField]
+    Vector3 gunScopeLocalPosition;
+
+    private Vector3 gunLocalPosition;
+
+    [SerializeField]
+    Transform gunTransform;
+
+    // Animator playerAnimator;
+    [SerializeField]
+    private float scopingSpeed = 3f;
+    private float scopingAmount = 0f;
+
     void Start()
     {
         gun = GetComponent<Gun>();
         sniper = GetComponent<Sniper>();
+        // playerAnimator = GetComponent<Animator>();
 
-        if (ForceSniperMode)
-        {
-            // sniper.enabled = true;
-            gun.enabled = false;
-        }
-        sniper.enabled = false;
+        gunLocalPosition = gunTransform.localPosition;
+
+        // if (ForceSniperMode)
+        // {
+        //     // sniper.enabled = true;
+        //     gun.enabled = false;
+        // }
+        // sniper.enabled = false;
     }
 
     // Update is called once per frame
     void Update() { }
+
+    void UpdateScopeGunPosition()
+    {
+        gunTransform.localPosition = Vector3.Lerp(
+            gunLocalPosition,
+            gunScopeLocalPosition,
+            scopingAmount
+        );
+    }
 
     void OnScope()
     {
         // sniper.StopAllCoroutines();
         // gun.StopAllCoroutines();
 
-        isInSniperMode = !isInSniperMode;
+        if (!isInSniperMode)
+        {
+            StopAllCoroutines();
+            StartCoroutine(ScopeCoroutine());
+        }
+        else
+        {
+            StopAllCoroutines();
+            StartCoroutine(UnScopeCoroutine());
+        }
     }
 
     void OnShoot()
@@ -48,5 +82,33 @@ public class GunManager : MonoBehaviour
         {
             gun.Shoot();
         }
+    }
+
+    IEnumerator ScopeCoroutine()
+    {
+        isInSniperMode = true;
+        while (scopingAmount < 1f)
+        {
+            scopingAmount += Time.deltaTime * scopingSpeed;
+            UpdateScopeGunPosition();
+            yield return null;
+        }
+
+        sniper.canShoot = true;
+        scopingAmount = 1f;
+    }
+
+    IEnumerator UnScopeCoroutine()
+    {
+        isInSniperMode = false;
+
+        sniper.canShoot = false;
+        while (scopingAmount > 0f)
+        {
+            scopingAmount -= Time.deltaTime * scopingSpeed;
+            UpdateScopeGunPosition();
+            yield return null;
+        }
+        scopingAmount = 0f;
     }
 }
