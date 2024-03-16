@@ -27,18 +27,14 @@ public class Sniper : MonoBehaviour, GunInterface
         playerCam = GetComponentInChildren<Camera>();
     }
 
-    bool isShootDelayed() => delayShoot >= 0f;
+    bool isShootDelayed() => delayShoot > 0f;
 
     private void Update()
     {
-        if (!canShoot)
+        delayShoot -= Time.deltaTime;
+        if (delayShoot <= 0f)
         {
-            delayShoot -= Time.deltaTime;
-            if (delayShoot <= 0f)
-            {
-                delayShoot = 0f;
-                canShoot = true;
-            }
+            delayShoot = 0f;
         }
     }
 
@@ -51,7 +47,7 @@ public class Sniper : MonoBehaviour, GunInterface
             return;
         }
 
-        if (!canShoot && isShootDelayed())
+        if (!canShoot || isShootDelayed())
             return;
 
         Debug.Log("il shoot au snipeerrrr");
