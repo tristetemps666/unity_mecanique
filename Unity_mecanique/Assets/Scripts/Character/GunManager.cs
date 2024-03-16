@@ -59,6 +59,9 @@ public class GunManager : MonoBehaviour
     {
         // sniper.StopAllCoroutines();
         // gun.StopAllCoroutines();
+        // we don't want to scope if the player is shooting with the gun
+        if (gun.isShootHold)
+            return;
 
         if (!isInSniperMode)
         {
