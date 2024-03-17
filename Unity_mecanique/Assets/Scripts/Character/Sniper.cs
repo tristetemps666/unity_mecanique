@@ -22,6 +22,9 @@ public class Sniper : MonoBehaviour, GunInterface
     [SerializeField]
     private Transform endBarrelTransform;
 
+    [SerializeField]
+    Material sniperTrailMaterial;
+
     private void Start()
     {
         playerCam = GetComponentInChildren<Camera>();
@@ -55,6 +58,12 @@ public class Sniper : MonoBehaviour, GunInterface
         delayShoot = fireRate;
         isShootHold = true;
 
+        // we make the effect
+        createSniperTrail(
+            endBarrelTransform.position,
+            endBarrelTransform.position + playerCam.transform.forward * 1000
+        );
+
         // we do the shoot
         RaycastHit[] hits = Physics.RaycastAll(
             playerCam.transform.position,
@@ -83,8 +92,19 @@ public class Sniper : MonoBehaviour, GunInterface
         }
     }
 
-    // void OnShoot()
-    // {
-    //     Shoot();
-    // }
+    void createSniperTrail(Vector3 start, Vector3 end)
+    {
+        // we create the game object
+        GameObject goNewTrail = new GameObject();
+        goNewTrail.transform.position = endBarrelTransform.position;
+        // we add the components needed
+        goNewTrail.AddComponent<LineRenderer>();
+
+        SniperTrail newTrail = goNewTrail.AddComponent<SniperTrail>();
+        newTrail.SniperTrailMat = sniperTrailMaterial;
+        newTrail.setupLineRenderer();
+
+        // we setup the trail
+        newTrail.setupLine(start, end, 10);
+    }
 }
