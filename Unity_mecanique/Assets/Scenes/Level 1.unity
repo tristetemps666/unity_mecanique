@@ -6856,6 +6856,12 @@ PrefabInstance:
       propertyPath: endBarrelTransform
       value: 
       objectReference: {fileID: 906359963}
+    - target: {fileID: 1601384084134018255, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+        type: 3}
+      propertyPath: sniperTrailParticules
+      value: 
+      objectReference: {fileID: 7036804100399840626, guid: 8f54ca8a3e9c61041a5841cfe3d2dcfc,
+        type: 3}
     - target: {fileID: 2554863840426243246, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
         type: 3}
       propertyPath: m_Name

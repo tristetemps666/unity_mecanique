@@ -25,6 +25,9 @@ public class Sniper : MonoBehaviour, GunInterface
     [SerializeField]
     Material sniperTrailMaterial;
 
+    [SerializeField]
+    GameObject sniperTrailParticules;
+
     private void Start()
     {
         playerCam = GetComponentInChildren<Camera>();
@@ -100,8 +103,10 @@ public class Sniper : MonoBehaviour, GunInterface
         // we add the components needed
         goNewTrail.AddComponent<LineRenderer>();
 
+        // setup the new trail
         SniperTrail newTrail = goNewTrail.AddComponent<SniperTrail>();
         newTrail.SniperTrailMat = sniperTrailMaterial;
+        newTrail.particulesTrail = sniperTrailParticules;
         newTrail.setupLineRenderer();
 
         // we setup the trail
