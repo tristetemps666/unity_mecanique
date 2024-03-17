@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,12 +16,13 @@ public class SniperTrail : MonoBehaviour
 
     float particuleRate = 0.0001f;
     int particulesToSpawn = 200;
-    int maxAvancement = 50;
+    int maxSpawnCount = 20;
 
     void Start()
     {
         StartCoroutine(FadeOutTrail());
-        StartCoroutine(SpawnParticulesAlongTrail());
+        StartCoroutine(SpawnParticulesAlongTrail(3));
+        Destroy(gameObject, 3f);
     }
 
     // Update is called once per frame
@@ -31,8 +33,6 @@ public class SniperTrail : MonoBehaviour
         lineRenderer.positionCount = count;
         for (int i = 0; i < count; i++)
         {
-            if (i > maxAvancement)
-                continue;
             Vector3 position = Vector3.Lerp(start, end, i / (count - 1f));
             lineRenderer.SetPosition(i, position);
 
@@ -69,7 +69,7 @@ public class SniperTrail : MonoBehaviour
         Destroy(gameObject);
     }
 
-    IEnumerator SpawnParticulesAlongTrail()
+    IEnumerator SpawnParticulesAlongTrail(int countPerSpawn)
     {
         // we don't spawn while it's null
         while (lineRenderer == null)
@@ -80,15 +80,25 @@ public class SniperTrail : MonoBehaviour
         Vector3 start = lineRenderer.GetPosition(0);
         Vector3 end = lineRenderer.GetPosition(lineRenderer.positionCount - 1);
 
+        Vector3 direction = (end - start).normalized;
+
         // we start at 2 to avoid to spawn particules in the face of the player
-        for (int i = 2; i < particulesToSpawn; i++)
+        for (
+            int i = 2;
+            i < math.min(particulesToSpawn - countPerSpawn, maxSpawnCount);
+            i += countPerSpawn
+        )
         {
-            Instantiate(particulesTrail);
-            particulesTrail.transform.position = Vector3.Lerp(
-                start,
-                end,
-                i / (particulesToSpawn - 1f)
-            );
+            for (int j = 0; j < countPerSpawn; j++)
+            {
+                GameObject newParticules = Instantiate(particulesTrail);
+                newParticules.transform.position = Vector3.Lerp(
+                    start,
+                    end,
+                    (i + j) / (particulesToSpawn - 1f)
+                );
+                newParticules.transform.forward = direction;
+            }
             yield return new WaitForSeconds(particuleRate);
         }
     }

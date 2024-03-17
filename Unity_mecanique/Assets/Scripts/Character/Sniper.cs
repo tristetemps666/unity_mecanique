@@ -98,7 +98,7 @@ public class Sniper : MonoBehaviour, GunInterface
     void createSniperTrail(Vector3 start, Vector3 end)
     {
         // we create the game object
-        GameObject goNewTrail = new GameObject();
+        GameObject goNewTrail = new GameObject("trail");
         goNewTrail.transform.position = endBarrelTransform.position;
         // we add the components needed
         goNewTrail.AddComponent<LineRenderer>();
