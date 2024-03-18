@@ -348,8 +348,10 @@ MonoBehaviour:
   sniperTrailParticules: {fileID: 7036804100399840626, guid: 8f54ca8a3e9c61041a5841cfe3d2dcfc,
     type: 3}
   dammageAmount: 500
-  maxPowerFactor: 2
+  maxPowerFactor: 4
+  PFIncreaseAmount: 0.03
   powerFactorText: {fileID: 4038236010594586488}
+  sniperRenderer: {fileID: 4505834758404526598}
 --- !u!96 &5868880731932777188
 TrailRenderer:
   serializedVersion: 3
@@ -751,8 +753,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -887,11 +889,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8117346074220672660, guid: e99f887005c40b7479fe0f1936688093,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe2122b95d71cf94faa713fcaf759314, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e99f887005c40b7479fe0f1936688093, type: 3}
+--- !u!23 &4505834758404526598 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8117346074220672660, guid: e99f887005c40b7479fe0f1936688093,
+    type: 3}
+  m_PrefabInstance: {fileID: 5629899661010199698}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4974596542684824887 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 803957246630781349, guid: e99f887005c40b7479fe0f1936688093,

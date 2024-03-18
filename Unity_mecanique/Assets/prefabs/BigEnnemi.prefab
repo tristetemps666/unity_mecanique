@@ -141,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 10000
   healthBar: {fileID: 0}
+  healthBarDelta: {fileID: 0}
 --- !u!1 &6881211307452764957
 GameObject:
   m_ObjectHideFlags: 0
