@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SmallEnnemy : MonoBehaviour
+public class SmallEnnemy : MonoBehaviour, IDammagable
 {
     // Start is called before the first frame update
 
@@ -96,7 +96,13 @@ public class SmallEnnemy : MonoBehaviour
         bigEnnemi = Be;
     }
 
+    // kill the small ennemy if it hits an object
     private void OnCollisionEnter(Collision other)
+    {
+        Destroy(gameObject);
+    }
+
+    public void TakeDammage(int dammageAmount)
     {
         Destroy(gameObject);
     }

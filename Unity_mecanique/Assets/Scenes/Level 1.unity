@@ -6818,6 +6818,11 @@ PrefabInstance:
       objectReference: {fileID: 906359963}
     - target: {fileID: 931155946546604730, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
         type: 3}
+      propertyPath: scopingSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 931155946546604730, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+        type: 3}
       propertyPath: ForceSniperMode
       value: 0
       objectReference: {fileID: 0}
@@ -6931,7 +6936,7 @@ PrefabInstance:
     - target: {fileID: 7379554000888961760, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
         type: 3}
       propertyPath: near clip plane
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6969,7 +6974,7 @@ PrefabInstance:
     - target: {fileID: 3392287359889524482, guid: 8ac56f0ad5655f248b2bc9bcab01984f,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3392287359889524482, guid: 8ac56f0ad5655f248b2bc9bcab01984f,
         type: 3}

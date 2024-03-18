@@ -28,6 +28,8 @@ public class Sniper : MonoBehaviour, GunInterface
     [SerializeField]
     GameObject sniperTrailParticules;
 
+    private int dammageAmount = 10;
+
     private void Start()
     {
         playerCam = GetComponentInChildren<Camera>();
@@ -70,7 +72,8 @@ public class Sniper : MonoBehaviour, GunInterface
         // we do the shoot
         RaycastHit[] hits = Physics.RaycastAll(
             playerCam.transform.position,
-            playerCam.transform.forward * 100000,
+            playerCam.transform.forward,
+            1000,
             maskShoot
         );
 
@@ -92,6 +95,10 @@ public class Sniper : MonoBehaviour, GunInterface
         foreach (RaycastHit hit in hits)
         {
             Debug.Log(hit.transform.name);
+            if (hit.transform.gameObject.TryGetComponent(out IDammagable dammagable))
+            {
+                dammagable.TakeDammage(dammageAmount);
+            }
         }
     }
 

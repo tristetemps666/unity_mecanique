@@ -8,6 +8,9 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private float speed = 200f;
 
+    [SerializeField]
+    private int dammage = 10;
+
     private float timeToDie = 4f;
     Rigidbody rb;
 
@@ -31,16 +34,12 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("BigEnnemi"))
+        if (other.TryGetComponent(out IDammagable otherDammagable))
         {
-            Destroy(gameObject);
-            other.GetComponent<BigEnnemi>().TakeDammage();
+            Debug.Log("il a l'interface en fait");
+            otherDammagable.TakeDammage(dammage);
         }
-        if (other.CompareTag("SmallEnnemi"))
-        {
-            Destroy(gameObject);
-            Destroy(other.gameObject);
-        }
+        Destroy(gameObject);
     }
 
     void DestroyWithDelay()

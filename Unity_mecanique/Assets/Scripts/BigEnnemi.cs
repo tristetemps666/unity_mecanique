@@ -4,7 +4,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BigEnnemi : MonoBehaviour
+public class BigEnnemi : MonoBehaviour, IDammagable
 {
     // Start is called before the first frame update
     [SerializeField]
@@ -68,12 +68,13 @@ public class BigEnnemi : MonoBehaviour
 
     private void ResetMaterial()
     {
-        material = defaultMaterial;
+        GetComponent<Renderer>().material = defaultMaterial;
     }
 
-    public void TakeDammage()
+    public void TakeDammage(int dammageAmount)
     {
-        material = dammageMaterial;
+        Debug.Log("JE SUIS UN BIG ENNEMI QUI PREND DES DEGATS");
+        GetComponent<Renderer>().material = dammageMaterial;
         Invoke("ResetMaterial", 0.1f);
     }
 }
