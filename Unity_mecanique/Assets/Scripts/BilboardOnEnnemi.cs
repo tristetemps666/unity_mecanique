@@ -29,6 +29,12 @@ public class BilboardOnEnnemi : MonoBehaviour
             ennemiTransform.position + Vector3.up * offset
         );
 
-        canvasGroup.alpha = Vector3.Dot(transform.forward, playerCam.transform.forward) < 0 ? 0 : 1;
+        canvasGroup.alpha =
+            Vector3.Dot(
+                ennemiTransform.position - playerCam.transform.position,
+                playerCam.transform.forward
+            ) < 0
+                ? 0
+                : 1;
     }
 }
