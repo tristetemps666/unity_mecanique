@@ -581,7 +581,7 @@ MonoBehaviour:
   timeToActivate: 2
   isSeeking: 0
   smoothLook: 1.5
-  speed: 50
+  speed: 150
   predictionFactor: 0
 --- !u!54 &321836720790820537
 Rigidbody:
