@@ -77,8 +77,6 @@ public class BigEnnemi : MonoBehaviour, IDammagable
 
     public void TakeDammage(int dammageAmount)
     {
-        Debug.Log("JE SUIS UN BIG ENNEMI QUI PREND DES DEGATS");
-
         health.ReduceHealth(dammageAmount);
 
         // ChangeMaterialOnHit();

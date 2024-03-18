@@ -47,7 +47,6 @@ public class Sniper : MonoBehaviour, GunInterface
     private void Start()
     {
         playerCam = GetComponentInChildren<Camera>();
-        Debug.Log("mat : " + sniperRenderer.material.name);
         sniperRenderer.material.SetFloat("_maxFactor", maxPowerFactor);
 
         UpdatePowerFactorVisuals();
@@ -97,7 +96,6 @@ public class Sniper : MonoBehaviour, GunInterface
         // if we hit nobody
         if (hits.Length == 0)
         {
-            Debug.Log("on a touché personne :/");
             ResetPowerFactor();
             return;
         }
@@ -105,10 +103,8 @@ public class Sniper : MonoBehaviour, GunInterface
         // if we hit at least one object
         foreach (RaycastHit hit in hits)
         {
-            Debug.Log(hit.transform.name);
             if (hit.transform.gameObject.TryGetComponent(out IDammagable dammagable))
             {
-                Debug.Log("le sniper fait des dégâts : " + dammageAmount * sniperPowerFactor);
                 dammagable.TakeDammage(Mathf.RoundToInt(dammageAmount * sniperPowerFactor));
             }
         }

@@ -79,8 +79,17 @@ public class SmallEnnemy : MonoBehaviour, IDammagable
             smoothLook
         );
 
-        transform.LookAt(Target);
-        rb.AddForce(transform.forward * speed, ForceMode.Acceleration);
+        Target = smoothTargetPosition;
+
+        // transform.LookAt(Target);
+        var newRot = Quaternion.LookRotation(Target - transform.position, transform.up);
+        var newPos = transform.position + transform.forward * Time.fixedDeltaTime * speed;
+        // rb.MoveRotation(newRot);
+
+        rb.MovePosition(newPos);
+        rb.MoveRotation(newRot);
+
+        // rb.AddForce(transform.forward * speed, ForceMode.Acceleration);
         Debug.DrawLine(transform.position, Target);
     }
 
@@ -89,6 +98,7 @@ public class SmallEnnemy : MonoBehaviour, IDammagable
         rb.velocity = Vector3.zero;
         rb.useGravity = false;
         isSeeking = true;
+        rb.isKinematic = true;
     }
 
     public void setBigEnnemi(BigEnnemi Be)
@@ -103,6 +113,11 @@ public class SmallEnnemy : MonoBehaviour, IDammagable
     }
 
     public void TakeDammage(int dammageAmount)
+    {
+        Destroy(gameObject);
+    }
+
+    void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
     }

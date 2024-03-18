@@ -24,8 +24,6 @@ public class Bullet : MonoBehaviour
 
         if (sniper == null)
             sniper = FindFirstObjectByType<Sniper>();
-        else
-            Debug.Log("on a deja trouvé le sniper");
     }
 
     void FixedUpdate()
@@ -43,7 +41,6 @@ public class Bullet : MonoBehaviour
     {
         if (other.TryGetComponent(out IDammagable otherDammagable))
         {
-            Debug.Log("il a l'interface en fait");
             otherDammagable.TakeDammage(dammage);
             sniper.IncreasePowerFactor();
         }

@@ -35,7 +35,6 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth
 
     public void ReduceHealth(int reduceAmount)
     {
-        Debug.Log("je prends : " + reduceAmount + " de degats");
         health = Mathf.Max(health - reduceAmount, 0);
         UpdateHealthBar();
     }

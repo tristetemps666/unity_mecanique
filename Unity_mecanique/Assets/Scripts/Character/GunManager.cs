@@ -83,7 +83,6 @@ public class GunManager : MonoBehaviour
     void OnShoot()
     {
         isShootHold = !isShootHold;
-        Debug.Log("is shoot hold : " + isShootHold);
 
         if (isShootHold)
         {

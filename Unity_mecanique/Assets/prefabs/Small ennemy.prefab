@@ -580,9 +580,9 @@ MonoBehaviour:
   bigEnnemi: {fileID: 0}
   timeToActivate: 2
   isSeeking: 0
-  smoothLook: 0
+  smoothLook: 1.5
   speed: 50
-  predictionFactor: 10
+  predictionFactor: 0
 --- !u!54 &321836720790820537
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -620,7 +620,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 192
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
