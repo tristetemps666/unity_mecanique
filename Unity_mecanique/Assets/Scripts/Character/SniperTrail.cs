@@ -36,14 +36,14 @@ public class SniperTrail : MonoBehaviour
             Vector3 position = Vector3.Lerp(start, end, i / (count - 1f));
             lineRenderer.SetPosition(i, position);
 
-            Debug.Log(
-                i
-                    + " // "
-                    + "position qu'on veut set : "
-                    + position
-                    + " // position réelle : "
-                    + lineRenderer.GetPosition(i)
-            );
+            // Debug.Log(
+            //     i
+            //         + " // "
+            //         + "position qu'on veut set : "
+            //         + position
+            //         + " // position réelle : "
+            //         + lineRenderer.GetPosition(i)
+            // );
         }
     }
 

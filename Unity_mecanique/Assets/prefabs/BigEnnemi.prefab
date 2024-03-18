@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1359454382367394778}
   - component: {fileID: 3575537708489592857}
   - component: {fileID: 3392287359889524482}
+  - component: {fileID: 454050344991730327}
+  - component: {fileID: 4576524406969512344}
   m_Layer: 8
   m_Name: BigEnnemi
   m_TagString: BigEnnemi
@@ -92,7 +94,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2858413779338373215}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5298c3849ad1ede47a4cc62af553a9fb, type: 3}
   m_Name: 
@@ -101,8 +103,44 @@ MonoBehaviour:
   smallEnnemiPrefab: {fileID: 8014672620982737638, guid: 7b1885bc5b4903248a212fe2380afca6,
     type: 3}
   spawnPointSmallEnnemies: {fileID: 3924073456493827646}
-  dammageMaterial: {fileID: 0}
-  defaultMaterial: {fileID: 0}
+  dammageMaterial: {fileID: 2100000, guid: 50be1be1bc4c9734197dc8fc7c30d0ad, type: 2}
+  defaultMaterial: {fileID: 2100000, guid: b0e13225f35a7784c9a9f8ff91557413, type: 2}
+--- !u!64 &454050344991730327
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2858413779338373215}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &4576524406969512344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2858413779338373215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d93657fbb51a6a45be34fa0c534e656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialHealth: 10000
+  healthBar: {fileID: 0}
 --- !u!1 &6881211307452764957
 GameObject:
   m_ObjectHideFlags: 0

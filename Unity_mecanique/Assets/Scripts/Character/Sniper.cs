@@ -10,14 +10,12 @@ public class Sniper : MonoBehaviour, GunInterface
     private float fireRate = 1f;
 
     [SerializeField]
-    private LayerMask maskShoot;
+    private LayerMask LayersThatCanBeHit;
     public bool canShoot = false;
 
     private float delayShoot = 0f;
 
     private Camera playerCam;
-
-    private bool isShootHold = false;
 
     [SerializeField]
     private Transform endBarrelTransform;
@@ -28,7 +26,8 @@ public class Sniper : MonoBehaviour, GunInterface
     [SerializeField]
     GameObject sniperTrailParticules;
 
-    private int dammageAmount = 10;
+    [SerializeField]
+    private int dammageAmount = 150;
 
     private void Start()
     {
@@ -48,20 +47,12 @@ public class Sniper : MonoBehaviour, GunInterface
 
     public void Shoot()
     {
-        // to avoid to shoot when the button is released
-        if (isShootHold)
-        {
-            isShootHold = false;
-            return;
-        }
-
         if (!canShoot || isShootDelayed())
             return;
 
         Debug.Log("il shoot au snipeerrrr");
         // we change the gun status
         delayShoot = fireRate;
-        isShootHold = true;
 
         // we make the effect
         createSniperTrail(
@@ -74,7 +65,7 @@ public class Sniper : MonoBehaviour, GunInterface
             playerCam.transform.position,
             playerCam.transform.forward,
             1000,
-            maskShoot
+            LayersThatCanBeHit
         );
 
         Debug.DrawLine(
@@ -97,6 +88,7 @@ public class Sniper : MonoBehaviour, GunInterface
             Debug.Log(hit.transform.name);
             if (hit.transform.gameObject.TryGetComponent(out IDammagable dammagable))
             {
+                Debug.Log("le sniper fait des dégâts");
                 dammagable.TakeDammage(dammageAmount);
             }
         }

@@ -73,11 +73,28 @@ public class Gun : MonoBehaviour, GunInterface
 
     private IEnumerator CreateBulletRepeate()
     {
-        while (isShootHold)
+        while (true) // caca ???
         {
             CreateBullet();
             yield return new WaitForSeconds(shootRate);
         }
+    }
+
+    public void StartShooting()
+    {
+        if (canShoot)
+        {
+            Debug.Log("Start shoot");
+            StartCoroutine(CreateBulletRepeate());
+            delayShoot = shootRate;
+        }
+    }
+
+    public void StopShooting()
+    {
+        Debug.Log("Stop shoot");
+        StopAllCoroutines();
+        canShoot = false;
     }
 
     public void Shoot()

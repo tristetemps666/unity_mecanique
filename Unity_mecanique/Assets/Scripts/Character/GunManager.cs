@@ -27,6 +27,9 @@ public class GunManager : MonoBehaviour
     private float scopingSpeed = 3f;
     private float scopingAmount = 0f;
 
+    private bool isScopeHold = false;
+    private bool isShootHold = false;
+
     void Start()
     {
         gun = GetComponent<Gun>();
@@ -57,18 +60,20 @@ public class GunManager : MonoBehaviour
 
     void OnScope()
     {
+        isScopeHold = !isScopeHold;
         // sniper.StopAllCoroutines();
         // gun.StopAllCoroutines();
         // we don't want to scope if the player is shooting with the gun
-        if (gun.isShootHold)
+
+        if (isShootHold && isScopeHold) // we don't scope if we are already shooting
             return;
 
-        if (!isInSniperMode)
+        if (!isInSniperMode && isScopeHold)
         {
             StopAllCoroutines();
             StartCoroutine(ScopeCoroutine());
         }
-        else
+        if (isInSniperMode && !isScopeHold)
         {
             StopAllCoroutines();
             StartCoroutine(UnScopeCoroutine());
@@ -77,13 +82,19 @@ public class GunManager : MonoBehaviour
 
     void OnShoot()
     {
-        if (isInSniperMode && !gun.isShootHold)
+        isShootHold = !isShootHold;
+        Debug.Log("is shoot hold : " + isShootHold);
+
+        if (isShootHold)
         {
-            sniper.Shoot();
+            if (isInSniperMode)
+                sniper.Shoot();
+            else
+                gun.StartShooting();
         }
         else
         {
-            gun.Shoot();
+            gun.StopShooting();
         }
     }
 

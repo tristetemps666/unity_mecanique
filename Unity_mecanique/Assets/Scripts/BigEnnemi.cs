@@ -24,11 +24,15 @@ public class BigEnnemi : MonoBehaviour, IDammagable
 
     private Material material;
 
+    private BigEnnemiHeath health;
+
     void Start()
     {
         InvokeRepeating("SpawnSalveSmalls", 3f, 5f);
         defaultMaterial = GetComponent<Renderer>().material;
         material = GetComponent<Renderer>().material;
+
+        health = GetComponent<BigEnnemiHeath>();
     }
 
     // Update is called once per frame
@@ -74,6 +78,14 @@ public class BigEnnemi : MonoBehaviour, IDammagable
     public void TakeDammage(int dammageAmount)
     {
         Debug.Log("JE SUIS UN BIG ENNEMI QUI PREND DES DEGATS");
+
+        health.ReduceHealth(dammageAmount);
+
+        // ChangeMaterialOnHit();
+    }
+
+    void ChangeMaterialOnHit()
+    {
         GetComponent<Renderer>().material = dammageMaterial;
         Invoke("ResetMaterial", 0.1f);
     }
