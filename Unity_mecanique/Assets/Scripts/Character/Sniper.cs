@@ -41,9 +41,16 @@ public class Sniper : MonoBehaviour, GunInterface
 
     private float sniperPowerFactor = 1f;
 
+    [SerializeField]
+    private Renderer sniperRenderer;
+
     private void Start()
     {
         playerCam = GetComponentInChildren<Camera>();
+        Debug.Log("mat : " + sniperRenderer.material.name);
+        sniperRenderer.material.SetFloat("_maxFactor", maxPowerFactor);
+
+        UpdatePowerFactorVisuals();
     }
 
     bool isShootDelayed() => delayShoot > 0f;
@@ -91,6 +98,7 @@ public class Sniper : MonoBehaviour, GunInterface
         if (hits.Length == 0)
         {
             Debug.Log("on a touché personne :/");
+            ResetPowerFactor();
             return;
         }
 
@@ -100,29 +108,29 @@ public class Sniper : MonoBehaviour, GunInterface
             Debug.Log(hit.transform.name);
             if (hit.transform.gameObject.TryGetComponent(out IDammagable dammagable))
             {
-                Debug.Log("le sniper fait des dégâts");
+                Debug.Log("le sniper fait des dégâts : " + dammageAmount * sniperPowerFactor);
                 dammagable.TakeDammage(Mathf.RoundToInt(dammageAmount * sniperPowerFactor));
             }
         }
-
         ResetPowerFactor();
     }
 
     public void IncreasePowerFactor()
     {
         sniperPowerFactor = Mathf.Min(sniperPowerFactor + PFIncreaseAmount, maxPowerFactor);
-        UpdatePowerFactorDisplay();
+        UpdatePowerFactorVisuals();
     }
 
     public void ResetPowerFactor()
     {
         sniperPowerFactor = 1f;
-        UpdatePowerFactorDisplay();
+        UpdatePowerFactorVisuals();
     }
 
-    void UpdatePowerFactorDisplay()
+    void UpdatePowerFactorVisuals()
     {
         powerFactorText.text = ((int)(sniperPowerFactor * 100)).ToString() + "%";
+        sniperRenderer.material.SetFloat("_PowerFactor", sniperPowerFactor);
     }
 
     void createSniperTrail(Vector3 start, Vector3 end)

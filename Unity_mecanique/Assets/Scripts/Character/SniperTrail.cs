@@ -14,7 +14,7 @@ public class SniperTrail : MonoBehaviour
 
     public GameObject particulesTrail;
 
-    float particuleRate = 0.0001f;
+    float particuleRate = 0.05f;
     int particulesToSpawn = 200;
     int maxSpawnCount = 40;
 
