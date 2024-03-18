@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
@@ -28,6 +29,17 @@ public class Sniper : MonoBehaviour, GunInterface
 
     [SerializeField]
     private int dammageAmount = 150;
+
+    [SerializeField]
+    private float maxPowerFactor = 2f;
+
+    [SerializeField]
+    private float PFIncreaseAmount = 0.03f;
+
+    [SerializeField]
+    private TextMeshPro powerFactorText;
+
+    private float sniperPowerFactor = 1f;
 
     private void Start()
     {
@@ -89,9 +101,28 @@ public class Sniper : MonoBehaviour, GunInterface
             if (hit.transform.gameObject.TryGetComponent(out IDammagable dammagable))
             {
                 Debug.Log("le sniper fait des dégâts");
-                dammagable.TakeDammage(dammageAmount);
+                dammagable.TakeDammage(Mathf.RoundToInt(dammageAmount * sniperPowerFactor));
             }
         }
+
+        ResetPowerFactor();
+    }
+
+    public void IncreasePowerFactor()
+    {
+        sniperPowerFactor = Mathf.Min(sniperPowerFactor + PFIncreaseAmount, maxPowerFactor);
+        UpdatePowerFactorDisplay();
+    }
+
+    public void ResetPowerFactor()
+    {
+        sniperPowerFactor = 1f;
+        UpdatePowerFactorDisplay();
+    }
+
+    void UpdatePowerFactorDisplay()
+    {
+        powerFactorText.text = ((int)(sniperPowerFactor * 100)).ToString() + "%";
     }
 
     void createSniperTrail(Vector3 start, Vector3 end)

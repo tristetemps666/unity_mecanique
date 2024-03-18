@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17783959, g: 0.21627307, b: 0.2681223, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7378,18 +7378,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1601384084134018255, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
         type: 3}
-      propertyPath: dammageAmount
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 1601384084134018255, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: maskShoot.m_Bits
-      value: 384
-      objectReference: {fileID: 0}
-    - target: {fileID: 1601384084134018255, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: LayersThatCanBeHit.m_Bits
-      value: 384
+      propertyPath: maxPowerFactor
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2554863840426243246, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
         type: 3}
@@ -7446,15 +7436,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5668794835307709447, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
-        type: 3}
-      propertyPath: shootRate
-      value: 0.07
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8695858558387841426, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 9cf3d3fd8af149c47b19a18dd300bec1, type: 3}
 --- !u!1001 &8698579497115538605
 PrefabInstance:

@@ -14,11 +14,18 @@ public class Bullet : MonoBehaviour
     private float timeToDie = 4f;
     Rigidbody rb;
 
+    private static Sniper sniper;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         DestroyWithDelay();
         rb.AddForce(transform.forward * speed, ForceMode.VelocityChange);
+
+        if (sniper == null)
+            sniper = FindFirstObjectByType<Sniper>();
+        else
+            Debug.Log("on a deja trouvé le sniper");
     }
 
     void FixedUpdate()
@@ -38,6 +45,7 @@ public class Bullet : MonoBehaviour
         {
             Debug.Log("il a l'interface en fait");
             otherDammagable.TakeDammage(dammage);
+            sniper.IncreasePowerFactor();
         }
         Destroy(gameObject);
     }
