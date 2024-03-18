@@ -12,10 +12,25 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth
     [SerializeField]
     Slider healthBar;
 
+    [SerializeField]
+    Slider healthBarDelta;
+
+    float healthBarDeltaVelocity = 0f;
+
     void Start()
     {
         health = initialHealth;
         UpdateHealthBar();
+    }
+
+    private void Update()
+    {
+        healthBarDelta.value = Mathf.SmoothDamp(
+            healthBarDelta.value,
+            healthBar.value,
+            ref healthBarDeltaVelocity,
+            0.3f
+        );
     }
 
     public void ReduceHealth(int reduceAmount)
