@@ -33,7 +33,7 @@ public class BilboardOnEnnemi : MonoBehaviour
             Vector3.Dot(
                 ennemiTransform.position - playerCam.transform.position,
                 playerCam.transform.forward
-            ) < 0
+            ) < 0.5f
                 ? 0
                 : 1;
     }

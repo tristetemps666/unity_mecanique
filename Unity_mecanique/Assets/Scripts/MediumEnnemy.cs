@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MediumEnnemy : MonoBehaviour, IDammagable, IHealth
+public class MediumEnnemy : MonoBehaviour, IDammagable
 {
     // Start is called before the first frame update
 
@@ -12,9 +12,12 @@ public class MediumEnnemy : MonoBehaviour, IDammagable, IHealth
 
     private NavMeshAgent navMeshAgent;
 
+    private BigEnnemiHeath health;
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        health = GetComponent<BigEnnemiHeath>();
     }
 
     // Update is called once per frame
@@ -23,15 +26,8 @@ public class MediumEnnemy : MonoBehaviour, IDammagable, IHealth
         navMeshAgent.SetDestination(Target.position);
     }
 
-    public void TakeDammage(int dammageAmmount) { }
-
-    // Health manager
-    public void ReduceHealth(int reduceAmount) { }
-
-    public void AddHealth(int AddAmount) { }
-
-    public bool IsDead()
+    public void TakeDammage(int dammageAmmount)
     {
-        return false;
+        health.ReduceHealth(dammageAmmount);
     }
 }

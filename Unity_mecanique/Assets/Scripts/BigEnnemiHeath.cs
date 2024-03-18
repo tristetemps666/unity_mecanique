@@ -36,6 +36,7 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth
     public void ReduceHealth(int reduceAmount)
     {
         health = Mathf.Max(health - reduceAmount, 0);
+        ChangeMaterialOnHit();
         UpdateHealthBar();
     }
 
@@ -58,5 +59,16 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth
     public bool IsDead()
     {
         return health == 0;
+    }
+
+    void ChangeMaterialOnHit()
+    {
+        gameObject.layer = LayerMask.NameToLayer("ennemiHit");
+        Invoke("ResetLayer", 0.1f);
+    }
+
+    private void ResetLayer()
+    {
+        gameObject.layer = LayerMask.NameToLayer("ennemi");
     }
 }

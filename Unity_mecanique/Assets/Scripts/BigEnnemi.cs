@@ -70,21 +70,8 @@ public class BigEnnemi : MonoBehaviour, IDammagable
         StartCoroutine(SpawnSalveSmallsCoroutine());
     }
 
-    private void ResetLayer()
-    {
-        gameObject.layer = LayerMask.NameToLayer("ennemi");
-    }
-
     public void TakeDammage(int dammageAmount)
     {
         health.ReduceHealth(dammageAmount);
-
-        ChangeMaterialOnHit();
-    }
-
-    void ChangeMaterialOnHit()
-    {
-        gameObject.layer = LayerMask.NameToLayer("ennemiHit");
-        Invoke("ResetLayer", 0.1f);
     }
 }
