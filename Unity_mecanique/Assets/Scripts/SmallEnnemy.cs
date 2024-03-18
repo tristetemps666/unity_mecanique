@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class SmallEnnemy : MonoBehaviour, IDammagable
 {
@@ -10,6 +11,8 @@ public class SmallEnnemy : MonoBehaviour, IDammagable
     public BigEnnemi bigEnnemi;
     private Vector3 Target = Vector3.zero;
     Vector3 velocityDamp;
+
+    public int dammage = 50;
 
     public float timeToActivate = 2f;
     public bool isSeeking = false;
@@ -109,6 +112,14 @@ public class SmallEnnemy : MonoBehaviour, IDammagable
     // kill the small ennemy if it hits an object
     private void OnCollisionEnter(Collision other)
     {
+        if (other.gameObject.CompareTag("BigEnnemi"))
+            return;
+        Debug.Log("other.name");
+        if (other.gameObject.TryGetComponent(out IDammagable otherDammagable))
+        {
+            Debug.Log("on peut lui enlever des pvs");
+            otherDammagable.TakeDammage(dammage);
+        }
         Destroy(gameObject);
     }
 
@@ -119,6 +130,14 @@ public class SmallEnnemy : MonoBehaviour, IDammagable
 
     void OnTriggerEnter(Collider other)
     {
+        // if (other.gameObject.CompareTag("BigEnnemi"))
+        //     return;
+        // Debug.Log("other.name");
+        // if (other.TryGetComponent(out IDammagable otherDammagable))
+        // {
+        //     Debug.Log("on peut lui enlever des pvs");
+        //     otherDammagable.TakeDammage(dammage);
+        // }
         Destroy(gameObject);
     }
 }

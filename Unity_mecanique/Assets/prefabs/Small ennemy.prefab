@@ -578,6 +578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bigEnnemi: {fileID: 0}
+  dammage: 150
   timeToActivate: 2
   isSeeking: 0
   smoothLook: 1.5
