@@ -44,9 +44,15 @@ public class Sniper : MonoBehaviour, GunInterface
     [SerializeField]
     private Renderer sniperRenderer;
 
+    [SerializeField]
+    AudioClip sniperSound;
+
+    AudioSource audioSource;
+
     private void Start()
     {
         playerCam = GetComponentInChildren<Camera>();
+        audioSource = GetComponent<AudioSource>();
         sniperRenderer.material.SetFloat("_maxFactor", maxPowerFactor);
 
         UpdatePowerFactorVisuals();
@@ -85,6 +91,8 @@ public class Sniper : MonoBehaviour, GunInterface
             1000,
             LayersThatCanBeHit
         );
+
+        audioSource.PlayOneShot(sniperSound);
 
         Debug.DrawLine(
             endBarrelTransform.position,

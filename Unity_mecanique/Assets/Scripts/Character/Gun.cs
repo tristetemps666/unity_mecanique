@@ -17,14 +17,22 @@ public class Gun : MonoBehaviour, GunInterface
     [SerializeField]
     private float shootRate = 0.2f;
 
+    [SerializeField]
+    AudioClip gunSound;
+
     public bool isShootHold { get; private set; } = false;
 
     public bool canShoot = true;
 
+    AudioSource audioSource;
+
     private float delayShoot = 0f;
 
     // Start is called before the first frame update
-    void Start() { }
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -47,6 +55,8 @@ public class Gun : MonoBehaviour, GunInterface
         newBullet.transform.position = bulletSpawnTransform.transform.position;
 
         Camera cam = GetComponentInChildren<Camera>();
+
+        audioSource.PlayOneShot(gunSound);
 
         RaycastHit hit;
         Vector3 target;
