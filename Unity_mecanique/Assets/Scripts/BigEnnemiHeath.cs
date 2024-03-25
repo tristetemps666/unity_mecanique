@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,6 +37,10 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth
     public void ReduceHealth(int reduceAmount)
     {
         health = Mathf.Max(health - reduceAmount, 0);
+        if (IsDead())
+        {
+            Destroy(gameObject);
+        }
         ChangeMaterialOnHit();
         UpdateHealthBar();
     }

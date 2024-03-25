@@ -13,9 +13,14 @@ public class MediumEnnemy : MonoBehaviour, IDammagable
     [SerializeField]
     private GameObject shockWave;
 
+    [SerializeField]
+    Animator animator;
+
     public float shockWaveRate = 5f;
 
     public float delayFirstWave = 1f;
+
+    public float jumpTime = 1f;
 
     private NavMeshAgent navMeshAgent;
 
@@ -26,7 +31,9 @@ public class MediumEnnemy : MonoBehaviour, IDammagable
         navMeshAgent = GetComponent<NavMeshAgent>();
         delayFirstWave = Random.Range(0, 4f);
         health = GetComponent<BigEnnemiHeath>();
-        InvokeRepeating("CreateShockWave", 2f + delayFirstWave, shockWaveRate);
+        animator = GetComponentInChildren<Animator>();
+
+        InvokeRepeating("CreaShockWaveWithDelay", 2f + delayFirstWave, shockWaveRate);
     }
 
     // Update is called once per frame
@@ -35,14 +42,29 @@ public class MediumEnnemy : MonoBehaviour, IDammagable
         navMeshAgent.SetDestination(Target.position);
     }
 
+    void CreaShockWaveWithDelay()
+    {
+        animator.SetTrigger("Jump");
+
+        // Delay to match with the jump animation
+        Invoke("CreateShockWave", jumpTime);
+        Invoke("ResetJump", 3.8f); // time of the animation
+    }
+
     void CreateShockWave()
     {
         GameObject newWave = Instantiate(shockWave);
         newWave.transform.position = transform.position;
+        animator.ResetTrigger("Jump");
     }
 
     public void TakeDammage(int dammageAmmount)
     {
         health.ReduceHealth(dammageAmmount);
+    }
+
+    void ResetJump()
+    {
+        animator.ResetTrigger("Jump");
     }
 }

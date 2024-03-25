@@ -289,6 +289,7 @@ MonoBehaviour:
   dashPower: 80
   dashReloadTime: 1
   timeAtMaxDashSpeed: 0.3
+  timeInvisible: 1
   TimeRecoverDefaultMaxSpeed: 0.15
 --- !u!114 &931155946546604730
 MonoBehaviour:
@@ -768,15 +769,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8695858558387841426}
   m_LocalRotation: {x: -0, y: 0.7101541, z: -0, w: 0.7040463}
-  m_LocalPosition: {x: 0, y: 0, z: 0.59}
-  m_LocalScale: {x: 0.03784944, y: 0.03784944, z: 0.03784944}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0.619}
+  m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8898834205662767597}
   m_LocalEulerAnglesHint: {x: 0, y: 90.495, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.418, y: -0.278}
+  m_AnchoredPosition: {x: 0.495, y: -0.285}
   m_SizeDelta: {x: 10.61, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8734911785506027185
@@ -926,12 +927,12 @@ PrefabInstance:
     - target: {fileID: 803957246630781349, guid: e99f887005c40b7479fe0f1936688093,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.04
+      value: 0.066
       objectReference: {fileID: 0}
     - target: {fileID: 803957246630781349, guid: e99f887005c40b7479fe0f1936688093,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.826
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2738506591435943141, guid: e99f887005c40b7479fe0f1936688093,
         type: 3}

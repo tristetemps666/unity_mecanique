@@ -71,6 +71,11 @@ public class PlayerHealth : MonoBehaviour, IHealth, IDammagable
     {
         Debug.Log("je prends des degats : " + dammageAmmount);
         ReduceHealth(dammageAmmount);
+
+        if (IsDead())
+        {
+            Debug.Break();
+        }
     }
 
     void ResetInvisible()
