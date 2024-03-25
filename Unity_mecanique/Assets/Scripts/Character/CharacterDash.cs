@@ -15,6 +15,7 @@ public class CharacterDash : MonoBehaviour
 
     public float dashReloadTime = 2f;
     public float timeAtMaxDashSpeed = 1f;
+    public float timeInvisible = 1f;
 
     public float TimeRecoverDefaultMaxSpeed = 0.5f;
 
@@ -23,11 +24,13 @@ public class CharacterDash : MonoBehaviour
     private float reloadingTimeRemaining = 0f;
 
     private TrailRenderer trailRenderer;
+    private PlayerHealth playerHealth;
 
     void Start()
     {
         CM = GetComponent<CharacterMovement>();
         trailRenderer = GetComponent<TrailRenderer>();
+        playerHealth = GetComponent<PlayerHealth>();
         trailRenderer.enabled = false;
         defaultMaxSpeed = CM.maxSpeed;
     }
@@ -41,6 +44,7 @@ public class CharacterDash : MonoBehaviour
             return;
 
         // will play on Awake
+        ApplyInvisibility();
         GameObject newDashParticules = Instantiate(dashParticules, transform);
         if (newDashParticules != null)
         {
@@ -102,5 +106,10 @@ public class CharacterDash : MonoBehaviour
         }
         reloadingTimeRemaining = 0f;
         trailRenderer.enabled = false;
+    }
+
+    void ApplyInvisibility()
+    {
+        playerHealth.InvinsibleForATime(timeInvisible);
     }
 }

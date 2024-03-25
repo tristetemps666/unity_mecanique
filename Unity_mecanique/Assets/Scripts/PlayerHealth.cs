@@ -78,7 +78,7 @@ public class PlayerHealth : MonoBehaviour, IHealth, IDammagable
         isInvincible = false;
     }
 
-    void InvinsibleForATime(float time)
+    public void InvinsibleForATime(float time)
     {
         isInvincible = true;
         Invoke("ResetInvisible", time);

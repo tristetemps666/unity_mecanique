@@ -8,9 +8,12 @@ public class ShockWave : MonoBehaviour
     public float spreadSpeed = 2f;
 
     public float delayBeforeFade = 3f;
+    public int dammage = 800;
     public float fadeWaveTime = 2f;
 
     private Renderer renderer;
+
+    private bool canDammage = true;
 
     void Start()
     {
@@ -28,6 +31,18 @@ public class ShockWave : MonoBehaviour
     void StartFadeWave()
     {
         StartCoroutine(FadeWave());
+        Invoke("DisableDammage", fadeWaveTime * 0.7f);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.TryGetComponent(out IDammagable otherDammagable))
+        {
+            // if (!canDammage)
+            //     return;
+            Debug.Log("on peut lui enlever des pvs PAR EXPLOSION");
+            otherDammagable.TakeDammage(dammage);
+        }
     }
 
     IEnumerator FadeWave()
@@ -40,5 +55,10 @@ public class ShockWave : MonoBehaviour
             yield return null;
         }
         Destroy(gameObject);
+    }
+
+    void DisableDammage()
+    {
+        canDammage = false;
     }
 }

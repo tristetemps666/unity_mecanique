@@ -22,10 +22,21 @@ public class SmallEnnemy : MonoBehaviour, IDammagable
 
     public float predictionFactor = 2f;
 
+    [SerializeField]
+    private AudioClip explosionSound;
+
+    private AudioSource audioSource;
+
     private Rigidbody rb;
+
+    private Renderer[] Renderers;
+
+    private bool canDammage = true;
 
     void Start()
     {
+        Renderers = GetComponentsInChildren<Renderer>();
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = true;
         bigEnnemi = GameObject.FindFirstObjectByType<BigEnnemi>();
@@ -114,30 +125,46 @@ public class SmallEnnemy : MonoBehaviour, IDammagable
     {
         if (other.gameObject.CompareTag("BigEnnemi"))
             return;
-        Debug.Log("other.name");
+        Debug.Log("celui qui prend des degats : " + other.gameObject.name);
         if (other.gameObject.TryGetComponent(out IDammagable otherDammagable))
         {
+            // if (!canDammage)
+            //     return;
             Debug.Log("on peut lui enlever des pvs");
             otherDammagable.TakeDammage(dammage);
+            canDammage = false;
+            rb.detectCollisions = false;
         }
-        Destroy(gameObject);
+        DestroyShip();
     }
 
     public void TakeDammage(int dammageAmount)
     {
-        Destroy(gameObject);
+        DestroyShip();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        // if (other.gameObject.CompareTag("BigEnnemi"))
-        //     return;
-        // Debug.Log("other.name");
-        // if (other.TryGetComponent(out IDammagable otherDammagable))
-        // {
-        //     Debug.Log("on peut lui enlever des pvs");
-        //     otherDammagable.TakeDammage(dammage);
-        // }
-        Destroy(gameObject);
+        DestroyShip();
+    }
+
+    void DestroyShip()
+    {
+        canDammage = false;
+        rb.detectCollisions = false;
+
+        if (audioSource.isPlaying && audioSource.clip != explosionSound)
+        {
+            audioSource.Stop();
+            audioSource.clip = explosionSound;
+            audioSource.Play();
+            audioSource.volume = 0.7f;
+        }
+        foreach (Renderer rend in Renderers)
+        {
+            rend.enabled = false;
+        }
+        GetComponent<Rigidbody>().GetComponent<Collider>().enabled = false;
+        Destroy(gameObject, 3f);
     }
 }

@@ -92,7 +92,7 @@ public class Sniper : MonoBehaviour, GunInterface
             LayersThatCanBeHit
         );
 
-        audioSource.PlayOneShot(sniperSound);
+        audioSource.PlayOneShot(sniperSound, 0.5f);
 
         Debug.DrawLine(
             endBarrelTransform.position,

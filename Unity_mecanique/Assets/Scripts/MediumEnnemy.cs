@@ -15,6 +15,8 @@ public class MediumEnnemy : MonoBehaviour, IDammagable
 
     public float shockWaveRate = 5f;
 
+    public float delayFirstWave = 1f;
+
     private NavMeshAgent navMeshAgent;
 
     private BigEnnemiHeath health;
@@ -22,8 +24,9 @@ public class MediumEnnemy : MonoBehaviour, IDammagable
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        delayFirstWave = Random.Range(0, 4f);
         health = GetComponent<BigEnnemiHeath>();
-        InvokeRepeating("CreateShockWave", 2f, shockWaveRate);
+        InvokeRepeating("CreateShockWave", 2f + delayFirstWave, shockWaveRate);
     }
 
     // Update is called once per frame
