@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+// this class is more general for Ennemi Health
 public class BigEnnemiHeath : MonoBehaviour, IHealth
 {
     public int initialHealth;

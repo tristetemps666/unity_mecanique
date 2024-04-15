@@ -25,10 +25,14 @@ public class BilboardOnEnnemi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // the canvas is always above the ennemi
         rectTransform.position = playerCam.WorldToScreenPoint(
             ennemiTransform.position + Vector3.up * offset
         );
 
+        float distance = Vector3.Distance(ennemiTransform.position, playerCam.transform.position);
+
+        // the canvas doesn't appears if we are not in front of the player
         canvasGroup.alpha =
             Vector3.Dot(
                 ennemiTransform.position - playerCam.transform.position,

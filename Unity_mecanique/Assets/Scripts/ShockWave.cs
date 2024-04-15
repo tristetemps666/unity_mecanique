@@ -13,8 +13,6 @@ public class ShockWave : MonoBehaviour
 
     private Renderer renderer;
 
-    private bool canDammage = true;
-
     void Start()
     {
         renderer = GetComponent<Renderer>();
@@ -25,6 +23,7 @@ public class ShockWave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // we increase the size of the shockwave
         transform.localScale += Vector3.one * Time.deltaTime * spreadSpeed;
     }
 
@@ -38,8 +37,6 @@ public class ShockWave : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out IDammagable otherDammagable))
         {
-            // if (!canDammage)
-            //     return;
             Debug.Log("on peut lui enlever des pvs PAR EXPLOSION");
             otherDammagable.TakeDammage(dammage);
         }
@@ -55,10 +52,5 @@ public class ShockWave : MonoBehaviour
             yield return null;
         }
         Destroy(gameObject);
-    }
-
-    void DisableDammage()
-    {
-        canDammage = false;
     }
 }
