@@ -4,6 +4,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public AudioSource CriticalHitSFX;
+    public AudioSource SmallCriticalHitSFX;
 
     // Start is called before the first frame update
 
@@ -28,5 +29,12 @@ public class AudioManager : MonoBehaviour
         if (CriticalHitSFX.isPlaying)
             return;
         CriticalHitSFX.Play();
+    }
+
+    public void playSmallCritical()
+    {
+        // if (SmallCriticalHitSFX.isPlaying)
+        //     return;
+        SmallCriticalHitSFX.Play();
     }
 }

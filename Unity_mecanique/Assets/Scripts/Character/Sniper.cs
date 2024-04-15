@@ -124,7 +124,7 @@ public class Sniper : MonoBehaviour, GunInterface
             }
 
             // check if we have already hit the Idammagable
-            if (!alreadyDammagables.Contains(dammagable))
+            if (!alreadyDammagables.Contains(dammagable) && dammagable != null)
             {
                 dammagable.TakeDammage(
                     Mathf.RoundToInt(dammageAmount * sniperPowerFactor),

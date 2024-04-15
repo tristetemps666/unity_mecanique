@@ -44,6 +44,7 @@ public class Bullet : MonoBehaviour
         if (other.transform.CompareTag("WeakPoint"))
         {
             dammagable = other.transform.gameObject.GetComponent<WeakPoint>().dammagable;
+            AudioManager.Instance.playSmallCritical();
         }
         if (other.transform.gameObject.TryGetComponent(out IDammagable Outdammagable))
         {
