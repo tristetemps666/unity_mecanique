@@ -116,6 +116,7 @@ public class Sniper : MonoBehaviour, GunInterface
             if (hit.transform.CompareTag("WeakPoint"))
             {
                 dammagable = hit.transform.gameObject.GetComponent<WeakPoint>().dammagable;
+                AudioManager.Instance.playCritical();
             }
             if (hit.transform.gameObject.TryGetComponent(out IDammagable Outdammagable))
             {

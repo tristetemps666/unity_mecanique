@@ -142,6 +142,8 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth
         if (healthBarDammageText != null)
         {
             healthBarDammageText.alpha = Mathf.Lerp(0f, 1f, delayFadeDammageAmount);
+            if (delayFadeDammageAmount < 0.05)
+                delta = 0;
         }
         // }
     }
