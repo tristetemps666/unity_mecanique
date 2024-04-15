@@ -67,7 +67,7 @@ public class PlayerHealth : MonoBehaviour, IHealth, IDammagable
         return health == 0;
     }
 
-    public void TakeDammage(int dammageAmmount)
+    public void TakeDammage(int dammageAmmount, GameObject goHitPart)
     {
         Debug.Log("je prends des degats : " + dammageAmmount);
         ReduceHealth(dammageAmmount);

@@ -39,9 +39,20 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out IDammagable otherDammagable))
+        IDammagable dammagable = null;
+        // If we hit a weak point, we need to get the health in parent
+        if (other.transform.CompareTag("WeakPoint"))
         {
-            otherDammagable.TakeDammage(dammage);
+            dammagable = other.transform.gameObject.GetComponent<WeakPoint>().dammagable;
+        }
+        if (other.transform.gameObject.TryGetComponent(out IDammagable Outdammagable))
+        {
+            dammagable = Outdammagable;
+        }
+
+        if (dammagable != null)
+        {
+            dammagable.TakeDammage(dammage, other.gameObject);
             sniper.IncreasePowerFactor();
         }
         Destroy(gameObject);

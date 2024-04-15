@@ -136,7 +136,7 @@ public class SmallEnnemy : MonoBehaviour, IDammagable
         DestroyShip();
     }
 
-    public void TakeDammage(int dammageAmount)
+    public void TakeDammage(int dammageAmount, GameObject goHitPart)
     {
         DestroyShip();
     }

@@ -71,6 +71,7 @@ public class Sniper : MonoBehaviour, GunInterface
 
     public void Shoot()
     {
+        List<IDammagable> alreadyDammagables = new List<IDammagable>();
         if (!canShoot || isShootDelayed())
             return;
 
@@ -110,9 +111,25 @@ public class Sniper : MonoBehaviour, GunInterface
         // if we hit at least one object
         foreach (RaycastHit hit in hits)
         {
-            if (hit.transform.gameObject.TryGetComponent(out IDammagable dammagable))
+            IDammagable dammagable = null;
+            // If we hit a weak point, we need to get the health in parent
+            if (hit.transform.CompareTag("WeakPoint"))
             {
-                dammagable.TakeDammage(Mathf.RoundToInt(dammageAmount * sniperPowerFactor));
+                dammagable = hit.transform.gameObject.GetComponent<WeakPoint>().dammagable;
+            }
+            if (hit.transform.gameObject.TryGetComponent(out IDammagable Outdammagable))
+            {
+                dammagable = Outdammagable;
+            }
+
+            // check if we have already hit the Idammagable
+            if (!alreadyDammagables.Contains(dammagable))
+            {
+                dammagable.TakeDammage(
+                    Mathf.RoundToInt(dammageAmount * sniperPowerFactor),
+                    hit.transform.gameObject
+                );
+                alreadyDammagables.Add(dammagable);
             }
         }
         ResetPowerFactor();

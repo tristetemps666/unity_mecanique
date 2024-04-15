@@ -70,8 +70,19 @@ public class BigEnnemi : MonoBehaviour, IDammagable
         StartCoroutine(SpawnSalveSmallsCoroutine());
     }
 
-    public void TakeDammage(int dammageAmount)
+    public void TakeDammage(int dammageAmount, GameObject goHitPart)
     {
-        health.ReduceHealth(dammageAmount);
+        Debug.Log("hitted");
+        float criticalFactor = 1f;
+
+        if (goHitPart != null)
+        {
+            // If we hit a weakPoint, we add the critical factor
+            criticalFactor = goHitPart.CompareTag("WeakPoint")
+                ? GlobalVariables.criticalFactor
+                : 1f;
+            Debug.Log("partie hit : " + goHitPart);
+        }
+        health.ReduceHealth((int)(dammageAmount * criticalFactor));
     }
 }

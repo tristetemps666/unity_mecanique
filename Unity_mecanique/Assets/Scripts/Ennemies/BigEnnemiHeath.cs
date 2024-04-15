@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +18,9 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth
 
     [SerializeField]
     Slider healthBarDelta;
+
+    [SerializeField]
+    TextMeshProUGUI healthBarDammageText;
 
     float healthBarDeltaVelocity = 0f;
 
@@ -43,16 +48,16 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth
             Destroy(gameObject);
         }
         ChangeMaterialOnHit();
-        UpdateHealthBar();
+        UpdateHealthBar(reduceAmount);
     }
 
     public void AddHealth(int AddAmount)
     {
         health += AddAmount;
-        UpdateHealthBar();
+        UpdateHealthBar(AddAmount);
     }
 
-    void UpdateHealthBar()
+    void UpdateHealthBar(int? delta = null)
     {
         if (initialHealth == 0)
         {
@@ -60,6 +65,13 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth
             return;
         }
         healthBar.value = 1f * health / initialHealth;
+
+        if (healthBarDammageText != null && delta != null)
+        {
+            healthBarDammageText.gameObject.SetActive(true);
+            healthBarDammageText.text = delta.ToString();
+            StartCoroutine(FadeOutDammageAmmount());
+        }
     }
 
     public bool IsDead()
@@ -76,5 +88,21 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth
     private void ResetLayer()
     {
         gameObject.layer = LayerMask.NameToLayer("ennemi");
+    }
+
+    private IEnumerator FadeOutDammageAmmount()
+    {
+        float t = 1f;
+        yield return new WaitForSeconds(2f);
+
+        while (t > 0)
+        {
+            t -= Time.deltaTime;
+            healthBarDammageText.alpha = Mathf.Lerp(0f, 1f, t);
+            Debug.Log(t);
+            yield return null;
+        }
+        healthBarDammageText.text = "";
+        healthBarDammageText.gameObject.SetActive(true);
     }
 }

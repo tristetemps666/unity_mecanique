@@ -60,7 +60,7 @@ public class MediumEnnemy : MonoBehaviour, IDammagable
         animator.ResetTrigger("Jump");
     }
 
-    public void TakeDammage(int dammageAmmount)
+    public void TakeDammage(int dammageAmmount, GameObject goHitPart)
     {
         health.ReduceHealth(dammageAmmount);
     }
