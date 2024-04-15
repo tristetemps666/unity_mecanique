@@ -74,7 +74,6 @@ public class Sniper : MonoBehaviour, GunInterface
         if (!canShoot || isShootDelayed())
             return;
 
-        Debug.Log("il shoot au snipeerrrr");
         // we change the gun status
         delayShoot = fireRate;
 

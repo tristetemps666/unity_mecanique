@@ -125,12 +125,10 @@ public class SmallEnnemy : MonoBehaviour, IDammagable
     {
         if (other.gameObject.CompareTag("BigEnnemi"))
             return;
-        Debug.Log("celui qui prend des degats : " + other.gameObject.name);
         if (other.gameObject.TryGetComponent(out IDammagable otherDammagable))
         {
             // if (!canDammage)
             //     return;
-            Debug.Log("on peut lui enlever des pvs");
             otherDammagable.TakeDammage(dammage);
             canDammage = false;
             rb.detectCollisions = false;

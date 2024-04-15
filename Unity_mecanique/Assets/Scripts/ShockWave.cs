@@ -11,13 +11,22 @@ public class ShockWave : MonoBehaviour
     public int dammage = 800;
     public float fadeWaveTime = 2f;
 
+    [SerializeField]
+    private LayerMask layerMaskIgnoringShockWave;
+
     private Renderer renderer;
+
+    private Transform spawnTransform;
+
+    private bool canDammage = true;
 
     void Start()
     {
         renderer = GetComponent<Renderer>();
 
         Invoke("StartFadeWave", delayBeforeFade);
+
+        spawnTransform = transform;
     }
 
     // Update is called once per frame
@@ -35,8 +44,30 @@ public class ShockWave : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        // if we cannot dammage, there is nothing to do
+        if (!canDammage)
+            return;
+
+        Debug.Log("nom de la personne touchée : " + other.name);
+
         if (other.gameObject.TryGetComponent(out IDammagable otherDammagable))
         {
+            // we need to raycast to see if the character is projected by an obstacle
+            // Ray rayTowardDammagable = new Ray(spawnTransform.position, other.transform.position);
+
+            Vector3 direction = (other.transform.position - spawnTransform.position).normalized;
+            Debug.DrawRay(spawnTransform.position, direction * 1000, Color.green, 2f);
+
+            RaycastHit hit;
+            if (Physics.Raycast(spawnTransform.position, direction, out hit, Mathf.Infinity))
+            {
+                Debug.Log(hit.transform.name);
+                if (hit.transform.tag == "BlockShockWave")
+                {
+                    Debug.Log("il est protégé !!");
+                    return;
+                }
+            }
             Debug.Log("on peut lui enlever des pvs PAR EXPLOSION");
             otherDammagable.TakeDammage(dammage);
         }
@@ -52,5 +83,10 @@ public class ShockWave : MonoBehaviour
             yield return null;
         }
         Destroy(gameObject);
+    }
+
+    private void DisableDammage()
+    {
+        canDammage = false;
     }
 }

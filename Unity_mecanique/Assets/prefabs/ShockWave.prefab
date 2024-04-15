@@ -102,6 +102,9 @@ MonoBehaviour:
   delayBeforeFade: 2
   dammage: 200
   fadeWaveTime: 1
+  layerMaskIgnoringShockWave:
+    serializedVersion: 2
+    m_Bits: 887
 --- !u!135 &1406907527977356015
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -115,7 +118,7 @@ SphereCollider:
     m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 769
+    m_Bits: 897
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0

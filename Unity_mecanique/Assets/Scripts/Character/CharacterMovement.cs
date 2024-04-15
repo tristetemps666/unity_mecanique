@@ -62,11 +62,6 @@ public class CharacterMovement : MonoBehaviour
         Physics.gravity = Vector3.down * 9.81f * gravityScale;
     }
 
-    // void OnShoot()
-    // {
-    //     Debug.Log("shoot");
-    // }
-
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(

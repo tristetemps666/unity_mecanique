@@ -94,7 +94,6 @@ public class Gun : MonoBehaviour, GunInterface
     {
         if (canShoot)
         {
-            Debug.Log("Start shoot");
             StartCoroutine(CreateBulletRepeate());
             delayShoot = shootRate;
         }
@@ -102,7 +101,6 @@ public class Gun : MonoBehaviour, GunInterface
 
     public void StopShooting()
     {
-        Debug.Log("Stop shoot");
         StopAllCoroutines();
         canShoot = false;
     }
@@ -112,14 +110,12 @@ public class Gun : MonoBehaviour, GunInterface
         isShootHold = !isShootHold;
         if (!isShootHold)
         {
-            Debug.Log("Stop shoot");
             StopCoroutine(CreateBulletRepeate());
             canShoot = false;
             return;
         }
         if (canShoot)
         {
-            Debug.Log("Start shoot");
             StartCoroutine(CreateBulletRepeate());
             delayShoot = shootRate;
         }
