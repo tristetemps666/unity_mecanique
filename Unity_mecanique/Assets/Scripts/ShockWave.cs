@@ -53,13 +53,16 @@ public class ShockWave : MonoBehaviour
         if (other.gameObject.TryGetComponent(out IDammagable otherDammagable))
         {
             // we need to raycast to see if the character is projected by an obstacle
-            // Ray rayTowardDammagable = new Ray(spawnTransform.position, other.transform.position);
-
-            Vector3 direction = (other.transform.position - spawnTransform.position).normalized;
-            Debug.DrawRay(spawnTransform.position, direction * 1000, Color.green, 2f);
-
             RaycastHit hit;
-            if (Physics.Raycast(spawnTransform.position, direction, out hit, Mathf.Infinity))
+            Debug.DrawLine(spawnTransform.position, other.transform.position, Color.green, 3f);
+            if (
+                Physics.Linecast(
+                    other.transform.position,
+                    spawnTransform.position,
+                    out hit,
+                    layerMaskIgnoringShockWave
+                )
+            )
             {
                 Debug.Log(hit.transform.name);
                 if (hit.transform.tag == "BlockShockWave")

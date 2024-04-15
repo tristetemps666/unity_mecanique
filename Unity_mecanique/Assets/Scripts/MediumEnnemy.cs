@@ -22,6 +22,8 @@ public class MediumEnnemy : MonoBehaviour, IDammagable
 
     public float jumpTime = 1f;
 
+    public float jumpAnimationOffset = 2f;
+
     private NavMeshAgent navMeshAgent;
 
     private BigEnnemiHeath health;
@@ -47,14 +49,14 @@ public class MediumEnnemy : MonoBehaviour, IDammagable
         animator.SetTrigger("Jump");
 
         // Delay to match with the jump animation
-        Invoke("CreateShockWave", jumpTime);
+        // Invoke("CreateShockWave", jumpTime);
         Invoke("ResetJump", 3.8f); // time of the animation
     }
 
-    void CreateShockWave()
+    public void CreateShockWave()
     {
         GameObject newWave = Instantiate(shockWave);
-        newWave.transform.position = transform.position;
+        newWave.transform.position = transform.position + transform.forward * jumpAnimationOffset;
         animator.ResetTrigger("Jump");
     }
 
