@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -24,6 +25,14 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth
 
     float healthBarDeltaVelocity = 0f;
 
+    float delta = 0f;
+
+    float delayFadeDammageAmount = 2f;
+    bool dammageAmountCanFade = false;
+
+    // this is used to reset the child layers after we have hit
+    private Dictionary<GameObject, int> childLayers = new Dictionary<GameObject, int>();
+
     void Start()
     {
         health = initialHealth;
@@ -38,6 +47,9 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth
             ref healthBarDeltaVelocity,
             0.3f
         );
+
+        // handle dammage ammount fade
+        HandleAlphaDammageAmount();
     }
 
     public void ReduceHealth(int reduceAmount)
@@ -57,7 +69,7 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth
         UpdateHealthBar(AddAmount);
     }
 
-    void UpdateHealthBar(int? delta = null)
+    void UpdateHealthBar(int? deltaAmmount = null)
     {
         if (initialHealth == 0)
         {
@@ -66,11 +78,16 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth
         }
         healthBar.value = 1f * health / initialHealth;
 
-        if (healthBarDammageText != null && delta != null)
+        if (healthBarDammageText != null && deltaAmmount.HasValue)
         {
-            healthBarDammageText.gameObject.SetActive(true);
-            healthBarDammageText.text = delta.ToString();
-            StartCoroutine(FadeOutDammageAmmount());
+            delta += deltaAmmount.Value;
+            // healthBarDammageText.gameObject.SetActive(true);
+            // healthBarDammageText.text = delta.ToString();
+            // healthBarDammageText.alpha = 1f;
+            // delayFadeDammageAmount = 2f;
+            // dammageAmountCanFade = true;
+            // Debug.Log("on reaffiche");
+            displayDammageAmount();
         }
     }
 
@@ -81,28 +98,51 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth
 
     void ChangeMaterialOnHit()
     {
-        gameObject.layer = LayerMask.NameToLayer("ennemiHit");
+        foreach (Renderer child in GetComponentsInChildren<Renderer>())
+        {
+            GameObject go = child.gameObject;
+            childLayers.TryAdd(go, go.layer);
+            go.layer = LayerMask.NameToLayer("ennemiHit");
+        }
+        // gameObject.layer = LayerMask.NameToLayer("ennemiHit");
         Invoke("ResetLayer", 0.1f);
     }
 
     private void ResetLayer()
     {
         gameObject.layer = LayerMask.NameToLayer("ennemi");
+
+        foreach (Renderer child in GetComponentsInChildren<Renderer>())
+        {
+            GameObject go = child.gameObject;
+
+            if (childLayers.TryGetValue(go, out int childLayer))
+            {
+                go.layer = childLayer;
+            }
+        }
     }
 
-    private IEnumerator FadeOutDammageAmmount()
+    void displayDammageAmount()
     {
-        float t = 1f;
-        yield return new WaitForSeconds(2f);
-
-        while (t > 0)
-        {
-            t -= Time.deltaTime;
-            healthBarDammageText.alpha = Mathf.Lerp(0f, 1f, t);
-            Debug.Log(t);
-            yield return null;
-        }
-        healthBarDammageText.text = "";
         healthBarDammageText.gameObject.SetActive(true);
+        healthBarDammageText.text = delta.ToString();
+        healthBarDammageText.alpha = 1f;
+        // the alpha will be 1 if is delayFadeDammageAmount > 1
+        delayFadeDammageAmount = 2f;
+        dammageAmountCanFade = true;
+        Debug.Log("on reaffiche");
+    }
+
+    void HandleAlphaDammageAmount()
+    {
+        delayFadeDammageAmount = Mathf.Max(delayFadeDammageAmount - Time.deltaTime, 0);
+        // if (delayFadeDammageAmount <= 1f)
+        // {
+        if (healthBarDammageText != null)
+        {
+            healthBarDammageText.alpha = Mathf.Lerp(0f, 1f, delayFadeDammageAmount);
+        }
+        // }
     }
 }
