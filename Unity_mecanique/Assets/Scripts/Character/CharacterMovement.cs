@@ -142,6 +142,18 @@ public class CharacterMovement : MonoBehaviour
                 * accelerationBoost
                 * airControlFactor;
 
+        Debug.DrawRay(transform.position, rb.velocity.normalized * 100, Color.magenta);
+        Debug.DrawRay(transform.position, InputsVec3 * 100, Color.yellow);
+
+        // movementForce =
+        //     Vector3.Lerp(
+        //         rb.velocity.x * transform.forward + rb.velocity.y * transform.right,
+        //         InputsVec3,
+        //         0.9f
+        //     )
+        //     * mouvementSpeed
+        //     * Time.deltaTime;
+
         // Movement along surface ?
         if (IsGroundedVal)
             movementForce = movementForce - Vector3.Dot(movementForce, NormalGround) * NormalGround;
