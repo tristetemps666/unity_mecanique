@@ -12,7 +12,7 @@ public class Attack : MonoBehaviour
 
     public Animator animator;
 
-    public float Dammages = 300f;
+    public int Dammages = 300;
 
     void Start()
     {
@@ -26,7 +26,9 @@ public class Attack : MonoBehaviour
         OnAttackFinished += func;
         OnAttackFinished += Reset;
 
-        StartAnimation();
+        // InvokeRepeating("StartAnimation", 2f, 10f);
+
+        OnAttackStart();
     }
 
     // Update is called once per frame
