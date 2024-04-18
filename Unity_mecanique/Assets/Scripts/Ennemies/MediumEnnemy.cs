@@ -16,7 +16,7 @@ public class MediumEnnemy : MonoBehaviour, IDammagable
     [SerializeField]
     Animator animator;
 
-    public float shockWaveRate = 5f;
+    public float shockWaveRate = 10f;
 
     public float delayFirstWave = 1f;
 
@@ -46,6 +46,7 @@ public class MediumEnnemy : MonoBehaviour, IDammagable
 
     void CreaShockWaveWithDelay()
     {
+        navMeshAgent.isStopped = true;
         animator.SetTrigger("Jump");
 
         // Delay to match with the jump animation
@@ -53,6 +54,7 @@ public class MediumEnnemy : MonoBehaviour, IDammagable
         Invoke("ResetJump", 3.8f); // time of the animation
     }
 
+    // this is played in the animator to match the creation with the landing of the ennemi
     public void CreateShockWave()
     {
         GameObject newWave = Instantiate(shockWave);
@@ -63,6 +65,11 @@ public class MediumEnnemy : MonoBehaviour, IDammagable
     public void TakeDammage(int dammageAmmount, GameObject goHitPart)
     {
         health.ReduceHealth(dammageAmmount);
+    }
+
+    public void CanWalk()
+    {
+        navMeshAgent.isStopped = false;
     }
 
     void ResetJump()

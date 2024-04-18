@@ -1326,17 +1326,17 @@ PrefabInstance:
     - target: {fileID: 3145250694369129715, guid: bd6ce0030c7677442a336248ece262c7,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3183979658975922253, guid: bd6ce0030c7677442a336248ece262c7,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3183979658975922253, guid: bd6ce0030c7677442a336248ece262c7,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3579358503308180005, guid: bd6ce0030c7677442a336248ece262c7,
         type: 3}
@@ -1356,12 +1356,12 @@ PrefabInstance:
     - target: {fileID: 3793741359462948562, guid: bd6ce0030c7677442a336248ece262c7,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3793741359462948562, guid: bd6ce0030c7677442a336248ece262c7,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7121854814569090203, guid: bd6ce0030c7677442a336248ece262c7,
         type: 3}
@@ -26999,6 +26999,56 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+        type: 3}
+      propertyPath: aligmentCurveFactor.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+        type: 3}
+      propertyPath: aligmentCurveFactor.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+        type: 3}
+      propertyPath: aligmentCurveFactor.m_Curve.Array.data[0].value
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+        type: 3}
+      propertyPath: aligmentCurveFactor.m_Curve.Array.data[1].value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+        type: 3}
+      propertyPath: aligmentCurveFactor.m_Curve.Array.data[0].inSlope
+      value: 16.75571
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+        type: 3}
+      propertyPath: aligmentCurveFactor.m_Curve.Array.data[1].inSlope
+      value: -0.124203555
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+        type: 3}
+      propertyPath: aligmentCurveFactor.m_Curve.Array.data[0].outSlope
+      value: 16.75571
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+        type: 3}
+      propertyPath: aligmentCurveFactor.m_Curve.Array.data[1].inWeight
+      value: 0.34432995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+        type: 3}
+      propertyPath: aligmentCurveFactor.m_Curve.Array.data[1].outSlope
+      value: -0.124203555
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924763868028450291, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+        type: 3}
+      propertyPath: aligmentCurveFactor.m_Curve.Array.data[0].outWeight
+      value: 0.06804121
+      objectReference: {fileID: 0}
     - target: {fileID: 6931894028713963320, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
         type: 3}
       propertyPath: timeAtMaxDashSpeed
@@ -27039,6 +27089,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigEnnemi
+      objectReference: {fileID: 0}
+    - target: {fileID: 2858413779338373215, guid: 8ac56f0ad5655f248b2bc9bcab01984f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3392287359889524482, guid: 8ac56f0ad5655f248b2bc9bcab01984f,
         type: 3}

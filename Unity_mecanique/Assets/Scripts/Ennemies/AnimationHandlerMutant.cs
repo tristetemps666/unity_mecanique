@@ -20,4 +20,9 @@ public class NewBehaviourScript : MonoBehaviour
     {
         Mutant.CreateShockWave();
     }
+
+    public void WalkAgain()
+    {
+        Mutant.CanWalk();
+    }
 }
