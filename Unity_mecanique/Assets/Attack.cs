@@ -10,36 +10,45 @@ public class Attack : MonoBehaviour
     public event AttackEvent OnAttackFinished;
     public event AttackEvent OnAttackStart;
 
+    public Animator animator;
+
+    public float Dammages = 300f;
+
     void Start()
     {
+        animator = GetComponent<Animator>();
+
+        // Start
         OnAttackStart += func;
+        OnAttackStart += StartAnimation;
+
+        // Finished
         OnAttackFinished += func;
+        OnAttackFinished += Reset;
+
+        StartAnimation();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        StartCoroutine(Rotation());
-    }
+    void Update() { }
 
     void func()
     {
         Debug.Log("il se passe un truc");
     }
 
-    IEnumerator Rotation()
+    void StartAnimation()
     {
-        OnAttackStart();
+        animator.SetTrigger("TriggerRotation");
+    }
 
-        float rotateAmount = 0f;
-        while (rotateAmount <= 360f)
-        {
-            rotateAmount += Time.deltaTime * 10f;
-            gameObject.transform.Rotate(0, 0, Time.deltaTime * 10f);
-            Debug.Log(rotateAmount);
-            yield return null;
-        }
+    void Reset()
+    {
+        animator.ResetTrigger("TriggerRotation");
+    }
 
+    void EndAnim()
+    {
         OnAttackFinished();
     }
 }

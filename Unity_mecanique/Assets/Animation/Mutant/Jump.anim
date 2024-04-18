@@ -68982,3 +68982,11 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 3.1666667
+    functionName: WalkAgain
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: b70d623ac00d7344882e01827007d366,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

@@ -478,9 +478,10 @@ MonoBehaviour:
   shockWave: {fileID: 7390854840200789212, guid: bf3786aa76ba7a0488db0acb2d6f2227,
     type: 3}
   animator: {fileID: 0}
-  shockWaveRate: 5
-  delayFirstWave: 1
+  shockWaveRate: 10
+  delayFirstWave: 3
   jumpTime: 2
+  jumpAnimationOffset: 2
 --- !u!114 &1615908226999534334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,6 +497,7 @@ MonoBehaviour:
   initialHealth: 2000
   healthBar: {fileID: 6475628196939455669}
   healthBarDelta: {fileID: 1422830390564399826}
+  healthBarDammageText: {fileID: 0}
 --- !u!1 &3311396675868521760
 GameObject:
   m_ObjectHideFlags: 0
