@@ -28,7 +28,7 @@ public class Attack : MonoBehaviour
 
         // InvokeRepeating("StartAnimation", 2f, 10f);
 
-        OnAttackStart();
+        // DoAttack();
     }
 
     // Update is called once per frame
@@ -42,6 +42,11 @@ public class Attack : MonoBehaviour
     void StartAnimation()
     {
         animator.SetTrigger("TriggerRotation");
+    }
+
+    public void DoAttack()
+    {
+        OnAttackStart();
     }
 
     void Reset()

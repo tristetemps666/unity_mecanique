@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -26,13 +25,20 @@ public class BigEnnemi : MonoBehaviour, IDammagable
 
     private BigEnnemiHeath health;
 
+    [SerializeField]
+    Attack LazerAttack;
+
     void Start()
     {
-        InvokeRepeating("SpawnSalveSmalls", 3f, 5f);
+        // InvokeRepeating("SpawnSalveSmalls", 3f, 5f);
         defaultMaterial = GetComponent<Renderer>().material;
         material = GetComponent<Renderer>().material;
 
         health = GetComponent<BigEnnemiHeath>();
+
+        LazerAttack.gameObject.SetActive(false);
+
+        ChooseNextAttackDelayed();
     }
 
     // Update is called once per frame
@@ -63,6 +69,7 @@ public class BigEnnemi : MonoBehaviour, IDammagable
             SpawnSmallEnnemy();
             yield return new WaitForSeconds(0.2f);
         }
+        ChooseNextAttackDelayed();
     }
 
     private void SpawnSalveSmalls()
@@ -84,5 +91,36 @@ public class BigEnnemi : MonoBehaviour, IDammagable
             Debug.Log("partie hit : " + goHitPart);
         }
         health.ReduceHealth((int)(dammageAmount * criticalFactor));
+    }
+
+    void ChooseNextAttack()
+    {
+        LazerAttack.OnAttackFinished -= ChooseNextAttackDelayed;
+
+        bool MissilesOrLazer = Random.Range(0f, 1f) < 0.5f; // true = missiles / Lazer = false
+        Debug.Log("attaque : " + MissilesOrLazer);
+        if (MissilesOrLazer)
+        {
+            SpawnSalveSmalls();
+            Debug.Log("attaque missiles");
+        }
+        else
+        {
+            StartLazer();
+            Debug.Log("attaque Lazer");
+        }
+    }
+
+    void ChooseNextAttackDelayed()
+    {
+        Invoke("ChooseNextAttack", 5f);
+    }
+
+    private void StartLazer()
+    {
+        LazerAttack.gameObject.SetActive(true);
+        LazerAttack.DoAttack();
+
+        LazerAttack.OnAttackFinished += ChooseNextAttackDelayed;
     }
 }

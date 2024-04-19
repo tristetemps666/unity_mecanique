@@ -1302,6 +1302,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RadialLazer
       objectReference: {fileID: 0}
+    - target: {fileID: 1512094267807316405, guid: bd09c23e53a0a374388693f85d071c8c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8804334952256114975, guid: bd09c23e53a0a374388693f85d071c8c,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -26674,6 +26679,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 647146844}
   m_LocalEulerAnglesHint: {x: 24.471, y: -74.634, z: 17.029}
+--- !u!114 &1826974649 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 839740903649332777, guid: bd09c23e53a0a374388693f85d071c8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 237920583}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baa756ad07ff1f24db759f812f18fdd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1921948501 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6199017759310469023, guid: 8ac56f0ad5655f248b2bc9bcab01984f,
@@ -27213,6 +27230,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3392287359889524482, guid: 8ac56f0ad5655f248b2bc9bcab01984f,
+        type: 3}
+      propertyPath: LazerAttack
+      value: 
+      objectReference: {fileID: 1826974649}
     - target: {fileID: 4576524406969512344, guid: 8ac56f0ad5655f248b2bc9bcab01984f,
         type: 3}
       propertyPath: healthBar
