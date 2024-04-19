@@ -54,11 +54,14 @@ public class CharacterMovement : MonoBehaviour
 
     public bool IsGroundedVal { get; private set; } = false;
 
+    private Sniper sniper;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         playerCam = GetComponentInChildren<Camera>();
+        sniper = GetComponent<Sniper>();
         Physics.gravity = Vector3.down * 9.81f * gravityScale;
     }
 
@@ -112,7 +115,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void ApplyJumpForce()
     {
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        rb.AddForce(Vector3.up * jumpForce * sniper.SniperPowerFactor, ForceMode.Impulse);
     }
 
     private void ApplyMovement(Vector2 Inputs)

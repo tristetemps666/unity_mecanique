@@ -39,7 +39,7 @@ public class Sniper : MonoBehaviour, GunInterface
     [SerializeField]
     private TextMeshPro powerFactorText;
 
-    private float sniperPowerFactor = 1f;
+    public float SniperPowerFactor { get; private set; } = 1f;
 
     [SerializeField]
     private Renderer sniperRenderer;
@@ -127,7 +127,7 @@ public class Sniper : MonoBehaviour, GunInterface
             if (!alreadyDammagables.Contains(dammagable) && dammagable != null)
             {
                 dammagable.TakeDammage(
-                    Mathf.RoundToInt(dammageAmount * sniperPowerFactor),
+                    Mathf.RoundToInt(dammageAmount * SniperPowerFactor),
                     hit.transform.gameObject
                 );
                 alreadyDammagables.Add(dammagable);
@@ -138,20 +138,20 @@ public class Sniper : MonoBehaviour, GunInterface
 
     public void IncreasePowerFactor()
     {
-        sniperPowerFactor = Mathf.Min(sniperPowerFactor + PFIncreaseAmount, maxPowerFactor);
+        SniperPowerFactor = Mathf.Min(SniperPowerFactor + PFIncreaseAmount, maxPowerFactor);
         UpdatePowerFactorVisuals();
     }
 
     public void ResetPowerFactor()
     {
-        sniperPowerFactor = 1f;
+        SniperPowerFactor = 1f;
         UpdatePowerFactorVisuals();
     }
 
     void UpdatePowerFactorVisuals()
     {
-        powerFactorText.text = ((int)(sniperPowerFactor * 100)).ToString() + "%";
-        sniperRenderer.material.SetFloat("_PowerFactor", sniperPowerFactor);
+        powerFactorText.text = ((int)(SniperPowerFactor * 100)).ToString() + "%";
+        sniperRenderer.material.SetFloat("_PowerFactor", SniperPowerFactor);
     }
 
     void createSniperTrail(Vector3 start, Vector3 end)
