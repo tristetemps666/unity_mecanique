@@ -123,30 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!95 &463046301 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8936136483824738206, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1585126715034809866}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &463046304 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7850490257732292035, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1585126715034809866}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &463046305 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3522865414818648355, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1585126715034809866}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 543dc61f4db531d46a84a755228f19e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &503251468
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,97 +241,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!1 &509282472
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 509282473}
-  - component: {fileID: 509282474}
-  m_Layer: 0
-  m_Name: LaserShotAttack
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &509282473
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509282472}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.4206772, y: 2.0415974, z: -0.35675645}
-  m_LocalScale: {x: 0.010448641, y: 0.010448639, z: 0.010448639}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 463046304}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &509282474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509282472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 999cc79118cc48f449b41ad75da75d32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnAttackStart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 509282474}
-        m_TargetAssemblyTypeName: LaserShotAttack, Assembly-CSharp
-        m_MethodName: StartLaserAttackAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnAnimationAttackStart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 509282474}
-        m_TargetAssemblyTypeName: LaserShotAttack, Assembly-CSharp
-        m_MethodName: ShootWithDelay
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnAttackFinished:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 509282474}
-        m_TargetAssemblyTypeName: LaserShotAttack, Assembly-CSharp
-        m_MethodName: StopLaserAttackAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  Dammages: 300
-  animator: {fileID: 463046301}
 --- !u!1 &851810549
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,18 +562,117 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac56f0ad5655f248b2bc9bcab01984f, type: 3}
---- !u!114 &1934413731 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
+--- !u!1 &1876374619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1876374623}
+  - component: {fileID: 1876374622}
+  - component: {fileID: 1876374621}
+  - component: {fileID: 1876374620}
+  m_Layer: 0
+  m_Name: DUMMY TARGET
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1876374620
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876374619}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1876374621
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876374619}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1876374622
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876374619}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1876374623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876374619}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 305.7, y: 110.54529, z: -336.9}
+  m_LocalScale: {x: 39.001244, y: 39.001244, z: 39.001244}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2117293685 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5431850505368392894, guid: 3c9ea238ad9703546ab9807de39fe9c5,
     type: 3}
   m_PrefabInstance: {fileID: 1585126715034809866}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af76dcd9b6423fc4d84b6358cae70dc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1585126715034809866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -697,121 +681,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAttackStart.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAnimationAttackStart.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAnimationStartAttack.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAttackStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1934413731}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAttackStart.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 463046305}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAttackStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartBulletAttackAnimation
-      objectReference: {fileID: 0}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAttackStart.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: StartSpawning
-      objectReference: {fileID: 0}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAnimationAttackStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAnimationStartAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAnimationAttackStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 463046305}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAnimationStartAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 463046305}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAnimationAttackStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAnimationStartAttack.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAnimationAttackStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartSpawning
-      objectReference: {fileID: 0}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAnimationStartAttack.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartSpawning
-      objectReference: {fileID: 0}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAttackStart.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: BulletsAttack, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAttackStart.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: BulletManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAnimationAttackStart.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: BulletManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAnimationStartAttack.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: BulletManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAnimationAttackStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5586355822262125312, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: OnAnimationStartAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5875714795899239307, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: ListAttacks.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5875714795899239307, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      propertyPath: ListAttacks.Array.data[1]
-      value: 
-      objectReference: {fileID: 509282474}
     - target: {fileID: 7474106105073506169, guid: 3c9ea238ad9703546ab9807de39fe9c5,
         type: 3}
       propertyPath: m_Name
@@ -867,13 +736,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7990395742679101297, guid: 3c9ea238ad9703546ab9807de39fe9c5,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1876374623}
+    - target: {fileID: 7990395742679101297, guid: 3c9ea238ad9703546ab9807de39fe9c5,
+        type: 3}
+      propertyPath: sourceLaserShot
+      value: 
+      objectReference: {fileID: 2117293685}
+    - target: {fileID: 7990395742679101297, guid: 3c9ea238ad9703546ab9807de39fe9c5,
+        type: 3}
+      propertyPath: OnAnimationAttackStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuildingTheShoot
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7850490257732292035, guid: 3c9ea238ad9703546ab9807de39fe9c5,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 509282473}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c9ea238ad9703546ab9807de39fe9c5, type: 3}
 --- !u!1660057539 &9223372036854775807
@@ -885,3 +765,4 @@ SceneRoots:
   - {fileID: 1098763714}
   - {fileID: 1585126715034809866}
   - {fileID: 1448798064}
+  - {fileID: 1876374623}

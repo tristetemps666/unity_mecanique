@@ -5,6 +5,14 @@ using UnityEngine;
 public class LaserShotAttack : IAttack
 {
     // Start is called before the first frame update
+    public float timeToBuildTheShot = 4f;
+
+    [SerializeField]
+    private Transform sourceLaserShot;
+
+    [SerializeField]
+    private Transform target;
+
     void Start() { }
 
     public void StartLaserAttackAnimation()
@@ -24,11 +32,35 @@ public class LaserShotAttack : IAttack
         Debug.Log("ON FAIT UN MEGA SHOOT SA MERE LA PUTE");
     }
 
-    public void ShootWithDelay()
+    public void ShootWithDelay() // OLD
     {
         Debug.Log("on charge le shoot !!");
         // on repart pour l'animation
         Invoke("StartRetriveLaserAnimation", 2);
+    }
+
+    public void BuildingTheShoot()
+    {
+        StartCoroutine(BuildingTheShootCoroutine());
+    }
+
+    IEnumerator BuildingTheShootCoroutine()
+    {
+        float t = timeToBuildTheShot;
+        while (t > 0f)
+        {
+            sourceLaserShot.rotation = Quaternion.Slerp(
+                sourceLaserShot.rotation,
+                Quaternion.LookRotation(
+                    target.position - sourceLaserShot.position,
+                    sourceLaserShot.up
+                ),
+                0.02f
+            );
+            // sourceLaserShot.LookAt(target);
+            yield return null;
+        }
+        Shoot();
     }
 
     public void StartRetriveLaserAnimation()

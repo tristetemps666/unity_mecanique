@@ -1,5 +1,99 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &368336028157044412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5284675763686334734}
+  - component: {fileID: 7990395742679101297}
+  m_Layer: 0
+  m_Name: LaserShotAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5284675763686334734
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368336028157044412}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.4206772, y: 2.0415974, z: -0.35675645}
+  m_LocalScale: {x: 0.010448641, y: 0.010448639, z: 0.010448639}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7850490257732292035}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7990395742679101297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368336028157044412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 999cc79118cc48f449b41ad75da75d32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnAttackStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7990395742679101297}
+        m_TargetAssemblyTypeName: LaserShotAttack, Assembly-CSharp
+        m_MethodName: StartLaserAttackAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAnimationAttackStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7990395742679101297}
+        m_TargetAssemblyTypeName: LaserShotAttack, Assembly-CSharp
+        m_MethodName: ShootWithDelay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAttackFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7990395742679101297}
+        m_TargetAssemblyTypeName: LaserShotAttack, Assembly-CSharp
+        m_MethodName: StopLaserAttackAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Dammages: 300
+  animator: {fileID: 8936136483824738206}
+  timeToBuildTheShot: 4
+  sourceLaserShot: {fileID: 0}
+  target: {fileID: 0}
 --- !u!1 &1336185822586529685
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,9 +141,9 @@ MonoBehaviour:
   OnAttackStart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3522865414818648355}
-        m_TargetAssemblyTypeName: BulletManager, Assembly-CSharp
-        m_MethodName: StartSpawning
+      - m_Target: {fileID: 5586355822262125312}
+        m_TargetAssemblyTypeName: BulletsAttack, Assembly-CSharp
+        m_MethodName: StartBulletAttackAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -59,9 +153,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5586355822262125312}
-        m_TargetAssemblyTypeName: BulletsAttack, Assembly-CSharp
-        m_MethodName: StartBulletAttackAnimation
+  OnAnimationAttackStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3522865414818648355}
+        m_TargetAssemblyTypeName: BulletManager, Assembly-CSharp
+        m_MethodName: StartSpawning
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -101,6 +198,111 @@ MonoBehaviour:
   Dammages: 10
   animator: {fileID: 8936136483824738206}
   bulletManager: {fileID: 3522865414818648355}
+--- !u!1 &2585566568288951078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1731388372045515619}
+  - component: {fileID: 4176833553133608911}
+  - component: {fileID: 4419235769689234334}
+  - component: {fileID: 3949501245507214084}
+  m_Layer: 0
+  m_Name: POINTEUR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1731388372045515619
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585566568288951078}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0, z: 0.51}
+  m_LocalScale: {x: -0.2, y: 0.41, z: 0.22}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5431850505368392894}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &4176833553133608911
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585566568288951078}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &4419235769689234334
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585566568288951078}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3949501245507214084
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585566568288951078}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3297120778406072797
 GameObject:
   m_ObjectHideFlags: 0
@@ -2568,6 +2770,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1560016294981712781}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 682ba06fe32e91140a41fddccc291f70,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5284675763686334734}
     - targetCorrespondingSourceObject: {fileID: -2120285420463895011, guid: 682ba06fe32e91140a41fddccc291f70,
         type: 3}
       insertIndex: -1
@@ -2676,6 +2882,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6433466408063020493}
+    - targetCorrespondingSourceObject: {fileID: 2313158574126366358, guid: 682ba06fe32e91140a41fddccc291f70,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1731388372045515619}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 682ba06fe32e91140a41fddccc291f70,
         type: 3}
@@ -2774,6 +2984,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7743994770169604648}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &5431850505368392894 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2313158574126366358, guid: 682ba06fe32e91140a41fddccc291f70,
+    type: 3}
+  m_PrefabInstance: {fileID: 7743994770169604648}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6782027997556232083 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5375423626094385733, guid: 682ba06fe32e91140a41fddccc291f70,
@@ -2845,6 +3061,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ListAttacks:
   - {fileID: 5586355822262125312}
+  - {fileID: 7990395742679101297}
 --- !u!4 &7500739821026073588 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 247637603582734812, guid: 682ba06fe32e91140a41fddccc291f70,
