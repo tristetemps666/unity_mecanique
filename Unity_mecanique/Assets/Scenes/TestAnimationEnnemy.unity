@@ -529,6 +529,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigEnnemi3
       objectReference: {fileID: 0}
+    - target: {fileID: 1797344116304231938, guid: 682ba06fe32e91140a41fddccc291f70,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2313158574126366358, guid: 682ba06fe32e91140a41fddccc291f70,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0000006721974
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977626981313768465, guid: 682ba06fe32e91140a41fddccc291f70,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
