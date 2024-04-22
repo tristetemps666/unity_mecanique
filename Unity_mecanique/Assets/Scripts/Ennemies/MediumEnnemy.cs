@@ -82,6 +82,10 @@ public class MediumEnnemy : MonoBehaviour, IDammagable
 
     private void OnDestroy()
     {
+        // avoid issues when killing the object by quitting the game
+        if (GlobalVariables.IsQuitting)
+            return;
+
         GameObject go = Instantiate(BoostPrefab);
         go.transform.position = transform.position;
     }
