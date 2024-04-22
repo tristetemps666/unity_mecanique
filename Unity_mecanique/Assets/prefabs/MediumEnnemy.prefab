@@ -478,6 +478,8 @@ MonoBehaviour:
   shockWave: {fileID: 7390854840200789212, guid: bf3786aa76ba7a0488db0acb2d6f2227,
     type: 3}
   animator: {fileID: 0}
+  BoostPrefab: {fileID: 4801459452571118548, guid: 58877c4a261cffb4eb09969080b3bcbc,
+    type: 3}
   shockWaveRate: 10
   delayFirstWave: 3
   jumpTime: 2

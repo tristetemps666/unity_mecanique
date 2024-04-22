@@ -16,6 +16,9 @@ public class MediumEnnemy : MonoBehaviour, IDammagable
     [SerializeField]
     Animator animator;
 
+    [SerializeField]
+    GameObject BoostPrefab;
+
     public float shockWaveRate = 10f;
 
     public float delayFirstWave = 1f;
@@ -75,5 +78,11 @@ public class MediumEnnemy : MonoBehaviour, IDammagable
     void ResetJump()
     {
         animator.ResetTrigger("Jump");
+    }
+
+    private void OnDestroy()
+    {
+        GameObject go = Instantiate(BoostPrefab);
+        go.transform.position = transform.position;
     }
 }

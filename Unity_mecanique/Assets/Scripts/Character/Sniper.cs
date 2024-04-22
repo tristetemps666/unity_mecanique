@@ -69,6 +69,12 @@ public class Sniper : MonoBehaviour, GunInterface
         }
     }
 
+    public void setPowerFactor(float powerFactor)
+    {
+        SniperPowerFactor = Mathf.Clamp(powerFactor, 0f, maxPowerFactor);
+        UpdatePowerFactorVisuals();
+    }
+
     public void Shoot()
     {
         List<IDammagable> alreadyDammagables = new List<IDammagable>();
