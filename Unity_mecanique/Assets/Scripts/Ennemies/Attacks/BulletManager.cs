@@ -39,6 +39,16 @@ public class BulletManager : MonoBehaviour
         }
         isSpawning = false;
     }
+
+    // the setup of dammages don't work for this ?
+    // edit the ennemy prefab Instead.
+    public void SetupDammages(int newDammages)
+    {
+        foreach (BulletSpawner spawner in ListSpawners)
+        {
+            spawner.SetupDammages(newDammages);
+        }
+    }
 }
 
 

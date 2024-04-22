@@ -64,4 +64,9 @@ public class BulletSpawner : MonoBehaviour
         Gizmos.DrawRay(transform.position, transform.forward * 40f);
         Gizmos.DrawCube(transform.position, Vector3.one * 2f);
     }
+
+    public void SetupDammages(int newDammage)
+    {
+        Bullet.GetComponent<Bullet>().dammage = newDammage;
+    }
 }

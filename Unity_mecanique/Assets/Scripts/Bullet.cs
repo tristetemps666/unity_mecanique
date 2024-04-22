@@ -5,11 +5,10 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField]
-    private float speed = 200f;
+    public int dammage = 10;
 
     [SerializeField]
-    private int dammage = 10;
+    private float speed = 200f;
 
     [SerializeField]
     private float timeToDie = 4f;
