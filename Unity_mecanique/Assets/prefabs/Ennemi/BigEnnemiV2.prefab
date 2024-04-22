@@ -92,7 +92,8 @@ MonoBehaviour:
   Dammages: 300
   animator: {fileID: 8936136483824738206}
   timeToBuildTheShot: 4
-  sourceLaserShot: {fileID: 0}
+  sourceLaserShot: {fileID: 1731388372045515619}
+  SphereTransform: {fileID: 5431850505368392894}
   target: {fileID: 0}
 --- !u!1 &1336185822586529685
 GameObject:
@@ -226,11 +227,11 @@ Transform:
   m_GameObject: {fileID: 2585566568288951078}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0, z: 0.51}
-  m_LocalScale: {x: -0.2, y: 0.41, z: 0.22}
+  m_LocalPosition: {x: 0.0069856234, y: 0.0012, z: 2.1825}
+  m_LocalScale: {x: -0.043304645, y: 0.39996687, z: 0.04763511}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5431850505368392894}
+  m_Father: {fileID: 7850490257732292035}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4176833553133608911
 MeshFilter:
@@ -2760,6 +2761,10 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 682ba06fe32e91140a41fddccc291f70,
         type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 1731388372045515619}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 682ba06fe32e91140a41fddccc291f70,
+        type: 3}
       insertIndex: -1
       addedObject: {fileID: 1018150625362778165}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 682ba06fe32e91140a41fddccc291f70,
@@ -2882,10 +2887,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6433466408063020493}
-    - targetCorrespondingSourceObject: {fileID: 2313158574126366358, guid: 682ba06fe32e91140a41fddccc291f70,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1731388372045515619}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 682ba06fe32e91140a41fddccc291f70,
         type: 3}
