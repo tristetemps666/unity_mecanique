@@ -123,6 +123,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &463046301 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8936136483824738206, guid: 3c9ea238ad9703546ab9807de39fe9c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1585126715034809866}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &463046304 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7850490257732292035, guid: 3c9ea238ad9703546ab9807de39fe9c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1585126715034809866}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &463046305 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3522865414818648355, guid: 3c9ea238ad9703546ab9807de39fe9c5,
@@ -253,6 +265,97 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &509282472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 509282473}
+  - component: {fileID: 509282474}
+  m_Layer: 0
+  m_Name: LaserShotAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &509282473
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509282472}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.4206772, y: 2.0415974, z: -0.35675645}
+  m_LocalScale: {x: 0.010448641, y: 0.010448639, z: 0.010448639}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 463046304}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &509282474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509282472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 999cc79118cc48f449b41ad75da75d32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnAttackStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 509282474}
+        m_TargetAssemblyTypeName: LaserShotAttack, Assembly-CSharp
+        m_MethodName: StartLaserAttackAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAnimationAttackStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 509282474}
+        m_TargetAssemblyTypeName: LaserShotAttack, Assembly-CSharp
+        m_MethodName: ShootWithDelay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAttackFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 509282474}
+        m_TargetAssemblyTypeName: LaserShotAttack, Assembly-CSharp
+        m_MethodName: StopLaserAttackAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Dammages: 300
+  animator: {fileID: 463046301}
 --- !u!1 &851810549
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,6 +367,7 @@ GameObject:
   - component: {fileID: 851810552}
   - component: {fileID: 851810551}
   - component: {fileID: 851810550}
+  - component: {fileID: 851810553}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -338,13 +442,57 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851810549}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.1507129, y: -0.49097487, z: 0.08697385, w: 0.85361874}
+  m_LocalPosition: {x: 349.08514, y: 251.81778, z: -215.07324}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &851810553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851810549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1 &1098763710
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,6 +802,16 @@ PrefabInstance:
       propertyPath: OnAnimationStartAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5875714795899239307, guid: 3c9ea238ad9703546ab9807de39fe9c5,
+        type: 3}
+      propertyPath: ListAttacks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875714795899239307, guid: 3c9ea238ad9703546ab9807de39fe9c5,
+        type: 3}
+      propertyPath: ListAttacks.Array.data[1]
+      value: 
+      objectReference: {fileID: 509282474}
     - target: {fileID: 7474106105073506169, guid: 3c9ea238ad9703546ab9807de39fe9c5,
         type: 3}
       propertyPath: m_Name
@@ -711,7 +869,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7850490257732292035, guid: 3c9ea238ad9703546ab9807de39fe9c5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 509282473}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c9ea238ad9703546ab9807de39fe9c5, type: 3}
 --- !u!1660057539 &9223372036854775807

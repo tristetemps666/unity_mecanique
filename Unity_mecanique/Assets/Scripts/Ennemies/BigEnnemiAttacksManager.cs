@@ -25,6 +25,8 @@ public class BigEnnemiAttacksManager : MonoBehaviour
     private IAttack LastAttack;
     private IAttack CurrentAttack;
 
+    int i = 0;
+
     void Start()
     {
         // LazerAttack.gameObject.SetActive(false);
@@ -81,10 +83,12 @@ public class BigEnnemiAttacksManager : MonoBehaviour
             CurrentAttack.OnAttackFinished.RemoveListener(ChooseNextAttackDelayed);
         }
 
-        CurrentAttack = ListAttacks[0];
+        CurrentAttack = ListAttacks[i % 2];
+        // CurrentAttack = ListAttacks[Mathf.RoundToInt(Random.Range(0, 1))];
         // This allows to repeatedly choose
         CurrentAttack.OnAttackFinished.AddListener(ChooseNextAttackDelayed);
         CurrentAttack.DoAttack();
+        i++;
     }
 
     // TODO : WILL BE CHANGED
