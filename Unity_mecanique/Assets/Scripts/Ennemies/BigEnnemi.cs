@@ -26,7 +26,7 @@ public class BigEnnemi : MonoBehaviour, IDammagable
     private BigEnnemiHeath health;
 
     [SerializeField]
-    Attack LazerAttack;
+    private Attack LazerAttack;
 
     void Start()
     {
@@ -95,7 +95,7 @@ public class BigEnnemi : MonoBehaviour, IDammagable
 
     void ChooseNextAttack()
     {
-        LazerAttack.OnAttackFinished -= ChooseNextAttackDelayed;
+        LazerAttack.OnAttackFinished.RemoveListener(ChooseNextAttackDelayed);
 
         bool MissilesOrLazer = Random.Range(0f, 1f) < 0.5f; // true = missiles / Lazer = false
         Debug.Log("attaque : " + MissilesOrLazer);
@@ -119,8 +119,9 @@ public class BigEnnemi : MonoBehaviour, IDammagable
     private void StartLazer()
     {
         LazerAttack.gameObject.SetActive(true);
+        Debug.Log(LazerAttack.name);
         LazerAttack.DoAttack();
 
-        LazerAttack.OnAttackFinished += ChooseNextAttackDelayed;
+        LazerAttack.OnAttackFinished.AddListener(ChooseNextAttackDelayed);
     }
 }

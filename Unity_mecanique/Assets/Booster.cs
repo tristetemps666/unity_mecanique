@@ -15,9 +15,9 @@ public class Booster : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("on touche : " + other.gameObject.name);
-        if (other.CompareTag("player"))
+        if (other.CompareTag("player") && other.TryGetComponent(out PlayerHealth playerHealth))
         {
-            other.GetComponent<PlayerHealth>().AddHealth(HealAmmount);
+            playerHealth.AddHealth(HealAmmount);
             other.GetComponent<Sniper>().setPowerFactor(4f);
             Destroy(gameObject);
         }

@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Attack : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public delegate void AttackEvent();
-    public event AttackEvent OnAttackFinished;
-    public event AttackEvent OnAttackStart;
+    // public delegate void AttackEvent();
+    public UnityEvent OnAttackFinished = new UnityEvent();
+    public UnityEvent OnAttackStart = new UnityEvent();
+
+    public UnityEvent eventU;
 
     public Animator animator;
 
@@ -19,12 +22,12 @@ public class Attack : MonoBehaviour
         animator = GetComponent<Animator>();
 
         // Start
-        OnAttackStart += func;
-        OnAttackStart += StartAnimation;
+        OnAttackStart.AddListener(func);
+        OnAttackStart.AddListener(StartAnimation);
 
         // Finished
-        OnAttackFinished += func;
-        OnAttackFinished += Reset;
+        OnAttackFinished.AddListener(func);
+        OnAttackFinished.AddListener(Reset);
 
         // InvokeRepeating("StartAnimation", 2f, 10f);
 
@@ -39,14 +42,14 @@ public class Attack : MonoBehaviour
         Debug.Log("il se passe un truc");
     }
 
-    void StartAnimation()
+    public void StartAnimation()
     {
         animator.SetTrigger("TriggerRotation");
     }
 
     public void DoAttack()
     {
-        OnAttackStart();
+        OnAttackStart.Invoke();
     }
 
     void Reset()
@@ -56,6 +59,6 @@ public class Attack : MonoBehaviour
 
     void EndAnim()
     {
-        OnAttackFinished();
+        OnAttackFinished.Invoke();
     }
 }
