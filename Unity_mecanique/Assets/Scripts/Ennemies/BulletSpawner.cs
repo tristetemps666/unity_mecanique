@@ -38,29 +38,30 @@ public class BulletSpawner : MonoBehaviour
 
     private IEnumerator SpawnCoroutine()
     {
-        while (true)
+        while (IsSpawning)
         {
-            if (IsSpawning)
-                SpawnBullet();
+            SpawnBullet();
             yield return new WaitForSeconds(SpawnRate);
         }
     }
 
     public void StartSpawning()
     {
+        IsSpawning = true;
         Debug.Log("on commence à spawn !! ");
         StartCoroutine(SpawnCoroutine());
     }
 
     public void StopSpawning()
     {
+        IsSpawning = false;
         Debug.Log("on arrete de spawn !! ");
         StopCoroutine(SpawnCoroutine());
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawRay(transform.position, transform.forward * 3f);
-        Gizmos.DrawCube(transform.position, Vector3.one * 1f);
+        Gizmos.DrawRay(transform.position, transform.forward * 40f);
+        Gizmos.DrawCube(transform.position, Vector3.one * 2f);
     }
 }

@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private int dammage = 10;
 
+    [SerializeField]
     private float timeToDie = 4f;
     Rigidbody rb;
 
