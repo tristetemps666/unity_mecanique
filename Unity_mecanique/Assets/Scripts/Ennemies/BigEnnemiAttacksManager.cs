@@ -96,6 +96,7 @@ public class BigEnnemiAttacksManager : MonoBehaviour
 
     public void EndAttack()
     {
+        Debug.Log("quand l'anim se finit");
         CurrentAttack.OnAttackFinished.Invoke();
     }
 
