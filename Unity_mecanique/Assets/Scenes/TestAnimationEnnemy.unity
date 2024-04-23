@@ -707,6 +707,7 @@ GameObject:
   - component: {fileID: 1876374622}
   - component: {fileID: 1876374621}
   - component: {fileID: 1876374620}
+  - component: {fileID: 1876374624}
   m_Layer: 6
   m_Name: DUMMY TARGET
   m_TagString: Untagged
@@ -800,6 +801,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1876374624
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876374619}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2089728427
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,6 +955,11 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1876374623}
+    - target: {fileID: 7990395742679101297, guid: 3c9ea238ad9703546ab9807de39fe9c5,
+        type: 3}
+      propertyPath: Dammages
+      value: 800
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -77,6 +77,19 @@ public class LaserShotAttack : IAttack
         Invoke("StartRetriveLaserAnimation", 2);
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("player"))
+        {
+            Debug.Log("C'est le joueur qu'on touche ???");
+        }
+        if (other.TryGetComponent<IDammagable>(out IDammagable dammagable))
+        {
+            Debug.Log("le laser met des dégats à qq'un !!");
+            dammagable.TakeDammage(Dammages);
+        }
+    }
+
     IEnumerator SendRay()
     {
         Vector3 destination;
