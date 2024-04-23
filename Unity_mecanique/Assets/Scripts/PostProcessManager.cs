@@ -65,6 +65,7 @@ public class PostProcessManager : MonoBehaviour
         WhiteRayFeature.SetActive(enabled);
         BlackRayFeature.SetActive(enabled);
         postProcessVolume.enabled = !enabled;
+
         if (enabled)
         {
             Camera.main.clearFlags = CameraClearFlags.SolidColor;
