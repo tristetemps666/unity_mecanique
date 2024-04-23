@@ -28,13 +28,23 @@ public class LaserShotAttack : IAttack
 
     private SplineExtrude extrude;
 
+    private Material rayMat;
+    private Material sphereMat;
+
+    Collider collider;
+
     void Start()
     {
         spline = GetComponent<SplineContainer>();
         splineRenderer = GetComponent<MeshRenderer>();
         extrude = GetComponent<SplineExtrude>();
+        collider = GetComponent<Collider>();
 
         splineRenderer.enabled = false;
+        collider.enabled = false;
+
+        rayMat = splineRenderer.materials[0];
+        sphereMat = SphereTransform.gameObject.GetComponent<Renderer>().materials[0];
     }
 
     void Update()
@@ -65,7 +75,8 @@ public class LaserShotAttack : IAttack
 
     IEnumerator SendRay()
     {
-        splineRenderer.enabled = true;
+        SetupSpline();
+
         float distance = Vector3.Distance(sourceLaserShot.position, target.position);
         float timeToReach = distance / lazerSpeed;
         Debug.Log("temps pour atteindre : " + timeToReach);
@@ -94,7 +105,6 @@ public class LaserShotAttack : IAttack
     IEnumerator BuildingTheShootCoroutine()
     {
         float t = timeToBuildTheShot;
-        SetupSpline();
 
         while (t > 0f)
         {
@@ -109,10 +119,23 @@ public class LaserShotAttack : IAttack
             // );
             // sourceLaserShot.LookAt(target);
             t -= Time.deltaTime;
+            UpdateRayMaterial(
+                Mathf.Lerp(1, 20f, (timeToBuildTheShot - t) / timeToBuildTheShot),
+                1f
+            );
 
             yield return null;
         }
         Shoot();
+    }
+
+    void UpdateRayMaterial(float emission, float alpha)
+    {
+        rayMat.SetFloat("_EmissionMutliplier", emission);
+        rayMat.SetFloat("_alpha", alpha);
+
+        sphereMat.SetFloat("_EmissionMutliplier", emission);
+        sphereMat.SetFloat("_alpha", alpha);
     }
 
     // we setup the start and end of it
@@ -124,15 +147,29 @@ public class LaserShotAttack : IAttack
         );
         spline.Spline.SetKnot(1, new BezierKnot(transform.InverseTransformPoint(target.position)));
 
+        collider.enabled = true;
+        splineRenderer.enabled = true;
+
         // setup the points
         // spline.Spline.Add(new BezierKnot(sourceLaserShot.position));
         // spline.Spline.Add(new BezierKnot(target.position));
     }
 
-    public void StartRetriveLaserAnimation()
+    void ResetSpline()
     {
         splineRenderer.enabled = false;
+        collider.enabled = false;
+
+        spline.Spline.SetKnot(
+            1,
+            new BezierKnot(transform.InverseTransformPoint(sourceLaserShot.position))
+        );
+    }
+
+    public void StartRetriveLaserAnimation()
+    {
         StopAllCoroutines();
+        ResetSpline();
 
         animator.SetTrigger("TriggerLeaveIdleBigShootLaser");
     }
