@@ -75,9 +75,30 @@ public class LaserShotAttack : IAttack
 
     IEnumerator SendRay()
     {
-        SetupSpline();
+        Vector3 destination;
 
-        float distance = Vector3.Distance(sourceLaserShot.position, target.position);
+        // WE DO A RAYCAST TO CHECK IF WE HIT SOMETHING BEFORE THE PLAYER
+        RaycastHit hit;
+
+        if (
+            Physics.Linecast(
+                sourceLaserShot.position,
+                target.position,
+                out hit,
+                ~collider.includeLayers
+            )
+        )
+        {
+            destination = hit.point;
+        }
+        else
+        {
+            destination = target.position;
+            Debug.Log("on a rien touché ptn de merde");
+        }
+        SetupSpline(destination);
+
+        float distance = Vector3.Distance(sourceLaserShot.position, destination);
         float timeToReach = distance / lazerSpeed;
         Debug.Log("temps pour atteindre : " + timeToReach);
         float t = 0;
@@ -139,13 +160,13 @@ public class LaserShotAttack : IAttack
     }
 
     // we setup the start and end of it
-    void SetupSpline()
+    void SetupSpline(Vector3 destination)
     {
         spline.Spline.SetKnot(
             0,
             new BezierKnot(transform.InverseTransformPoint(sourceLaserShot.position))
         );
-        spline.Spline.SetKnot(1, new BezierKnot(transform.InverseTransformPoint(target.position)));
+        spline.Spline.SetKnot(1, new BezierKnot(transform.InverseTransformPoint(destination)));
 
         collider.enabled = true;
         splineRenderer.enabled = true;
