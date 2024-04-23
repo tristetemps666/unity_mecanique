@@ -21,6 +21,9 @@ public class LaserShotAttack : IAttack
     [SerializeField]
     private Transform target;
 
+    [SerializeField]
+    private float rayNoiseStrenght = 12f;
+
     // SPLINE PART
     private SplineContainer spline;
 
@@ -45,6 +48,7 @@ public class LaserShotAttack : IAttack
 
         rayMat = splineRenderer.materials[0];
         sphereMat = SphereTransform.gameObject.GetComponent<Renderer>().materials[0];
+        rayMat.SetFloat("_noiseStrength", rayNoiseStrenght);
     }
 
     void Update()
