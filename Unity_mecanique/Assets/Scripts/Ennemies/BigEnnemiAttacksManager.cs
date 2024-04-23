@@ -83,7 +83,7 @@ public class BigEnnemiAttacksManager : MonoBehaviour
             CurrentAttack.OnAttackFinished.RemoveListener(ChooseNextAttackDelayed);
         }
 
-        CurrentAttack = ListAttacks[i % 2];
+        CurrentAttack = ListAttacks[1];
         // CurrentAttack = ListAttacks[Mathf.RoundToInt(Random.Range(0, 1))];
         // This allows to repeatedly choose
         CurrentAttack.OnAttackFinished.AddListener(ChooseNextAttackDelayed);

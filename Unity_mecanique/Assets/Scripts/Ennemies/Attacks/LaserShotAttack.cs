@@ -92,6 +92,11 @@ public class LaserShotAttack : IAttack
 
     IEnumerator SendRay()
     {
+        // UpdateRayMaterial(1f, 1f);
+        PostProcessManager.Instance.SetRayEffect(true);
+        yield return new WaitForSeconds(0.3f);
+        // UpdateRayMaterial(15f, 1f);
+
         Vector3 destination;
 
         // WE DO A RAYCAST TO CHECK IF WE HIT SOMETHING BEFORE THE PLAYER
@@ -115,10 +120,13 @@ public class LaserShotAttack : IAttack
         }
         SetupSpline(destination);
 
+        // We calculate the time to reach the target according to the speed
         float distance = Vector3.Distance(sourceLaserShot.position, destination);
         float timeToReach = distance / lazerSpeed;
         Debug.Log("temps pour atteindre : " + timeToReach);
         float t = 0;
+
+        //  Visual sign to alert about the shoot.
         while (t < timeToReach)
         {
             t += Time.deltaTime;
@@ -198,6 +206,7 @@ public class LaserShotAttack : IAttack
     {
         splineRenderer.enabled = false;
         collider.enabled = false;
+        UpdateRayMaterial(1f, 1f);
 
         spline.Spline.SetKnot(
             1,
@@ -207,6 +216,8 @@ public class LaserShotAttack : IAttack
 
     public void StartRetriveLaserAnimation()
     {
+        PostProcessManager.Instance.SetRayEffect(false);
+
         StopAllCoroutines();
         ResetSpline();
 

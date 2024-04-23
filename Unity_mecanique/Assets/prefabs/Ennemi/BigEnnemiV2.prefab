@@ -100,6 +100,7 @@ MonoBehaviour:
   sourceLaserShot: {fileID: 5431850505368392894}
   SphereTransform: {fileID: 5431850505368392894}
   target: {fileID: 0}
+  rayNoiseStrenght: 12
 --- !u!114 &1582323491127756405
 MonoBehaviour:
   m_ObjectHideFlags: 0
