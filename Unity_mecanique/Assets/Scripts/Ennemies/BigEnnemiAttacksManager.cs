@@ -108,13 +108,4 @@ public class BigEnnemiAttacksManager : MonoBehaviour
     {
         CurrentAttack.OnAnimationAttackStart.Invoke();
     }
-
-    // private void StartLazer()
-    // {
-    //     LazerAttack.gameObject.SetActive(true);
-    //     Debug.Log(LazerAttack.name);
-    //     LazerAttack.DoAttack();
-
-    //     LazerAttack.OnAttackFinished.AddListener(ChooseNextAttackDelayed);
-    // }
 }

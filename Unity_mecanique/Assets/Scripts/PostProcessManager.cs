@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -78,6 +79,34 @@ public class PostProcessManager : MonoBehaviour
         else
         {
             Camera.main.clearFlags = CameraClearFlags.Skybox;
+        }
+    }
+
+    // BETTER HERE THAN IN THE BIG ENNEMI HEALTH ?
+    void ChangeMaterialOnHit(GameObject gameObjectHit, Dictionary<GameObject, int> childLayers)
+    {
+        foreach (Renderer child in gameObjectHit.GetComponentsInChildren<Renderer>())
+        {
+            GameObject go = child.gameObject;
+            childLayers.TryAdd(go, go.layer);
+            go.layer = LayerMask.NameToLayer("ennemiHit");
+        }
+        // gameObject.layer = LayerMask.NameToLayer("ennemiHit");
+        Invoke("ResetLayer", 0.1f);
+    }
+
+    private void ResetLayer(GameObject gameObjectHit, Dictionary<GameObject, int> childLayers)
+    {
+        gameObject.layer = LayerMask.NameToLayer("ennemi");
+
+        foreach (Renderer child in GetComponentsInChildren<Renderer>())
+        {
+            GameObject go = child.gameObject;
+
+            if (childLayers.TryGetValue(go, out int childLayer))
+            {
+                go.layer = childLayer;
+            }
         }
     }
 }

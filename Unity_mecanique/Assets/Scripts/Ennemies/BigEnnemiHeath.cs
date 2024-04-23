@@ -96,6 +96,7 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth
         return health == 0;
     }
 
+    // BETTER USING THE FUNCTIONS FROM THE POST PROCESS MANAGER ?
     void ChangeMaterialOnHit()
     {
         foreach (Renderer child in GetComponentsInChildren<Renderer>())
