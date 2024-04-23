@@ -42,6 +42,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _alpha: 1
+    - _noiseStrength: 0.2
     m_Colors:
     - _BaseColor: {r: 0.6968423, g: 0.8301887, b: 0, a: 0}
     - _BaseColor2: {r: 1.4980391, g: 0, b: 0, a: 0}

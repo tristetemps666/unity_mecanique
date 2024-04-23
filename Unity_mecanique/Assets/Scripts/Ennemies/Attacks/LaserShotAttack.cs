@@ -106,6 +106,7 @@ public class LaserShotAttack : IAttack
         {
             t += Time.deltaTime;
             extrude.Range = new Vector2(0f, t / timeToReach);
+            extrude.Radius = Mathf.Lerp(3, 10, t / timeToReach);
             // extrude.Rebuild();
 
             yield return null;
