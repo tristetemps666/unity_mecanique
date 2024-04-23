@@ -10,7 +10,7 @@ public class LaserShotAttack : IAttack
 {
     // Start is called before the first frame update
     public float timeToBuildTheShot = 4f;
-    public float timeTohitTarget = 0.3f;
+    public float lazerSpeed = 10f;
 
     [SerializeField]
     private Transform sourceLaserShot;
@@ -66,12 +66,15 @@ public class LaserShotAttack : IAttack
     IEnumerator SendRay()
     {
         splineRenderer.enabled = true;
+        float distance = Vector3.Distance(sourceLaserShot.position, target.position);
+        float timeToReach = distance / lazerSpeed;
+        Debug.Log("temps pour atteindre : " + timeToReach);
         float t = 0;
-        while (t < timeTohitTarget)
+        while (t < timeToReach)
         {
             t += Time.deltaTime;
-            extrude.Range = new Vector2(0f, t / timeTohitTarget);
-            extrude.Rebuild();
+            extrude.Range = new Vector2(0f, t / timeToReach);
+            // extrude.Rebuild();
 
             yield return null;
         }
