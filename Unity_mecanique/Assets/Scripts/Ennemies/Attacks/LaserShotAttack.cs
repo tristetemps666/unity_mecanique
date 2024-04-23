@@ -34,7 +34,7 @@ public class LaserShotAttack : IAttack
     private Material rayMat;
     private Material sphereMat;
 
-    Collider collider;
+    private Collider collider;
 
     void Start()
     {

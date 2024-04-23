@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &44495407745906156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7868770562977598567}
+  m_Layer: 0
+  m_Name: ---- ATTACK ----
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7868770562977598567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44495407745906156}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0000000026005307, y: 0.00000011918091, z: 0.99976206, w: 0.021814834}
+  m_LocalPosition: {x: -0.037972413, y: -0.8557303, z: 2.3877797}
+  m_LocalScale: {x: 0.91634935, y: 0.9163491, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4824099507003051342}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &368336028157044412
 GameObject:
   m_ObjectHideFlags: 0
@@ -2991,6 +3022,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2993370686174324582, guid: 682ba06fe32e91140a41fddccc291f70,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 7868770562977598567}
+    - targetCorrespondingSourceObject: {fileID: 2993370686174324582, guid: 682ba06fe32e91140a41fddccc291f70,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 831263078856704945}
     - targetCorrespondingSourceObject: {fileID: -2120285420463895011, guid: 682ba06fe32e91140a41fddccc291f70,
         type: 3}
@@ -3473,12 +3508,17 @@ PrefabInstance:
     - target: {fileID: 6955488384710891524, guid: bd09c23e53a0a374388693f85d071c8c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8804334952256114975, guid: bd09c23e53a0a374388693f85d071c8c,
         type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8899999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804334952256114975, guid: bd09c23e53a0a374388693f85d071c8c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8804334952256114975, guid: bd09c23e53a0a374388693f85d071c8c,
         type: 3}
@@ -3532,9 +3572,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3324294354788017747, guid: bd09c23e53a0a374388693f85d071c8c, type: 3}
+    - {fileID: 839740903649332777, guid: bd09c23e53a0a374388693f85d071c8c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1512094267807316405, guid: bd09c23e53a0a374388693f85d071c8c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 577778886713965843}
   m_SourcePrefab: {fileID: 100100000, guid: bd09c23e53a0a374388693f85d071c8c, type: 3}
 --- !u!4 &831263078856704945 stripped
 Transform:
@@ -3542,6 +3587,62 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8189367801424564910}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7303276300995783451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1512094267807316405, guid: bd09c23e53a0a374388693f85d071c8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8189367801424564910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &577778886713965843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7303276300995783451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce0976e8d70787940837d7603158ab98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnAttackStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 577778886713965843}
+        m_TargetAssemblyTypeName: LazerRotationAttack, Assembly-CSharp
+        m_MethodName: StartAttackAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAnimationAttackStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttackFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 577778886713965843}
+        m_TargetAssemblyTypeName: LazerRotationAttack, Assembly-CSharp
+        m_MethodName: StopAttackAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Dammages: 300
+  animator: {fileID: 8936136483824738206}
+  eventU:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &8202354111533768126
 PrefabInstance:
   m_ObjectHideFlags: 0
