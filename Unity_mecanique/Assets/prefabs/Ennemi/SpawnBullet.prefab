@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSpawning: 0
   Bullet: {fileID: 6546963466589063756, guid: c8523964f74ec10488fff427a6c1a241, type: 3}
-  SpawnRate: 2
+  SpawnRate: 0.1
