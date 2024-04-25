@@ -20,6 +20,9 @@ public class PostProcessManager : MonoBehaviour
     [SerializeField]
     Material BlackMat;
 
+    [SerializeField]
+    Camera cam;
+
     // Start is called before the first frame update
 
     public static PostProcessManager Instance { get; private set; }
@@ -69,8 +72,8 @@ public class PostProcessManager : MonoBehaviour
 
         if (enabled)
         {
-            Camera.main.clearFlags = CameraClearFlags.SolidColor;
-            Camera.main.backgroundColor = Color.black;
+            cam.clearFlags = CameraClearFlags.SolidColor;
+            cam.backgroundColor = Color.black;
             BlackMat.SetVector(
                 "_EmitPosition",
                 new Vector4(SourceRay.position.x, SourceRay.position.y, SourceRay.position.z, 1f)
@@ -78,7 +81,7 @@ public class PostProcessManager : MonoBehaviour
         }
         else
         {
-            Camera.main.clearFlags = CameraClearFlags.Skybox;
+            cam.clearFlags = CameraClearFlags.Skybox;
         }
     }
 

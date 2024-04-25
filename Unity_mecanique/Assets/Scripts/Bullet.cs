@@ -39,6 +39,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("la balle touche : " + other.name);
         IDammagable dammagable = null;
         // If we hit a weak point, we need to get the health in parent
         if (other.transform.CompareTag("WeakPoint"))

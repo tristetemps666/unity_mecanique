@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // this class is more general for Ennemi Health
-public class BigEnnemiHeath : MonoBehaviour, IHealth
+public class BigEnnemiHeath : MonoBehaviour, IHealth, IDammagable
 {
     public int initialHealth;
 
@@ -54,6 +54,7 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth
 
     public void ReduceHealth(int reduceAmount)
     {
+        Debug.Log("il perd : " + reduceAmount);
         health = Mathf.Max(health - reduceAmount, 0);
         if (IsDead())
         {
@@ -69,8 +70,26 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth
         UpdateHealthBar(AddAmount);
     }
 
+    public void TakeDammage(int dammageAmount, GameObject goHitPart)
+    {
+        Debug.Log("hitted");
+        float criticalFactor = 1f;
+
+        if (goHitPart != null)
+        {
+            // If we hit a weakPoint, we add the critical factor
+            criticalFactor = goHitPart.CompareTag("WeakPoint")
+                ? GlobalVariables.criticalFactor
+                : 1f;
+            Debug.Log("partie hit : " + goHitPart);
+        }
+        ReduceHealth((int)(dammageAmount * criticalFactor));
+    }
+
     void UpdateHealthBar(int? deltaAmmount = null)
     {
+        Debug.Log("mise a jour de la barre de vie");
+
         if (initialHealth == 0)
         {
             Debug.Log("error, initialHealth = 0 ");

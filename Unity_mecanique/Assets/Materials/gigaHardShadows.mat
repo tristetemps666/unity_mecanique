@@ -56,5 +56,5 @@ Material:
     - _QueueOffset: 0
     - _whiteAmmount: 0.538
     m_Colors:
-    - _EmitPosition: {r: 62.698566, g: 379.68042, b: -18.895733, a: 1}
+    - _EmitPosition: {r: 0.068567395, g: 454.18042, b: -30.595734, a: 1}
   m_BuildTextureStacks: []

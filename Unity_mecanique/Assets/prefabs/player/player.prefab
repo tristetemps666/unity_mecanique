@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 931155946546604730}
   - component: {fileID: 5668794835307709447}
   - component: {fileID: 1601384084134018255}
+  - component: {fileID: 2040708091587718327}
   - component: {fileID: 5868880731932777188}
   - component: {fileID: 8274611611168817596}
   m_Layer: 6
@@ -214,30 +215,21 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0.0058080256
-      value: 1.0004492
-      inSlope: 0
-      outSlope: 0
+      value: 1
+      inSlope: 16.75571
+      outSlope: 16.75571
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.2
-      value: 1.0000553
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      outWeight: 0.06804121
     - serializedVersion: 3
       time: 1
       value: 10
-      inSlope: 21.78455
-      outSlope: 21.78455
+      inSlope: -0.124203555
+      outSlope: -0.124203555
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.07174589
+      inWeight: 0.34432995
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -288,9 +280,9 @@ MonoBehaviour:
   dashParticules: {fileID: 8532277102950379081}
   dashPower: 80
   dashReloadTime: 1
-  timeAtMaxDashSpeed: 0.3
+  timeAtMaxDashSpeed: 0.2
   timeInvisible: 1
-  TimeRecoverDefaultMaxSpeed: 0.15
+  TimeRecoverDefaultMaxSpeed: 0.1
 --- !u!114 &931155946546604730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,6 +348,21 @@ MonoBehaviour:
   powerFactorText: {fileID: 4038236010594586488}
   sniperRenderer: {fileID: 4505834758404526598}
   sniperSound: {fileID: 8300000, guid: a0853744affe72d468a36958cad9e2e3, type: 3}
+--- !u!114 &2040708091587718327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2554863840426243246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b5301ca1718e2440ab435b1300a701e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialHealth: 5000
+  healthBar: {fileID: 0}
+  healthBarDelta: {fileID: 0}
 --- !u!96 &5868880731932777188
 TrailRenderer:
   serializedVersion: 3
