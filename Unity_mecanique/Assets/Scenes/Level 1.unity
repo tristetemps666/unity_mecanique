@@ -2515,6 +2515,11 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 138260534}
+    - target: {fileID: 7990395742679101297, guid: 3c9ea238ad9703546ab9807de39fe9c5,
+        type: 3}
+      propertyPath: lazerSpeed
+      value: 7000
+      objectReference: {fileID: 0}
     - target: {fileID: 7999000456722937658, guid: 3c9ea238ad9703546ab9807de39fe9c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -28815,6 +28820,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931894028713963320, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
+        type: 3}
+      propertyPath: timeInvisible
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7379554000888961760, guid: 9cf3d3fd8af149c47b19a18dd300bec1,
         type: 3}
