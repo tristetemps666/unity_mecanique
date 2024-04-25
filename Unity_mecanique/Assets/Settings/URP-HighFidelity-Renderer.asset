@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Active: 0
   settings:
     passTag: WhiteOnRay
-    Event: 1000
+    Event: 300
     filterSettings:
       RenderQueueType: 0
       LayerMask:
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Active: 0
   settings:
     passTag: BlackOnRay
-    Event: 1000
+    Event: 300
     filterSettings:
       RenderQueueType: 0
       LayerMask:
