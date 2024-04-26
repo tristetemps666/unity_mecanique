@@ -112,10 +112,14 @@ public class LaserShotAttack : IAttack
         )
         {
             destination = hit.point;
+
+            destination =
+                destination + (target.position - sourceLaserShot.position).normalized * 3f;
         }
         else
         {
-            destination = target.position;
+            destination =
+                target.position + (target.position - sourceLaserShot.position).normalized * 3f; // we add a small distance
             Debug.Log("on a rien touché ptn de merde");
         }
         SetupSpline(destination);

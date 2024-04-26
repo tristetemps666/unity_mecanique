@@ -281,7 +281,7 @@ MonoBehaviour:
   dashPower: 80
   dashReloadTime: 1
   timeAtMaxDashSpeed: 0.2
-  timeInvisible: 1
+  timeInvisible: 0.4
   TimeRecoverDefaultMaxSpeed: 0.1
 --- !u!114 &931155946546604730
 MonoBehaviour:
@@ -335,7 +335,7 @@ MonoBehaviour:
   fireRate: 1
   LayersThatCanBeHit:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 1408
   canShoot: 0
   endBarrelTransform: {fileID: 9040838362145545276}
   sniperTrailMaterial: {fileID: -876546973899608171, guid: a51f5275c70684f4ab0ed267bd0edf52,
@@ -776,7 +776,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8695858558387841426}
   m_LocalRotation: {x: -0, y: 0.7101541, z: -0, w: 0.7040463}
-  m_LocalPosition: {x: 0, y: 0, z: 0.619}
+  m_LocalPosition: {x: 0, y: 0, z: 0.634}
   m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -807,7 +807,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: -5923196809275735924, guid: 10d077502fb19bb4d95aff3d3418acf5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -853,15 +853,16 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 10d077502fb19bb4d95aff3d3418acf5, type: 2}
+  m_sharedMaterial: {fileID: -5923196809275735924, guid: 10d077502fb19bb4d95aff3d3418acf5,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4284794922
+  m_fontColor: {r: 0.16620687, g: 0.7830189, b: 0.39395005, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

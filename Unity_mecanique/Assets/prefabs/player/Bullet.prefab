@@ -49,8 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 221a93143f1ae6d43a9da121b4a1d825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
   dammage: 10
+  speed: 100
+  timeToDie: 4
 --- !u!33 &2613755674067314562
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -111,7 +112,7 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 64
@@ -134,8 +135,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 221a93143f1ae6d43a9da121b4a1d825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 200
   dammage: 10
+  speed: 200
+  timeToDie: 4
 --- !u!54 &3908585468600100352
 Rigidbody:
   m_ObjectHideFlags: 0
