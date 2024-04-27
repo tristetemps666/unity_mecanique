@@ -1,10 +1,26 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
+    [Tooltip("this is used only in game, not in main menu")]
     public AudioSource CriticalHitSFX;
+
+    [Tooltip("this is used only in game, not in main menu")]
     public AudioSource SmallCriticalHitSFX;
+
+    [Space]
+    public AudioSource DragSliderSound;
+    public AudioSource ClickSound;
+    public AudioSource HoverSound;
+
+    [Space]
+    public AudioMixer GeneralMixer;
+
+    // public AudioMixer SFXMixer;
+    // public AudioMixer MusicMixer;
 
     // Start is called before the first frame update
 
@@ -22,6 +38,8 @@ public class AudioManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        // DontDestroyOnLoad(gameObject);
     }
 
     public void playCritical()
@@ -36,5 +54,44 @@ public class AudioManager : MonoBehaviour
         // if (SmallCriticalHitSFX.isPlaying)
         //     return;
         SmallCriticalHitSFX.Play();
+    }
+
+    public void PlayDragSliderSound()
+    {
+        if (DragSliderSound.isPlaying)
+            return;
+        DragSliderSound.Play();
+    }
+
+    public void PlayClickSound()
+    {
+        ClickSound.Play();
+    }
+
+    public void PlayHoverSound()
+    {
+        HoverSound.Play();
+    }
+
+    public void UpdateAudioMixerGeneral(float newValue)
+    {
+        GeneralMixer.SetFloat("VolumeMaster", 20f * Mathf.Log(newValue));
+    }
+
+    public void UpdateAudioMixerSFX(float newValue)
+    {
+        GeneralMixer.SetFloat("VolumeSFX", 20f * Mathf.Log(newValue));
+    }
+
+    public void UpdateAudioMixerMusic(float newValue)
+    {
+        GeneralMixer.SetFloat("VolumeMusic", 20f * Mathf.Log(newValue));
+    }
+
+    public void UpdateVolumeSettings()
+    {
+        UpdateAudioMixerGeneral(PlayerPrefs.GetFloat("MasterVolume"));
+        UpdateAudioMixerSFX(PlayerPrefs.GetFloat("SFXVolume"));
+        UpdateAudioMixerMusic(PlayerPrefs.GetFloat("MusicVolume"));
     }
 }

@@ -7,6 +7,7 @@ public class FadeSceneTransition : MonoBehaviour
 {
     // Start is called before the first frame update
     public UnityEvent OnFadeEnd;
+    public UnityEvent OnFadeInverseEnd;
 
     void Start() { }
 
@@ -16,5 +17,10 @@ public class FadeSceneTransition : MonoBehaviour
     public void EndFade()
     {
         OnFadeEnd.Invoke();
+    }
+
+    public void EndFadeInverse()
+    {
+        OnFadeInverseEnd.Invoke();
     }
 }
