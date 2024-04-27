@@ -35,6 +35,9 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField]
     Button QuitButton;
 
+    [SerializeField]
+    Button BackMenuButton;
+
     void Start()
     {
         InitMenu();
@@ -88,6 +91,11 @@ public class MainMenuManager : MonoBehaviour
 
         // On Quit
         QuitButton.onClick.AddListener(Quit);
+
+        BackMenuButton.onClick.AddListener(() =>
+        {
+            SceneManager.LoadScene("MenuScene");
+        });
     }
 
     void StartGame()
