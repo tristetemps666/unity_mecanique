@@ -19,6 +19,10 @@ public class AudioManager : MonoBehaviour
     [Space]
     public AudioMixer GeneralMixer;
 
+    [Space]
+    [SerializeField]
+    AudioSource[] AudioSourcesNotAffectedByPause;
+
     // public AudioMixer SFXMixer;
     // public AudioMixer MusicMixer;
 
@@ -39,6 +43,14 @@ public class AudioManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        foreach (AudioSource audioSource in AudioSourcesNotAffectedByPause)
+        {
+            audioSource.ignoreListenerPause = true;
+        }
     }
 
     public void playCritical()
