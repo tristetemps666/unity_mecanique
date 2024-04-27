@@ -10,6 +10,8 @@ public class CharacterDash : MonoBehaviour
 
     [SerializeField]
     private GameObject dashParticules;
+    public bool spawnDashParticules = false;
+    public bool drawTrail = false;
 
     public float dashPower = 70f;
 
@@ -45,13 +47,19 @@ public class CharacterDash : MonoBehaviour
 
         // will play on Awake
         ApplyInvisibility();
-        GameObject newDashParticules = Instantiate(dashParticules, transform);
-        if (newDashParticules != null)
+        if (spawnDashParticules)
         {
-            newDashParticules.transform.localPosition = Vector3.zero;
-            newDashParticules.SetActive(true);
+            GameObject newDashParticules = Instantiate(dashParticules, transform);
+            if (newDashParticules != null)
+            {
+                newDashParticules.transform.localPosition = Vector3.zero;
+                newDashParticules.SetActive(true);
+            }
         }
-        trailRenderer.enabled = true;
+        if (drawTrail)
+        {
+            trailRenderer.enabled = true;
+        }
 
         Vector3 InputsVec3 = CM.getInputVec3();
 
