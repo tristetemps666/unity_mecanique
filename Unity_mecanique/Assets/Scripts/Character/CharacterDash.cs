@@ -46,6 +46,7 @@ public class CharacterDash : MonoBehaviour
             return;
 
         // will play on Awake
+        AudioManager.Instance.PlayPlayerDash();
         ApplyInvisibility();
         if (spawnDashParticules)
         {

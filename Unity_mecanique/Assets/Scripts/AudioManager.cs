@@ -12,7 +12,10 @@ public class AudioManager : MonoBehaviour
     public AudioSource SmallCriticalHitSFX;
 
     [Tooltip("this is used only in game, not in main menu")]
-    public AudioSource PlayerHitHitSFX;
+    public AudioSource PlayerHitSFX;
+
+    [Tooltip("this is used only in game, not in main menu")]
+    public AudioSource PlayerDashSFX;
 
     [Space]
     public AudioSource DragSliderSound;
@@ -90,7 +93,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlayPlayerHit()
     {
-        PlayerHitHitSFX.Play();
+        PlayerHitSFX.Play();
+    }
+
+    public void PlayPlayerDash()
+    {
+        PlayerDashSFX.Play();
     }
 
     public void UpdateAudioMixerGeneral(float newValue)
