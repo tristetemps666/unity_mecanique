@@ -34,6 +34,8 @@ public class MenuSlider : MonoBehaviour
                 AudioManager.Instance.UpdateVolumeSettings();
             }
         );
+
+        sliderComp.value = PlayerPrefs.GetFloat(name);
     }
 
     void SaveFloatValue(string name, float value)

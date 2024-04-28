@@ -16,6 +16,9 @@ public class LaserShotAttack : IAttack
     private Transform sourceLaserShot;
 
     [SerializeField]
+    AudioSource AudioSourceCharging;
+
+    [SerializeField]
     private Transform SphereTransform;
 
     [SerializeField]
@@ -61,13 +64,12 @@ public class LaserShotAttack : IAttack
     public void StartLaserAttackAnimation()
     {
         animator.SetTrigger("TriggerOpenBigShootLaser");
+        AudioSourceCharging.Play();
     }
 
     public void StopLaserAttackAnimation()
     {
         animator.ResetTrigger("TriggerOpenBigShootLaser");
-
-        // Invoke("Shoot", 5f);
     }
 
     void Shoot()
@@ -92,6 +94,7 @@ public class LaserShotAttack : IAttack
 
     IEnumerator SendRay()
     {
+        AudioSourceCharging.Stop();
         // UpdateRayMaterial(1f, 1f);
         PostProcessManager.Instance.SetRayEffect(true);
         yield return new WaitForSeconds(0.3f);
@@ -232,6 +235,4 @@ public class LaserShotAttack : IAttack
     {
         animator.ResetTrigger("TriggerLeaveIdleBigShootLaser");
     }
-
-    // Update is called once per frame
 }
