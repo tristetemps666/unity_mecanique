@@ -51,6 +51,7 @@ public class AudioManager : MonoBehaviour
         {
             audioSource.ignoreListenerPause = true;
         }
+        UpdateVolumeSettings();
     }
 
     public void playCritical()

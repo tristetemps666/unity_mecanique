@@ -19,6 +19,7 @@ public class MenuSlider : MonoBehaviour
     {
         sliderComp = GetComponent<Slider>();
         SetupSliders();
+        SaveFloatValue(dataName, sliderComp.value);
     }
 
     // Update is called once per frame
@@ -35,7 +36,8 @@ public class MenuSlider : MonoBehaviour
             }
         );
 
-        sliderComp.value = PlayerPrefs.GetFloat(name);
+        sliderComp.value = PlayerPrefs.GetFloat(dataName);
+        Debug.Log("value au début : " + PlayerPrefs.GetFloat(dataName));
     }
 
     void SaveFloatValue(string name, float value)
