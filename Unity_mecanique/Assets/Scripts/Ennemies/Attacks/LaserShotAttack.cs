@@ -99,6 +99,7 @@ public class LaserShotAttack : IAttack
         PostProcessManager.Instance.SetRayEffect(true);
         yield return new WaitForSeconds(0.3f);
         // UpdateRayMaterial(15f, 1f);
+        AudioManager.Instance.PlayShootLazer();
 
         Vector3 destination;
 

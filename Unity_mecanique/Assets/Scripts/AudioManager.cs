@@ -17,6 +17,9 @@ public class AudioManager : MonoBehaviour
     [Tooltip("this is used only in game, not in main menu")]
     public AudioSource PlayerDashSFX;
 
+    [Tooltip("this is used only in game, not in main menu")]
+    public AudioSource ShootLazerSFX;
+
     [Space]
     public AudioSource DragSliderSound;
     public AudioSource ClickSound;
@@ -99,6 +102,11 @@ public class AudioManager : MonoBehaviour
     public void PlayPlayerDash()
     {
         PlayerDashSFX.Play();
+    }
+
+    public void PlayShootLazer()
+    {
+        ShootLazerSFX.Play();
     }
 
     public void UpdateAudioMixerGeneral(float newValue)
