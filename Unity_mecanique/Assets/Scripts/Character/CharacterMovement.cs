@@ -216,7 +216,9 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnLook(InputValue inputValue)
     {
-        ApplyRotation(mouseSensitvity * inputValue.Get<Vector2>() * Time.deltaTime);
+        ApplyRotation(
+            PlayerPrefs.GetFloat("MouseSensitivity") * inputValue.Get<Vector2>() * Time.deltaTime
+        );
     }
 
     public float getPlayerVelocity()
