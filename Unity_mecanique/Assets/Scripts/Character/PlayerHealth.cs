@@ -76,6 +76,7 @@ public class PlayerHealth : MonoBehaviour, IHealth, IDammagable
         {
             Debug.Break();
         }
+        AudioManager.Instance.PlayPlayerHit();
     }
 
     void ResetInvisible()

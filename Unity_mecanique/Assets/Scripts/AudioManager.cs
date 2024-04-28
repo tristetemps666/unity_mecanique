@@ -11,6 +11,9 @@ public class AudioManager : MonoBehaviour
     [Tooltip("this is used only in game, not in main menu")]
     public AudioSource SmallCriticalHitSFX;
 
+    [Tooltip("this is used only in game, not in main menu")]
+    public AudioSource PlayerHitHitSFX;
+
     [Space]
     public AudioSource DragSliderSound;
     public AudioSource ClickSound;
@@ -83,6 +86,11 @@ public class AudioManager : MonoBehaviour
     public void PlayHoverSound()
     {
         HoverSound.Play();
+    }
+
+    public void PlayPlayerHit()
+    {
+        PlayerHitHitSFX.Play();
     }
 
     public void UpdateAudioMixerGeneral(float newValue)

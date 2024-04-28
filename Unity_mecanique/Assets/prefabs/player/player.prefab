@@ -278,6 +278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashParticules: {fileID: 8532277102950379081}
+  spawnDashParticules: 0
+  drawTrail: 1
   dashPower: 80
   dashReloadTime: 1
   timeAtMaxDashSpeed: 0.2
@@ -485,7 +487,8 @@ AudioSource:
   m_GameObject: {fileID: 2554863840426243246}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7216977290843193050, guid: 223a2d4c686a9504b8ba4ddc40b01770,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -606,7 +609,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9040838362145545276}
-  - {fileID: 8926306066575693004}
   m_Father: {fileID: 3323626669283547757}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &7379554000888961760
@@ -775,16 +777,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8695858558387841426}
-  m_LocalRotation: {x: -0, y: 0.7101541, z: -0, w: 0.7040463}
-  m_LocalPosition: {x: 0, y: 0, z: 0.634}
-  m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
+  m_LocalRotation: {x: 0.0028047606, y: 0.7101485, z: 0.0028290926, w: 0.7040407}
+  m_LocalPosition: {x: 0, y: 0, z: 0.18582122}
+  m_LocalScale: {x: 0.024999999, y: 0.025000004, z: 0.024999999}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 8898834205662767597}
+  m_Father: {fileID: 7044460715780693197}
   m_LocalEulerAnglesHint: {x: 0, y: 90.495, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.495, y: -0.285}
+  m_AnchoredPosition: {x: -0.02399993, y: 0.4006373}
   m_SizeDelta: {x: 10.61, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8734911785506027185
@@ -947,6 +949,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: right arm
       objectReference: {fileID: 0}
+    - target: {fileID: 2738506591435943141, guid: e99f887005c40b7479fe0f1936688093,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3699400874543691950, guid: e99f887005c40b7479fe0f1936688093,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -997,14 +1004,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5279138547399853338, guid: e99f887005c40b7479fe0f1936688093,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8117346074220672660, guid: e99f887005c40b7479fe0f1936688093,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fe2122b95d71cf94faa713fcaf759314, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9120472695617239988, guid: e99f887005c40b7479fe0f1936688093, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3450769257746905183, guid: e99f887005c40b7479fe0f1936688093,
+        type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 8926306066575693004}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e99f887005c40b7479fe0f1936688093, type: 3}
 --- !u!23 &4505834758404526598 stripped
@@ -1016,6 +1033,12 @@ MeshRenderer:
 --- !u!4 &4974596542684824887 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 803957246630781349, guid: e99f887005c40b7479fe0f1936688093,
+    type: 3}
+  m_PrefabInstance: {fileID: 5629899661010199698}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7044460715780693197 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3450769257746905183, guid: e99f887005c40b7479fe0f1936688093,
     type: 3}
   m_PrefabInstance: {fileID: 5629899661010199698}
   m_PrefabAsset: {fileID: 0}
