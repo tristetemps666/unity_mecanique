@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class BigEnnemiHeath : MonoBehaviour, IHealth, IDammagable
 {
     public int initialHealth;
+    public bool isBoss = false;
 
     public int health { get; private set; }
 
@@ -58,7 +59,10 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth, IDammagable
         health = Mathf.Max(health - reduceAmount, 0);
         if (IsDead())
         {
-            GameManager.Instance.LoadWinScene();
+            if (isBoss)
+            {
+                GameManager.Instance.LoadWinScene();
+            }
             Destroy(gameObject);
         }
         ChangeMaterialOnHit();
