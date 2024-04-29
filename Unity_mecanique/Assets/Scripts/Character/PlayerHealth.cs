@@ -74,7 +74,8 @@ public class PlayerHealth : MonoBehaviour, IHealth, IDammagable
 
         if (IsDead())
         {
-            Debug.Break();
+            GameManager.Instance.LoadLooseScene();
+            // Debug.Break();
         }
         AudioManager.Instance.PlayPlayerHit();
     }

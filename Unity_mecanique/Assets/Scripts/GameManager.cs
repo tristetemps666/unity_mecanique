@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -99,5 +100,15 @@ public class GameManager : MonoBehaviour
     public bool IsPlayerHoldingShoot()
     {
         return player.GetComponent<Gun>().isShootHold;
+    }
+
+    public void LoadWinScene()
+    {
+        SceneManager.LoadScene("WinScene");
+    }
+
+    public void LoadLooseScene()
+    {
+        SceneManager.LoadScene("LooseScene");
     }
 }

@@ -23904,7 +23904,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -349.3}
+  m_AnchoredPosition: {x: 0, y: -488.28}
   m_SizeDelta: {x: 202.84998, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1264812719
@@ -24012,7 +24012,7 @@ CanvasGroup:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264812717}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
@@ -25110,7 +25110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 193.3}
+  m_AnchoredPosition: {x: 0, y: 272.9}
   m_SizeDelta: {x: 202.84998, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2065034218
@@ -25133,7 +25133,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NOM DU JEU
+  m_text: Ultimate gun shoot game fight
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 10d077502fb19bb4d95aff3d3418acf5, type: 2}
   m_sharedMaterial: {fileID: -5923196809275735924, guid: 10d077502fb19bb4d95aff3d3418acf5,
@@ -25143,8 +25143,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4284475233
+  m_fontColor: {r: 0.3813367, g: 0.9056604, b: 0.37166253, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

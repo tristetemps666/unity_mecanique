@@ -58,6 +58,7 @@ public class BigEnnemiHeath : MonoBehaviour, IHealth, IDammagable
         health = Mathf.Max(health - reduceAmount, 0);
         if (IsDead())
         {
+            GameManager.Instance.LoadWinScene();
             Destroy(gameObject);
         }
         ChangeMaterialOnHit();
