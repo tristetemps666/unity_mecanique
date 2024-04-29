@@ -128,6 +128,9 @@ MonoBehaviour:
         m_CallState: 2
   Dammages: 800
   animator: {fileID: 8936136483824738206}
+  LayerColliding:
+    serializedVersion: 2
+    m_Bits: 0
   timeToBuildTheShot: 4
   lazerSpeed: 7000
   sourceLaserShot: {fileID: 5431850505368392894}
@@ -5252,6 +5255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialHealth: 100000
+  isBoss: 0
   healthBar: {fileID: 0}
   healthBarDelta: {fileID: 0}
   healthBarDammageText: {fileID: 0}

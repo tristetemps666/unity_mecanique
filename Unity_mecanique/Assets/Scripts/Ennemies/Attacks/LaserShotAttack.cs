@@ -9,6 +9,8 @@ using UnityEngine.Splines;
 public class LaserShotAttack : IAttack
 {
     // Start is called before the first frame update
+
+    public LayerMask LayerColliding;
     public float timeToBuildTheShot = 4f;
     public float lazerSpeed = 10f;
 
@@ -106,16 +108,10 @@ public class LaserShotAttack : IAttack
         // WE DO A RAYCAST TO CHECK IF WE HIT SOMETHING BEFORE THE PLAYER
         RaycastHit hit;
 
-        if (
-            Physics.Linecast(
-                sourceLaserShot.position,
-                target.position,
-                out hit,
-                ~collider.includeLayers
-            )
-        )
+        if (Physics.Linecast(sourceLaserShot.position, target.position, out hit, LayerColliding))
         {
             destination = hit.point;
+            Debug.Log("l'objet hit par le lazer : " + hit.collider.name);
 
             destination =
                 destination + (target.position - sourceLaserShot.position).normalized * 3f;

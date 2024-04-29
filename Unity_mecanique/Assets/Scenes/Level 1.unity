@@ -1543,6 +1543,11 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 138260534}
+    - target: {fileID: 7990395742679101297, guid: 3c9ea238ad9703546ab9807de39fe9c5,
+        type: 3}
+      propertyPath: LayerNotColliding.m_Bits
+      value: 1847
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
