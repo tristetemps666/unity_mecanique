@@ -13206,6 +13206,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigEnnemiV2
       objectReference: {fileID: 0}
+    - target: {fileID: 7739805830842212118, guid: 3c9ea238ad9703546ab9807de39fe9c5,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7739805830842212118, guid: 3c9ea238ad9703546ab9807de39fe9c5,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 7216977290843193050, guid: 223a2d4c686a9504b8ba4ddc40b01770,
+        type: 2}
     - target: {fileID: 7850490257732292035, guid: 3c9ea238ad9703546ab9807de39fe9c5,
         type: 3}
       propertyPath: m_LocalPosition.x
