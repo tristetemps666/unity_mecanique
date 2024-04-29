@@ -47,7 +47,11 @@ public class MainMenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // we cannot pause if we are holding shoot to avoid inputs bugs
+        if (
+            Input.GetKeyDown(KeyCode.Escape)
+            && (GameManager.Instance == null || !GameManager.Instance.IsPlayerHoldingShoot())
+        )
         {
             if (CurrentMenu != MenuHome)
             {
@@ -100,7 +104,14 @@ public class MainMenuManager : MonoBehaviour
 
     void StartGame()
     {
-        SceneManager.LoadScene("Level 1");
+        if (SceneManager.GetActiveScene().name == "Level 1")
+        {
+            GameManager.Instance.LeavePause();
+        }
+        else
+        {
+            SceneManager.LoadScene("Level 1");
+        }
     }
 
     void Quit()

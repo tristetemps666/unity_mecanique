@@ -22,10 +22,28 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Volume UIBlur;
 
+    private GameObject player;
+
+    public static GameManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        // If there is an instance, and it's not me, delete myself.
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
     void Start()
     {
         Cursor.visible = false;
         LeavePause();
+        player = playerInput.gameObject;
     }
 
     // Update is called once per frame
@@ -50,11 +68,13 @@ public class GameManager : MonoBehaviour
         GlobalVariables.IsQuitting = true;
     }
 
-    void LeavePause()
+    public void LeavePause()
     {
         pauseMenu.SetActive(false);
         GameUI.SetActive(true);
-        UIBlur.enabled = false;
+
+        if (UIBlur != null)
+            UIBlur.enabled = false;
 
         Time.timeScale = 1f;
         AudioListener.pause = false;
@@ -63,12 +83,21 @@ public class GameManager : MonoBehaviour
 
     void GoIntoPause()
     {
+        // avoid bugs if the player pause while shooting
+        player.GetComponent<Gun>().StopShooting();
+
         pauseMenu.SetActive(true);
         GameUI.SetActive(false);
+
         UIBlur.enabled = true;
 
         Time.timeScale = 0f;
         AudioListener.pause = true;
         playerInput.enabled = false;
+    }
+
+    public bool IsPlayerHoldingShoot()
+    {
+        return player.GetComponent<Gun>().isShootHold;
     }
 }
