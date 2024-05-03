@@ -2169,6 +2169,11 @@ PrefabInstance:
       objectReference: {fileID: 459266527}
     - target: {fileID: 6011395941685639642, guid: 3c9ea238ad9703546ab9807de39fe9c5,
         type: 3}
+      propertyPath: initialHealth
+      value: 50000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6011395941685639642, guid: 3c9ea238ad9703546ab9807de39fe9c5,
+        type: 3}
       propertyPath: healthBarDelta
       value: 
       objectReference: {fileID: 1283776754}
