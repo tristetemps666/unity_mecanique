@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class FovManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Camera cam;
+    // private Camera cam;
+    [SerializeField]
+    CinemachineVirtualCamera cinemachineVirtualCamera;
 
     public AnimationCurve FovFactorAlongSpeed;
     public float highSpeedFov = 100f;
@@ -18,8 +21,8 @@ public class FovManager : MonoBehaviour
 
     void Start()
     {
-        cam = GetComponent<Camera>();
-        baseFov = cam.fieldOfView;
+        // cam = GetComponent<Camera>();
+        baseFov = cinemachineVirtualCamera.m_Lens.FieldOfView;
         characterMovement = GetComponentInParent<CharacterMovement>();
     }
 
@@ -35,6 +38,11 @@ public class FovManager : MonoBehaviour
         );
 
         // cam.fieldOfView = targetFov;
-        cam.fieldOfView = Mathf.SmoothDamp(cam.fieldOfView, targetFov, ref fovVelocity, smoothFov);
+        cinemachineVirtualCamera.m_Lens.FieldOfView = Mathf.SmoothDamp(
+            cinemachineVirtualCamera.m_Lens.FieldOfView,
+            targetFov,
+            ref fovVelocity,
+            smoothFov
+        );
     }
 }

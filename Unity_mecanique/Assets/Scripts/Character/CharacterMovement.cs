@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Cinemachine;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -48,6 +49,7 @@ public class CharacterMovement : MonoBehaviour
     private LayerMask groundMask;
 
     private Camera playerCam;
+    private CinemachineVirtualCamera playerCamController;
     private float rotation_amount = 0f;
 
     private Vector3 NormalGround = Vector3.zero;
@@ -61,6 +63,7 @@ public class CharacterMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerCam = GetComponentInChildren<Camera>();
+        playerCamController = GetComponentInChildren<CinemachineVirtualCamera>();
         sniper = GetComponent<Sniper>();
         Physics.gravity = Vector3.down * 9.81f * gravityScale;
     }
@@ -196,7 +199,8 @@ public class CharacterMovement : MonoBehaviour
             return;
 
         // pitch
-        Transform camTransform = playerCam.transform;
+        // Transform camTransform = playerCam.transform;
+        Transform camTransform = playerCamController.transform;
         camTransform.RotateAround(camTransform.position, camTransform.right, -rotationInputs.y);
         rotation_amount -= rotationInputs.y;
     }

@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Sniper : MonoBehaviour, GunInterface
 {
@@ -49,6 +50,11 @@ public class Sniper : MonoBehaviour, GunInterface
 
     AudioSource audioSource;
 
+    [SerializeField]
+    Animator weaponAnimator;
+
+    public UnityEvent ShootSniperEvent = new();
+
     private void Start()
     {
         playerCam = GetComponentInChildren<Camera>();
@@ -56,6 +62,11 @@ public class Sniper : MonoBehaviour, GunInterface
         sniperRenderer.material.SetFloat("_maxFactor", maxPowerFactor);
 
         UpdatePowerFactorVisuals();
+
+        // setup shoot event :
+        ShootSniperEvent.AddListener(ProceedShoot);
+        ShootSniperEvent.AddListener(ResetPowerFactor);
+        ShootSniperEvent.AddListener(() => StartCoroutine(ShootAnimationTrigger()));
     }
 
     bool isShootDelayed() => delayShoot > 0f;
@@ -75,11 +86,16 @@ public class Sniper : MonoBehaviour, GunInterface
         UpdatePowerFactorVisuals();
     }
 
-    public void Shoot()
+    IEnumerator ShootAnimationTrigger()
+    {
+        weaponAnimator.SetTrigger("SniperShoot");
+        yield return new WaitForSeconds(0.2f);
+        weaponAnimator.ResetTrigger("SniperShoot");
+    }
+
+    private void ProceedShoot()
     {
         List<IDammagable> alreadyDammagables = new List<IDammagable>();
-        if (!canShoot || isShootDelayed())
-            return;
 
         // we change the gun status
         delayShoot = fireRate;
@@ -97,6 +113,8 @@ public class Sniper : MonoBehaviour, GunInterface
             1000,
             LayersThatCanBeHit
         );
+
+        weaponAnimator.SetTrigger("SniperShoot");
 
         audioSource.PlayOneShot(sniperSound, 0.5f);
 
@@ -139,7 +157,14 @@ public class Sniper : MonoBehaviour, GunInterface
                 alreadyDammagables.Add(dammagable);
             }
         }
-        ResetPowerFactor();
+    }
+
+    public void Shoot()
+    {
+        if (!canShoot || isShootDelayed())
+            return;
+
+        ShootSniperEvent.Invoke();
     }
 
     public void IncreasePowerFactor()

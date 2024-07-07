@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Gun : MonoBehaviour, GunInterface
 {
@@ -28,10 +29,20 @@ public class Gun : MonoBehaviour, GunInterface
 
     private float delayShoot = 0f;
 
+    // Animation
+    [SerializeField]
+    Animator gunAnimator;
+
+    public UnityEvent ShootEvent = new();
+
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
+        // setup shoot
+
+        ShootEvent.AddListener(CreateBullet);
     }
 
     // Update is called once per frame
@@ -81,10 +92,11 @@ public class Gun : MonoBehaviour, GunInterface
         newBullet.transform.LookAt(target);
     }
 
-    private IEnumerator CreateBulletRepeate()
+    private IEnumerator ShootRepeate()
     {
         while (true) // caca ???
         {
+            ShootEvent.Invoke();
             CreateBullet();
             yield return new WaitForSeconds(shootRate);
         }
@@ -94,13 +106,15 @@ public class Gun : MonoBehaviour, GunInterface
     {
         if (canShoot)
         {
-            StartCoroutine(CreateBulletRepeate());
+            gunAnimator.SetBool("IsShooting", true);
+            StartCoroutine(ShootRepeate());
             delayShoot = shootRate;
         }
     }
 
     public void StopShooting()
     {
+        gunAnimator.SetBool("IsShooting", false);
         Debug.Log("on stop le shoot");
         StopAllCoroutines();
         canShoot = false;
@@ -108,17 +122,22 @@ public class Gun : MonoBehaviour, GunInterface
 
     public void Shoot()
     {
-        isShootHold = !isShootHold;
-        if (!isShootHold)
-        {
-            StopCoroutine(CreateBulletRepeate());
-            canShoot = false;
-            return;
-        }
-        if (canShoot)
-        {
-            StartCoroutine(CreateBulletRepeate());
-            delayShoot = shootRate;
-        }
+        // isShootHold = !isShootHold;
+        // if (!isShootHold)
+        // {
+        //     // we stop playing the animation
+
+        //     StopCoroutine(CreateBulletRepeate());
+        //     canShoot = false;
+        //     return;
+        // }
+        // if (canShoot)
+        // {
+        //     // we play the animation
+        //     gunAnimator.SetBool("IsShooting", true);
+
+        //     StartCoroutine(CreateBulletRepeate());
+        //     delayShoot = shootRate;
+        // }
     }
 }
