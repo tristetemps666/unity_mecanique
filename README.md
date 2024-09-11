@@ -16,27 +16,31 @@ Z / Q / S / D pour se déplacer
 
 Shift pour dash
 
-click gauche pour tirer
+click gauche pour tirer (fusil ou sniper selon le mode de tir)
 
-click droit pour tirer au sniper
+click droit pour passer en mode sniper
 
 --------------------------------------
 --------------------------------------
 ## Mécaniques
 
+### joueur
++  Le dash rend invinsible un court instant
++ le mode sniper est en hitscan et fait plus de dégâts, le cadence de tir est lente cependant
++ le mode fusil a une cadence plus importante, cepedant les boules ont du time travel et font peu de dégâts. elles sont utiles pour charger l'arme
 + l'arme peut se charger de 100% (x1 de dégâts) à 400% (x4 de dégâts)
-
 +  chaque tir qui touche un ennemi charge l'arme
 
+### ennemies
++  les petits ennemis lachent des soins à leur morts
 +  les soins rechargent totalement l'arme
-
-
-+  Le dash rend invinsible un court instant
-
-+  les petits ennemis lachent des soins
-
-
 +  la tour possède un point faible qui le fait prendre plus de dégâts.
+
+
+
+
+
+
 
 --------------------------------------
 --------------------------------------
