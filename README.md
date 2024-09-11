@@ -32,14 +32,10 @@ click droit pour passer en mode sniper
 +  chaque tir qui touche un ennemi charge l'arme
 
 ### ennemies
-+  les petits ennemis lachent des soins à leur morts
++  les petits ennemis lâchent des soins à leur morts
 +  les soins rechargent totalement l'arme
-+  la tour possède un point faible qui le fait prendre plus de dégâts.
-
-
-
-
-
++  la tour possède un point faible qui lui fait prendre plus de dégâts.
++  le point faible de la tour apparait quand elle active son canon laser
 
 
 --------------------------------------
