@@ -2,7 +2,7 @@
 
 ![Ultimate fight](https://github.com/user-attachments/assets/f80274f7-0864-4b1f-932f-8781e2fcaf2c)
 
-c'est un fast FPS où le but est de battre la grande tour !!
+c'est un fast FPS où le but est de battre une grande tour !!
 
 
 --------------------------------------
